@@ -37,7 +37,10 @@
                 		if(!empty($data['categories'])){
 	                		foreach($data['categories'] as $cate){
 							?>
-							<a href="#" class="list-group-item"><?php echo $cate['Category']['name']?></a>
+							<a href="/homes/index/<?php echo $cate['Category']['id']?>"
+								 class="list-group-item <?php echo ($cate['Category']['id'] == $data['category'])?'active':''?>">
+								<?php echo $cate['Category']['name'];?>
+							</a>
 							<?php 
 							}	
                 		}	

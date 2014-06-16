@@ -15,6 +15,7 @@ body {
 }
 
 .caption {
+  height: 150px;
   overflow: hidden;
 }
 

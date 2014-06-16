@@ -87,7 +87,7 @@ class FlowersController extends AppController {
 		$width  = $manipulator->getWidth();
 		$height = $manipulator->getHeight();
 		
-		if($width >$regWidth || $height > $regHeight){
+		if($width > $regWidth || $height > $regHeight){
 			
 			if($width > $regWidth && $height > $regHeight){
 				$w = $regWidth;
@@ -107,19 +107,25 @@ class FlowersController extends AppController {
 				$regWidth = $width;
 			if($height < $regHeight)
 				$regHeight = $height;
-			
-			$centreX = round($width / 2);
-			$centreY = round($height / 2);
-			// our dimensions will be 200x130
-			$x1 = $centreX - $regWidth/2;
-			$y1 = $centreY - $regHeight/2;
-			
-			$x2 = $centreX + $regWidth/2;
-			$y2 = $centreY + $regHeight/2;
-			
-			// center cropping to 200x130
-			$manipulator->crop($x1, $y1, $x2, $y2);
 		}
+		else{
+			$regHeight = $height * $width / $regWidth;
+			$regWidth = $width;
+		}
+		
+		
+		$centreX = round($width / 2);
+		$centreY = round($height / 2);
+		// our dimensions will be 200x130
+		$x1 = $centreX - $regWidth/2;
+		$y1 = $centreY - $regHeight/2;
+		
+		$x2 = $centreX + $regWidth/2;
+		$y2 = $centreY + $regHeight/2;
+		
+		// center cropping to 200x130
+		$manipulator->crop($x1, $y1, $x2, $y2);
+		
 		// saving file to uploads folder
 		$uploads_dir_thumd = APP. 'webroot'. DS .'img' . DS . 'thumb' . DS . $fileName;
 		$manipulator->save($uploads_dir_thumd);
