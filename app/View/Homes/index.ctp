@@ -87,11 +87,11 @@
 							?>
 							<div class="col-sm-4 col-lg-4 col-md-4">
 								<div class="thumbnail">
-									<img  src="/img/thumb/photo1-200x200.jpg" alt="">
+									<img  src="/img/thumb/<?php echo $item['Flower']['thumb'];?>" alt="">
 									<div class="caption">
-										<p class="caption-header"><strong><?php echo $item['name'];?></strong></p>
-										<p class="caption-money"><strong>VND <?php echo number_format(floatval($item['price'])); ?></strong></p>
-										<p>See more snippets like this online store item at.</p>
+										<p class="caption-header"><strong><?php echo $item['Flower']['name'];?></strong></p>
+										<p class="caption-money"><strong><?php echo number_format(floatval($item['Flower']['price'])); ?> VND</strong></p>
+										<p><?php echo $item['Flower']['description'];?></p>
 									</div>
 								</div>
 							</div>

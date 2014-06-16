@@ -30,7 +30,7 @@ class FlowersController extends AppController {
 			if(empty($data['error'])){
 				// up hinh
 				$data['flower']['image'] = $this->_sizeAndUploadFile($_FILES['image']);
-			//	$data['flower']['thumb'] = $this->_uploadFile($_FILES['image'], 'thumb');
+				$data['flower']['thumb'] = $data['flower']['image'];
 				
 				$this->Flowers->create();
 				if ($this->Flowers->save($data['flower'])){
@@ -81,6 +81,9 @@ class FlowersController extends AppController {
 		
 		$newNamePrefix = time() . '_';
 		$manipulator = new ImageManipulator($file['tmp_name']);
+		$uploads_dir = APP. 'webroot'. DS .'img' . DS . 'image' . DS . $fileName;
+		$manipulator->save($uploads_dir);
+		
 		$width  = $manipulator->getWidth();
 		$height = $manipulator->getHeight();
 		
@@ -118,9 +121,7 @@ class FlowersController extends AppController {
 			$manipulator->crop($x1, $y1, $x2, $y2);
 		}
 		// saving file to uploads folder
-		$uploads_dir = APP. 'webroot'. DS .'img' . DS . $dir . DS . $fileName;
 		$uploads_dir_thumd = APP. 'webroot'. DS .'img' . DS . 'thumb' . DS . $fileName;
-		$manipulator->save($uploads_dir);
 		$manipulator->save($uploads_dir_thumd);
 		return $fileName;
 	}
