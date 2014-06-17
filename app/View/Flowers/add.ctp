@@ -48,6 +48,7 @@
 		  	
 		  	<h4 class="panel-heading">Tạo Giỏ Hoa</h4>
 		  	<form role="form" enctype='multipart/form-data' action="/flowers/add" method="post">
+		  		<input name="id" type="hidden" class="form-control" value="<?php echo @$data['flower']['id'];?>">
 		  		<div class="form-group">
 				    <label for="txtName">Tên giỏ hoa</label>
 				    <input name="name" type="text" class="form-control" id="txtName" placeholder="Nhập tên" value="<?php echo @$data['flower']['name'];?>">

@@ -98,7 +98,7 @@
 											
 									</div>
 									<div class="flower-action">
-									<a href="/flowers/add"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a href="/flowers/add/<?php echo $item['Flower']['id'];?>"><span class="glyphicon glyphicon-pencil"></span></a>
 									<a href="javascript:delete_flower(<?php echo $item['Flower']['id'];?>)"><span class="glyphicon glyphicon-remove"></span></a>
 									</div>
 								</div>
