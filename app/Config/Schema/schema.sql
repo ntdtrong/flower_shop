@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- Table structure for table `flowers`
 --
 
+
 CREATE TABLE IF NOT EXISTS `flowers` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` text COLLATE utf8_unicode_ci,
@@ -46,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `flowers` (
   `thumb` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -54,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `flowers` (
 -- Table structure for table `flower_category`
 --
 
-CREATE TABLE IF NOT EXISTS `flower_category` (
+CREATE TABLE IF NOT EXISTS `flower_categories` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `flower_id` int(10) DEFAULT NULL,
   `category_id` int(10) DEFAULT NULL,

@@ -9,8 +9,10 @@
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('bootstrap-theme.min');
 		echo $this->Html->css('shop-homepage');
+		echo $this->Html->css('colorbox');
 		
 		echo $this->Html->script('jquery-1.11.1.min');
+		echo $this->Html->script('jquery.colorbox-min');
 		echo $this->fetch('script');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -37,7 +39,6 @@
 	
 	<?php 
 		echo $this->Html->script('bootstrap.min');
-		echo $this->Html->script('jquery.colorbox-min');
 	?>
 </body>
 </html>

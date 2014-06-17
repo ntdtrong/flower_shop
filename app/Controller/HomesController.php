@@ -11,9 +11,23 @@ class HomesController extends AppController {
 		if($category === 0 && !empty($data['categories'])){
 			$category = $data['categories'][0]['Category']['id'];
 		}
+	//	$category = 24;
 		$data['category'] = $category;
-		$data['flowers'] = $this->Flower->find('all', array('conditions' => array('category' => $category)));
-		//pr($data);
+		$joins = array(
+				array(
+						'table' => 'flower_categories',
+						'alias' => 'FlowerCategory',
+						'type' => 'inner',
+						'conditions' => array('Flower.id = FlowerCategory.flower_id')
+				)
+			);
+		$conditions = array('FlowerCategory.category_id' => $category);
+		$data['flowers'] = $this->Flower->find('all', array(
+				'conditions' => $conditions,
+				'joins' => $joins
+				)
+			);
+	//	pr($data['flowers']);exit;
 //		$list = array();
 //		for($i = 1; $i <= 50; $i++){
 //			$list[] = array(

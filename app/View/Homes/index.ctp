@@ -95,6 +95,11 @@
 										<p class="caption-header"><strong><?php echo $item['Flower']['name'];?></strong></p>
 										<p class="caption-money"><strong><?php echo number_format(floatval($item['Flower']['price'])); ?> VND</strong></p>
 										<p><?php echo $item['Flower']['description'];?></p>
+											
+									</div>
+									<div class="flower-action">
+									<a href="/flowers/add"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a href="javascript:delete_flower(<?php echo $item['Flower']['id'];?>)"><span class="glyphicon glyphicon-remove"></span></a>
 									</div>
 								</div>
 							</div>
@@ -197,8 +202,24 @@
 			}
         
         });
-        
-        </script>
+
+        function delete_flower(id) {
+  		  	var answer = confirm("Có chắc bạn muốn xóa giỏ hoa này?");
+	  	    if (answer){
+	  	    	$.ajax({
+	  	    		  type: "POST",
+	  	    		  url: "/flowers/delete/"+id,
+	  	    		  }).done(function( msg ) {
+	  		    		  if(msg == "OK"){
+	  		    			  location.reload();  
+	  		    		  }
+	  		    		  else{
+	  			    		  $("#error_message").html("<h5><span class='label label-danger'>"+msg+"</span><h5>");
+	  		    		  }
+	  	    		  });
+	  	    }
+	  	}
+</script>
     <!-- /.container -->
 
     

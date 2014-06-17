@@ -26,38 +26,9 @@
     <!-- /.container -->
 </nav>
 <div class="container">
-	<div class="row">
-		
-		  <div class="col-md-8 col-md-push-2">
-		  	<h4 class="panel-heading">Tạo Giỏ Hoa</h4>
-		  	<form role="form" action="/flowers/add" method="post">
-		  	
-		  		<div class="form-group">
-				    <label for="txtName">Tên giỏ hoa</label>
-				    <input name="name" type="text" class="form-control" id="txtName" placeholder="Nhập tên">
-				 </div>
-				 
-		  		<div class="form-group">
-				    <label for="txtPrice">Giá tiền</label>
-				    <input name="price" type="text" class="form-control" id="txtPrice" placeholder="Nhập giá">
-				 </div>
-				 
-				 <div class="form-group">
-				    <label for="txtImage">Hình ảnh</label>
-				    <input name="image" type="file" id="txtImage">
-				  </div>
-				 
-		  		<div class="form-group">
-				    <label for="txtDescription">Mô tả thêm</label>
-				    <textarea name="description" class="form-control" rows="3" id="txtDescription" placeholder="Nhập mô tả"></textarea>
-				 </div>
-				 
-				 <button type="submit" class="btn btn-default">Save</button>
-		  	</form>
-		  </div><!-- /.col-md-8 -->
-		</div>
+	<p><a class='ajax' href="/flowers/dialogAdd" title="Homer Defined">Add</a></p>
 </div>
 <script type='text/javascript'>
-	
+	$(".ajax").colorbox();
 </script>
     
