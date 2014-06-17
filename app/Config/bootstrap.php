@@ -23,6 +23,7 @@
  */
 
 // Setup a 'default' cache configuration for use in the application.
+require_once(APP . 'Config/constants.php');
 Cache::config('default', array('engine' => 'File'));
 
 /**

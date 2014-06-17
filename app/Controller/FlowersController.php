@@ -1,6 +1,7 @@
 ﻿<?php
 App::uses('AppController', 'Controller');
 App::uses('ImageManipulator', 'Vendor/image-utils');
+App::uses('File', 'Utility');
 class FlowersController extends AppController {
 	public $uses = array('Category', 'Flowers', 'FlowerCategory');
 	public $helpers = array('Form', 'Html');
@@ -141,8 +142,16 @@ class FlowersController extends AppController {
 	}
 	
 	public function delete($id){
-		$cate = $this->Flowers->find('first', array('conditions' => array('id' => $id)));
-		if($cate){
+		$flower = $this->Flowers->find('first', array('conditions' => array('id' => $id)));
+		if($flower){
+			$file = new File(IMAGE_URL.$flower['Flowers']['image'], true, 0755);
+			if($file->exists())
+				$file->delete();
+			
+			$file = new File(IMAGE_URL.$flower['Flowers']['thumb'], true, 0755);
+			if($file->exists())
+				$file->delete();
+			
 			$this->Flowers->delete($id, true);
 			$this->FlowerCategory->deleteAll(array('FlowerCategory.flower_id' => $id), true);
 			echo "OK";
