@@ -1,14 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
-class HomesController extends AppController {
+class BannerController extends AppController {
 	public $uses = array('Category', 'Flower');
-	
-	public function beforeFilter() {
-		parent::beforeFilter();
-	
-		$this->Auth->allow(array('index'));
-	}
-	
 	public function index($category = 0) {
 		$data = array(
 			'categories' => array(),

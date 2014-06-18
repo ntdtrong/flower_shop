@@ -31,4 +31,53 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $helpers = array('Html', 'Form', 'Session');
+	var $uses = array('User');
+	public $components = array(
+			'Session',
+			'Common',
+			'Auth' => array(
+					'authenticate'=> array(
+							'all' => array('userModel' => 'User'),
+							'PF' => array(
+									//TP-326 Update to bcrypt
+									'passwordHasher' => 'Blowfish',
+									//Code review TP-327
+									'fields' => array(
+											'username' => 'email'
+									),
+							)
+					),
+					'loginRedirect' => array(
+		                'controller' => 'homes',
+		                'action' => 'index'
+		            ),
+		            'logoutRedirect' => array(
+		                'controller' => 'users',
+		                'action' => 'login'
+		            )
+			)
+	);
+	
+	
+// 	public $components = array(
+// 			'Session',
+// 			'Common',
+// 			'Auth' => array(
+// 					'authenticate'=> array(
+// 							'Form' => array(
+// 									'passwordHasher' => 'Blowfish',
+// 									'fields' => array('username' => 'email')
+// 							)
+// 					),
+// 					'loginRedirect' => array(
+// 							'controller' => 'homes',
+// 							'action' => 'index'
+// 					),
+// 					'logoutRedirect' => array(
+// 							'controller' => 'users',
+// 							'action' => 'login'
+// 					)
+// 			)
+// 	);
 }
