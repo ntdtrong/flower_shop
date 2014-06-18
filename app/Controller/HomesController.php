@@ -5,7 +5,6 @@ class HomesController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-	
 		$this->Auth->allow(array('index'));
 	}
 	
@@ -18,7 +17,6 @@ class HomesController extends AppController {
 		if($category === 0 && !empty($data['categories'])){
 			$category = $data['categories'][0]['Category']['id'];
 		}
-	//	$category = 24;
 		$data['category'] = $category;
 		$joins = array(
 				array(
@@ -34,18 +32,6 @@ class HomesController extends AppController {
 				'joins' => $joins
 				)
 			);
-	//	pr($data['flowers']);exit;
-//		$list = array();
-//		for($i = 1; $i <= 50; $i++){
-//			$list[] = array(
-//				'id' => $i,
-//				'name' => 'Hoa tuoi tham thiet tinh me. Nhan ngay mother day '.$i,
-//				'price' => (10000*$i),
-//				'des' => 'Detail information, introduction...'
-//			);
-//		}
-//		$data['flowers'] = $list;
-		
 		$this->set('data', $data);
 	}
 }

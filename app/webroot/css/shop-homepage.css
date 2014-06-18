@@ -59,3 +59,12 @@ footer {
 .flower-action {
  	text-align: right;
 }
+
+.logout {
+ 	text-align: right;
+}
+
+.image-preview {
+	width: 400px;
+  	height: 150px;
+}

@@ -4,10 +4,30 @@ App::uses('ErrorObject', 'Vendor/error-object');
 class CategoriesController extends AppController {
 	public $uses = array('Category');
 	public $helpers = array('Html');
-	public function index($error = 0) {
-		$list = $this->Category->find('all');
-		$this->set('list', $list);
-		$this->set('error', @ErrorObject::$MESSAGE[$error]);
+	public function index($id = 0) {
+		$data = array('categories' => array());
+		
+		if ($this->request->is('post')) {
+			$data['category'] = $this->request->data;
+// 			pr($data['user']);
+			$rs = $this->_save($data['category']);
+			if(!empty($rs['category'])){
+				$data['category'] = array();
+				$data['success'] = 'Lưu tài khoản thành công';
+			}
+			else{
+				$data['error'] = $rs['error'];
+			}
+		}
+		else if($this->request->is('get')){
+			if(is_numeric($id) && intval($id) > 0){
+				$cate = $this->Category->find('first', array('conditions' => array('Category.id' => $id)));
+				$data['category'] = @$cate['Category'];
+			}
+		}
+		
+		$data['categories'] = $this->Category->find('all');
+		$this->set('data', $data);
 	}
 
 	public function add(){

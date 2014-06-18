@@ -36,12 +36,22 @@
 	            <div class="collapse navbar-collapse navbar-ex1-collapse">
 	                <ul class="nav navbar-nav">
 	                    <li><a href="/homes">TRANG CHỦ</a></li>
+	                    <?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){?>
 	                    <li><a href="/flowers/add">GIỎ HOA</a></li>
 	                    <li><a href="/categories">DANH MỤC</a></li>
 	                    <li><a href="/banner">BANNER</a></li>
-						<li><a href="/users">TÀI KHOẢN</a></li>                     
-	                    <li><a href="#services">GIỚI THIỆU</a></li>
+	                    <?php if (!empty($current_user['role'] == ROLE_ADMIN)){?>
+						<li><a href="/users">TÀI KHOẢN</a></li>
+						<?php }}?>
 	                    <li><a href="#contact">LIÊN HỆ</a></li>
+	                    
+	                </ul>
+	                <ul class="nav navbar-nav navbar-right">
+	                	<?php if (!empty($current_user)){?>
+	                	<li class="logout"><a href="/users/logout">THOÁT</a></li>
+	                	<?php } else { ?>
+	                	<li class="logout"><a href="/users/login">ĐĂNG NHẬP</a></li>
+	                	<?php }?>
 	                </ul>
 	            </div>
 	            <!-- /.navbar-collapse -->
