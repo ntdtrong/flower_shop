@@ -152,24 +152,58 @@ class UsersController extends AppController {
 		exit;
 	}
 	
-	public function login() {
-// 		pr(Utils::encodePassword('12345678'));
-		$data = array(
-				'error' => null
-		);
+	public function changepwd(){
+		if(!$this->Auth->user('id')){
+			return $this->redirect($this->Auth->logout());
+		}
+		
+		$data = array();
 		if ($this->request->is('post')) {
-			pr($this->request->data);
-			if ($this->Auth->login()) {
-				return $this->redirect($this->Auth->redirect());
-			} else {
-				pr('Invalid username or password, try again');
-				$data['error'] = 'Invalid username or password, try again';
+			$user = $this->request->data;
+			if(empty($user['new_password']) || strlen($user['new_password']) < 8){
+				$data['error'] = 'Mật khẩu không hợp lệ. Mật khẩu phải có ít nhất 8 ký tự';
 			}
+			if($user['new_password'] !== $user['confirm']){
+				$data['error'] = 'Mật khẩu xác nhận không đúng';
+			}
+			
+			if(empty($data['error'])){
+				if($this->Common->changePwd($this->Auth->user('id'), $user['new_password'], $user['old_password'])){
+					$data['success'] = 'Mật khẩu đã được thay đổi';
+				}
+				else{
+					$data['error'] = 'Mật khẩu hiện tại không đúng';
+				}
+			}
+		}
+		
+		$this->set('data', $data);
+		
+	}
+	
+	public function login() {
+		$data = array();
+		if ($this->request->is('post')) {
+			if(empty($this->request->data['User']['password'])){
+				$data['error'] = 'Hãy nhập mật khẩu';
+			}
+			if(empty($this->request->data['User']['email'])){
+				$data['error'] = 'Hãy nhập email';
+			}
+			if(empty($data['error'])){
+				if ($this->Auth->login()) {
+					return $this->redirect($this->Auth->redirect());
+				} else {
+					$data['error'] = 'Email hoặc mật khẩu không đúng. Hãy thử lại';
+				}
+			}
+			
 		} else {
 			if ( $this->Auth->user('id') ) {
 				return $this->redirect($this->Auth->redirect());
 			}
 		}
+		$this->set('data', $data);
 	}
 	
 	public function logout() {

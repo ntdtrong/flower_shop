@@ -1,98 +1,163 @@
-    <div class="container">
-        <div class="row">
 
-            <div class="col-md-3">
-                <p class="lead">Danh Mục</p>
-                <div id="categories_list" class="list-group">
-                	<?php  
-                		if(!empty($data['categories'])){
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-3">
+
+			<div id="categories_list" class="list-group">
+				<p class="list-group-item panel-heading-custom">
+					<strong>Danh Mục</strong>
+				</p>
+				<?php  
+				if(!empty($data['categories'])){
 	                		foreach($data['categories'] as $cate){
 							?>
-							<a href="/homes/index/<?php echo $cate['Category']['id']?>"
-								 class="list-group-item <?php echo ($cate['Category']['id'] == $data['category'])?'active':''?>">
-								<?php echo $cate['Category']['name'];?>
-							</a>
-							<?php 
-							}	
-                		}	
-                	?>
-                </div>
-            </div>
+				<a href="/homes/index/<?php echo $cate['Category']['id']?>"
+					class="list-group-item <?php echo ($cate['Category']['id'] == $data['category'])?'active':''?>">
+					<?php echo $cate['Category']['name'];?>
+				</a>
+				<?php 
+							}
+                		}
+                		?>
+			</div>
 
-            <div class="col-md-9">
 
-                <div class="row carousel-holder">
+			<div id="categories_list" class="list-group">
+				<p class="list-group-item panel-heading-custom">
+					<strong>Liên Hệ Đặt Hoa</strong>
+				</p>
+				<?php  
+				if(!empty($company) && !empty($company['phone'])){
+							$listPhone = explode("-", $company['phone']);
+							foreach ($listPhone as $phone){
+								?>
+				<p class="list-group-item-custom">
+					<?php echo trim($phone);?>
+				</p>
+				<?php 
+							}
+						}
+						?>
+			</div>
+		</div>
 
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<div class="col-md-9">
+			<?php if(!empty($data['banners'])) {?>
+			<div class="row carousel-holder">
+
+				<div class="col-md-12">
+					<div id="carousel-example-generic" class="carousel slide"
+						data-ride="carousel">
+						<!--  
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                                 <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                             </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="/img/banner/banner_1.jpg" alt="">
-                                </div>
+                             -->
+						<div class="carousel-inner">
+							<?php
+							$isFirst = true;
+                            	foreach ($data['banners'] as $banner) {?>
+							<div class="item <?php if($isFirst) echo "active" ?>">
+								<img class="slide-image"
+									src="/img/banner/<?php echo $banner['Category']['image'] ?>"
+									alt="">
+							</div>
+							<?php
+							$isFirst = false;
+								}?>
+							<!--
                                 <div class="item">
                                     <img class="slide-image" src="/img/banner/banner_2.jpg" alt="">
                                 </div>
                                 <div class="item">
                                     <img class="slide-image" src="http://placehold.it/800x300" alt="">
                                 </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
+                                 -->
+						</div>
+						<a class="left carousel-control" href="#carousel-example-generic"
+							data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
+						</a> <a class="right carousel-control"
+							href="#carousel-example-generic" data-slide="next"> <span
+							class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+					</div>
+				</div>
 
-                </div>
-				
-                <div id="newStuff" class="row">
+			</div>
+			<?php } ?>
+
+			<div id="newStuff" class="row">
+		<!-- 			
+			<div class="col-sm-4 col-lg-4 col-md-4">	
+				<ul class="enlarge">
+					<li>
+						<img src="/img/thumb/1402988820.jpg" width="150px"	height="100px" alt="Dechairs" />
+						<span><img src="/img/image/1402988820.jpg" alt="Deckchairs" />
+						<br />
+							Deckchairs on Blackpool beach
+						</span>
+					</li>
 					
-					<?php 
-					if(!empty($data['flowers'])){
+				</ul>
+			</div>
+			 -->
+				<?php 
+				if(!empty($data['flowers'])){
 						foreach($data['flowers'] as $item){
-					
+		
 							?>
-							<div class="col-sm-4 col-lg-4 col-md-4">
-								<div class="thumbnail">
-									<img  src="/img/thumb/<?php echo $item['Flower']['thumb'];?>" alt="">
-									<div class="caption">
-										<p class="caption-header"><strong><?php echo $item['Flower']['name'];?></strong></p>
-										<p class="caption-money"><strong><?php echo number_format(floatval($item['Flower']['price'])); ?> VND</strong></p>
-										<p><?php echo $item['Flower']['description'];?></p>
-											
-									</div>
-									<div class="flower-action">
-									<a href="/flowers/add/<?php echo $item['Flower']['id'];?>"><span class="glyphicon glyphicon-pencil"></span></a>
-									<a href="javascript:delete_flower(<?php echo $item['Flower']['id'];?>)"><span class="glyphicon glyphicon-remove"></span></a>
-									</div>
-								</div>
-							</div>
-							<?php
+				<div class="col-sm-4 col-lg-4 col-md-4">
+					<div class="thumbnail">
+						<img src="/img/thumb/<?php echo $item['Flower']['thumb'];?>" alt="">
+						<div class="caption">
+							<p class="caption-header">
+								<strong><?php echo $item['Flower']['name'];?> </strong>
+							</p>
+							<p class="caption-money">
+								<strong><?php echo number_format(floatval($item['Flower']['price'])); ?>
+									VND</strong>
+							</p>
+							<p>
+								<?php echo $item['Flower']['description'];?>
+							</p>
+
+						</div>
+						<?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){?>
+						<div class="flower-action">
+							<a href="/flowers/add/<?php echo $item['Flower']['id'];?>"><span
+								class="glyphicon glyphicon-pencil"></span> </a> <a
+								href="javascript:delete_flower(<?php echo $item['Flower']['id'];?>)"><span
+								class="glyphicon glyphicon-remove"></span> </a>
+						</div>
+						<?php }?>
+					</div>
+				</div>
+				<?php
 							}
 						}
-					?>
-                </div>
-				
-				
-					<ul class="pagination">
-						
-					</ul>
-				
+						?>
+			</div>
 
-				
-					
-				
-   
-   
-				
-				<!--
+
+			<ul class="pagination">
+
+			</ul>
+
+
+
+
+			
+
+
+
+
+
+
+
+			<!--
 				<ul class="pagination">
 				  <li><a href="#">&laquo;</a></li>
 				  <li><a href="#">1</a></li>
@@ -103,16 +168,15 @@
 				  <li><a href="#">&raquo;</a></li>
 				</ul>
 -->
-            </div>
+		</div>
 
-        </div>
+	</div>
 
-    </div>
-	
-	<script type='text/javascript'>
+</div>
+
+<script type='text/javascript'>
         
         $(document).ready(function() {
-        
             var listElement = $('#newStuff');
 			var perPage = 9; 
 			var numItems = listElement.children().size();
@@ -190,7 +254,11 @@
 	  	    		  });
 	  	    }
 	  	}
+	  	
+        function show_flower(url) {
+        	//$.colorbox({href:"/img/image/"+url});
+        	$.colorbox({html:"<h1>Welcome</h1>"});
+	  	}
 </script>
-    <!-- /.container -->
+<!-- /.container -->
 
-    

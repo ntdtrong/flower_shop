@@ -6,8 +6,9 @@ class FlowersController extends AppController {
 	public $uses = array('Category', 'Flowers', 'FlowerCategory');
 	public $helpers = array('Form', 'Html');
 	public function index() {
-		//$this->redirect('add');
+		$this->redirect('add');
 	}
+	/*
 	public function dialogAdd() {
 		$data = array('error' => null, 'success' => null);
 		if ($this->request->is('post')) {
@@ -74,6 +75,8 @@ class FlowersController extends AppController {
 		
 		$this->set('data', $data);
 	}
+	
+	*/
 	public function add($id = 0) {
 		$data = array('error' => null, 'success' => null);
 		$data['categories_selected'] = array();
@@ -111,12 +114,17 @@ class FlowersController extends AppController {
 			
 			
 			if(empty($data['error'])){
-				// up hinh
-				if($_FILES['image']['error'] == 0){
-					$data['flower']['image'] = $this->_sizeAndUploadFile($_FILES['image']);
-					$data['flower']['thumb'] = $data['flower']['image'];
-				}
+				
+				
+				
 				if(!empty($data['flower']['id']) && intval($data['flower']['id']) > 0){ // edit
+					
+					// up hinh
+					if($_FILES['image']['error'] == 0){
+						$data['flower']['image'] = $this->_uploadFile();
+						$data['flower']['thumb'] = $data['flower']['image'];
+					}
+					
 					$this->Flowers->id = $data['flower']['id'];
 					$id = $data['flower']['id'];
 					if ($this->Flowers->save($data['flower'])){
@@ -125,6 +133,13 @@ class FlowersController extends AppController {
 					}
 				}
 				else{ //add
+					
+					// up hinh
+					if($_FILES['image']['error'] == 0){
+						$data['flower']['image'] = $this->_uploadFile();
+						$data['flower']['thumb'] = $data['flower']['image'];
+					}
+					
 					if($data['flower']['image'] && $data['flower']['thumb']){
 						$this->Flowers->create();
 						if ($this->Flowers->save($data['flower'])){
@@ -188,11 +203,11 @@ class FlowersController extends AppController {
 	public function delete($id){
 		$flower = $this->Flowers->find('first', array('conditions' => array('id' => $id)));
 		if($flower){
-			$fileImage = new File(IMAGE_URL.$flower['Flowers']['image'], true, 0777);
+			$fileImage = new File(IMAGE_UPLOAD_DIR.IMAGE_FLOWER_DIR.$flower['Flowers']['image'], true, 0777);
 			if($fileImage->exists())
 				 $fileImage->delete();
 			
-			$fileThumb = new File(IMAGE_THUMB_URL.$flower['Flowers']['thumb'], true, 0777);
+			$fileThumb = new File(IMAGE_UPLOAD_DIR.IMAGE_FLOWER_THUMB_DIR.$flower['Flowers']['thumb'], true, 0777);
 			if($fileThumb->exists()&& $fileThumb->delete()){
 				$this->Flowers->delete($id, true);
 				$this->FlowerCategory->deleteAll(array('FlowerCategory.flower_id' => $id), true);
@@ -205,22 +220,17 @@ class FlowersController extends AppController {
 		exit;
 	}
 	
-	public function _uploadFile($file, $dir = 'image' , $id = null)
+	private function _uploadFile($fileName = null)
 	{
-		$tmp_name = $file["tmp_name"];
-		$name =$file["name"];
-		if(empty($id)){
-			$id = time();
+		$fileName =  $this->Common->uploadFile($_FILES['image'], IMAGE_FLOWER_DIR, $fileName);
+		if($fileName){
+			$fileName = $this->Common->resizeAndUploadFile($_FILES['image'], IMAGE_FLOWER_THUMB_WIDTH, IMAGE_FLOWER_THUMB_HEIGHT, IMAGE_FLOWER_THUMB_DIR, $fileName);
 		}
-		$fileName = $id.'.jpg';
-		$uploads_dir = APP. 'webroot'. DS .'img' . DS . $dir . DS . $fileName;
-		move_uploaded_file($tmp_name, $uploads_dir);
 		return $fileName;
 	}
-	
+/*	
 	public function _sizeAndUploadFile($file, $dir = 'image' , $id = null)
 	{
-		//require_once('ImageManipulator.php');
 		$regWidth = 300;
 		$regHeight = 250;
 		
@@ -252,11 +262,17 @@ class FlowersController extends AppController {
 				$height = $h;
 				$manipulator->resample($w, $h);
 			}
-			
-			if($width  < $regWidth)
-				$regWidth = $width;
-			if($height < $regHeight)
-				$regHeight = $height;
+			else{
+				if($width  < $regWidth){
+					$regHeight = $regHeight * $width/$regWidth;
+					$regWidth = $width;
+						
+				}
+				else{
+					$regWidth = $regWidth * $height/$regHeight;
+					$regHeight = $height;
+				}
+			}
 		}
 		else{
 			$regHeight = $regHeight * $width / $regWidth;
@@ -281,4 +297,5 @@ class FlowersController extends AppController {
 		$manipulator->save($uploads_dir_thumd);
 		return $fileName;
 	}
+	*/
 }

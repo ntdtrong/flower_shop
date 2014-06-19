@@ -5,7 +5,7 @@ class HomesController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow(array('index'));
+		$this->Auth->allow(array('index', 'contact'));
 	}
 	
 	public function index($category = 0) {
@@ -18,6 +18,12 @@ class HomesController extends AppController {
 			$category = $data['categories'][0]['Category']['id'];
 		}
 		$data['category'] = $category;
+		
+		$data['banners'] = $this->Category->find('all', array(
+				'conditions' => array('Category.is_banner' => 1)
+				));
+// 		pr($data['banners']);
+		
 		$joins = array(
 				array(
 						'table' => 'flower_categories',
@@ -33,5 +39,9 @@ class HomesController extends AppController {
 				)
 			);
 		$this->set('data', $data);
+	}
+	
+	public function contact(){
+		
 	}
 }

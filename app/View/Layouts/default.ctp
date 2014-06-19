@@ -29,7 +29,7 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <a class="navbar-brand" >Shop Hoa</a>
+	                <a class="navbar-brand" ><?php if(!empty($company)) echo $company['name'];?></a>
 	            </div>
 	
 	            <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,13 +37,13 @@
 	                <ul class="nav navbar-nav">
 	                    <li><a href="/homes">TRANG CHỦ</a></li>
 	                    <?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){?>
-	                    <li><a href="/flowers/add">GIỎ HOA</a></li>
+	                    <li><a href="/flowers">GIỎ HOA</a></li>
 	                    <li><a href="/categories">DANH MỤC</a></li>
-	                    <li><a href="/banner">BANNER</a></li>
-	                    <?php if (!empty($current_user['role'] == ROLE_ADMIN)){?>
+	                    <li><a href="/users/changepwd">ĐỔI MẬT KHẨU</a></li>
+	                    <?php if ($current_user['role'] == ROLE_ADMIN){?>
 						<li><a href="/users">TÀI KHOẢN</a></li>
 						<?php }}?>
-	                    <li><a href="#contact">LIÊN HỆ</a></li>
+	                    <li><a href="/homes/contact">LIÊN HỆ</a></li>
 	                    
 	                </ul>
 	                <ul class="nav navbar-nav navbar-right">

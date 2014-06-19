@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $helpers = array('Html', 'Form', 'Session');
-	var $uses = array('User');
+	var $uses = array('User', 'Company');
 	public $components = array(
 			'Session',
 			'Common',
@@ -90,5 +90,18 @@ class AppController extends Controller {
 			$this->set('current_user', $user['User']);
 		}
 		
+// 		$co = array(
+// 				'name' => 'Hoa Đà Lạt',
+// 				'full_name' => 'Cửa hàng hoa tươi Hoa Đà Lạt',
+// 				'phone' => '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx',
+// 				'email' => 'emai@email.com',
+// 				'address' => '176 CMT8 Phường 6 quận 10 thành phố Hồ Chí Minh',
+// 				'image' => null,
+// 				'description' => null
+// 				);
+// 		$this->Company->create();
+// 		$this->Company->save($co);
+		$company = $this->Company->find('first');
+		$this->set('company', @$company['Company']);
 	}
 }

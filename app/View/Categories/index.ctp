@@ -46,30 +46,30 @@
 		<div class="row">
 		  <div class="col-md-8 col-md-push-2">
 		  	<h4 class="panel-heading">Thêm\Chỉnh Sửa Danh Mục</h4>
-		  	<form role="form" enctype='multipart/form-data' action="/categories/add" method="post">
+		  	<form role="form" enctype='multipart/form-data' action="/categories" method="post">
 		  		<input name="id" type="hidden" class="form-control" value="<?php echo @$data['category']['id'];?>">
 		  		<div class="form-group">
 				    <label for="txtName">Tên danh mục</label>
 				    <input name="name" type="text" class="form-control" id="txtName" placeholder="Nhập tên danh mục" value="<?php echo @$data['category']['name'];?>">
 				</div>
 				<div class="form-group">
-				<label >Chọn làm banner</label>
-				<select class="form-control">
-				  	<option value="0">Không</option>
-				  	<option value="1">Có</option>
-				</select>
+					<label >Chọn làm banner</label>
+					<select name="is_banner" class="form-control">
+					  	<option value="0" <?php if(empty($data['category']['is_banner'])) echo 'selected="selected"'?>>Không</option>
+					  	<option value="1" <?php if(!empty($data['category']['is_banner'])) echo 'selected="selected"'?>>Có</option>
+					</select>
 				</div>
 				
-				<div class="form-group">
+				<div name="image" class="form-group">
 				    <label for="txtImage">Hình banner</label>
 				    <input name="image" type="file" id="txtImage">
 				    <p class="help-block">Chọn hình có độ phân giải 800x300.</p>
 				 </div>
-				
+				<?php if(!empty($data['category']['image'])) {?>
 				<div class="form-group">
-                	<img class="image-preview" src="/img/banner/banner_2.jpg" alt="">
+                	<img class="image-preview" src="/img/banner/<?php echo $data['category']['image'];?>" alt="">
 				</div>
-				
+				<?php }?>
 				<div class="form-group">
 					<button class="btn btn-primary" type="submit" >Save!</button>
 				</div>

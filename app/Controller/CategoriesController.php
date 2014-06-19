@@ -1,6 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('ErrorObject', 'Vendor/error-object');
+App::uses('ImageManipulator', 'Vendor/image-utils');
+App::uses('File', 'Utility');
 class CategoriesController extends AppController {
 	public $uses = array('Category');
 	public $helpers = array('Html');
@@ -29,7 +31,70 @@ class CategoriesController extends AppController {
 		$data['categories'] = $this->Category->find('all');
 		$this->set('data', $data);
 	}
-
+	
+	private function _save($category){
+		$rs = array();
+// 		pr($category);
+// 		pr($_FILES);
+		if(empty($category['name'])){
+			$rs['error'] = 'Ten danh muc khong hop le';
+			return $rs;
+		}
+		
+		if(!empty($category['id']) && intval($category['id']) > 0){ //edit
+			$oldCate = $this->Category->find('first', array(
+					'conditions' => array('id' => $category['id'])
+			));
+			
+			if(!$oldCate){
+				$rs['error'] = 'Danh muc nay khong ton tai';
+				return $rs;
+			}
+			
+			if((!empty($_FILES['image']) && intval($_FILES['image']['error'] == 0))){
+				$category['image'] = $this->_uploadBanner(@$oldCate['Category']['image']);
+				if(!$category['image']){
+					$rs['error'] = 'Dang tai hinh bi loi. Hay thu lai';
+					return $rs;
+				}
+			}
+			else{
+				$category['image'] = @$oldCate['Category']['image'];
+			}
+			
+			if(!empty($category['is_banner']) && empty($category['image'])){
+				$rs['error'] = 'Ban phai chon hinh de lam banner';
+				return $rs;
+			}
+			
+			$this->Category->id = $category['id'];
+			if($this->Category->save($category)){
+				$rs['category'] = $category;
+			}
+		}
+		else{ // add
+			
+			if((!empty($_FILES['image']) && intval($_FILES['image']['error'] == 0))){
+				$category['image'] = $this->_uploadBanner();
+				if(!$category['image']){
+					$rs['error'] = 'Dang tai hinh bi loi. Hay thu lai';
+					return $rs;
+				}
+			}
+			
+			if(!empty($category['is_banner']) && empty($category['image'])){
+				$rs['error'] = 'Ban phai chon hinh de lam banner';
+				return $rs;
+			}
+			
+			$this->Category->create();
+			if($this->Category->save($category)){
+				$rs['category'] = $category;
+			}
+		}
+		return $rs;
+	}
+/*
 	public function add(){
 		if ($this->request->is('post')) {
 			$name = $this->request->data['name'];
@@ -92,10 +157,16 @@ class CategoriesController extends AppController {
 			}
 		}
 	}
-
+*/
 	public function delete($id){
 		$cate = $this->Category->find('first', array('conditions' => array('id' => $id)));
 		if($cate){
+			if($cate['Category']['image']){
+				$fileImage = new File(IMAGE_UPLOAD_DIR.IMAGE_BANNER_DIR.$cate['Category']['image'], true, 0777);
+				if($fileImage->exists())
+					$fileImage->delete();
+			}
+			
 			$this->Category->delete($id);
 			echo "OK";
 		}
@@ -104,5 +175,77 @@ class CategoriesController extends AppController {
 		}
 		exit;
 	}
-
+	
+	/***
+	 * Resize and upload banner
+	 * width : 800
+	 * height : 300
+	 * dir : banner
+	 */
+	private function _uploadBanner($fileName = null){
+		return $this->Common->resizeAndUploadFile($_FILES['image'], IMAGE_BANNER_WIDTH, IMAGE_BANNER_HEIGHT, IMAGE_BANNER_DIR, $fileName);
+	}
+	
+	/*
+	public function _resizeAndUploadFile($file, $regWidth = 800, $regHeight = 300,  $dir = 'banner' , $fileName = null)
+	{
+		if(empty($fileName)){
+			$fileName = time().'.jpg';
+		}
+	
+		$manipulator = new ImageManipulator($file['tmp_name']);
+	
+		$width  = $manipulator->getWidth();
+		$height = $manipulator->getHeight();
+		if($width > $regWidth || $height > $regHeight){
+			if($width > $regWidth && $height > $regHeight){
+				$w = $regWidth;
+				$h = $regHeight;
+				if($width/$regWidth > $height/$regHeight){
+					$w = $width * $regHeight / $height;
+				}
+				else{
+					$h = $height * $regWidth / $width;
+				}
+				$width = $w;
+				$height = $h;
+				$manipulator->resample($w, $h);
+			}
+			else{
+				if($width  < $regWidth){
+					$regHeight = $regHeight * $width/$regWidth;
+					$regWidth = $width;
+					
+				}
+				else{
+					$regWidth = $regWidth * $height/$regHeight;
+					$regHeight = $height;
+				}
+			}
+		}
+		else{
+			$regHeight = $regHeight * $width / $regWidth;
+			$regWidth = $width;
+		}
+	
+	
+		$centreX = round($width / 2);
+		$centreY = round($height / 2);
+		
+		// our dimensions will be 200x130
+		$x1 = $centreX - $regWidth/2;
+		$y1 = $centreY - $regHeight/2;
+	
+		$x2 = $centreX + $regWidth/2;
+		$y2 = $centreY + $regHeight/2;
+	
+		// center cropping to 200x130
+		$manipulator->crop($x1, $y1, $x2, $y2);
+	
+		// saving file to uploads folder
+		$uploads_dir = APP. 'webroot'. DS .'img' . DS . $dir . DS . $fileName;
+		$manipulator->save($uploads_dir);
+		return $fileName;
+	}
+*/
 }

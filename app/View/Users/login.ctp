@@ -23,27 +23,29 @@
 </nav>
 
 <div class="container">
-	<p id="error_message">
-		<?php 
-			if(!empty($data['error'])){
-		?>
-			<h5><span class="label label-danger"><?php echo $data['error'];?></span><h5>
-		<?php 
-			}
-		?>
-		
-		<?php 
-			if(!empty($data['success'])){
-		?>
-			<h5><span class="label label-success"><?php echo $data['success'];?></span><h5>
-		<?php 
-			}
-		?>
-			</p>
+	
 
 			<div class="row">
 
 				<div class="col-md-8 col-md-push-2">
+				
+					<p id="error_message">
+						<?php 
+							if(!empty($data['error'])){
+						?>
+							<h5><span class="label label-danger"><?php echo $data['error'];?></span><h5>
+						<?php 
+							}
+						?>
+						
+						<?php 
+							if(!empty($data['success'])){
+						?>
+							<h5><span class="label label-success"><?php echo $data['success'];?></span><h5>
+						<?php 
+							}
+						?>
+					</p>
 					<h4 class="panel-heading">Đăng nhập</h4>
 					<form role="form" enctype='multipart/form-data'
 						action="/users/login" method="post">

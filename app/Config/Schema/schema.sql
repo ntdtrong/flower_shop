@@ -1,22 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.1.12
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Jun 15, 2014 at 01:56 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
+﻿--
 -- Database: `flower_shop_db`
 --
 
@@ -32,8 +14,12 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `is_banner` tinyint(1) DEFAULT '0',
   `image` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
+INSERT INTO `categories` (`id`, `name`, `is_banner`, `image`) VALUES
+(1, 'Hoa cÆ°á»›i', 1, 'banner_1.jpg'),
+(2, 'Hoa khai trÆ°Æ¡ng', 0, NULL),
+(3, 'Hoa sinh nháº­t', 1, 'banner_2.jpg');
 -- --------------------------------------------------------
 
 --
@@ -72,26 +58,35 @@ CREATE TABLE IF NOT EXISTS `flower_categories` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `last_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `first_name` nvarchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` nvarchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `role` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES
+(1, 'Admin', 'Admin', 'admin@email.com', '$2a$10$nQ.eFGjSQuOPAag3Yb01IeQoMOEF1BU2MjlTj3MEM2e8mONx/t1B6', 1),
+(2, 'Manager', 'Manager', 'manager@email.com', '$2a$10$BlvqhVO9RZy5RcE1Ca67t.mGIMpeVZam2fJ/xR0PZ8V1Z9csnTdAS', 2);
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banners`
+-- Table structure for table `companies`
 --
 
-CREATE TABLE IF NOT EXISTS `banners` (
+CREATE TABLE IF NOT EXISTS `companies` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` nvarchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `full_name` text COLLATE utf8_unicode_ci,
+  `address` text COLLATE utf8_unicode_ci,
+  `phone` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `companies` (`id`, `name`, `full_name`, `phone`, `email`, `image`, `description`) VALUES
+(1, 'Hoa ÄÃ  Láº¡t', 'Cá»­a hÃ ng hoa tÆ°Æ¡i Hoa ÄÃ  Láº¡t', '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx', 'emai@email.com', NULL, NULL);
+
