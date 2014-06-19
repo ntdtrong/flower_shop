@@ -87,6 +87,6 @@ CREATE TABLE IF NOT EXISTS `companies` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
-INSERT INTO `companies` (`id`, `name`, `full_name`, `phone`, `email`, `image`, `description`) VALUES
-(1, 'Hoa ÄÃ  Láº¡t', 'Cá»­a hÃ ng hoa tÆ°Æ¡i Hoa ÄÃ  Láº¡t', '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx', 'emai@email.com', NULL, NULL);
+INSERT INTO `companies` (`id`, `name`, `full_name`, `address`, `phone`, `email`, `image`, `description`) VALUES
+(1, 'Hoa ÄÃ  Láº¡t', 'Cá»­a hÃ ng hoa tÆ°Æ¡i Hoa ÄÃ  Láº¡t', '176 CMT8 PhÆ°á»ng 6 quáº­n 10 thÃ nh phá»‘ Há»“ ChÃ­ Minh', '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx', 'emai@email.com', NULL, NULL);
 

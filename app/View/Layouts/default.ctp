@@ -29,21 +29,24 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <a class="navbar-brand" ><?php if(!empty($company)) echo $company['name'];?></a>
+	                <strong><a class="navbar-brand" 
+	                	<?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){ echo 'href="/companies"';}?> >
+	                		<?php if(!empty($company)) echo $company['name'];?>
+	                	</a></strong>
 	            </div>
 	
 	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse navbar-ex1-collapse">
 	                <ul class="nav navbar-nav">
-	                    <li><a href="/homes">TRANG CHỦ</a></li>
+	                    <li><a href="/homes"><strong>TRANG CHỦ</strong></a></li>
 	                    <?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){?>
-	                    <li><a href="/flowers">GIỎ HOA</a></li>
-	                    <li><a href="/categories">DANH MỤC</a></li>
-	                    <li><a href="/users/changepwd">ĐỔI MẬT KHẨU</a></li>
+	                    <li><a href="/flowers"><strong>GIỎ HOA</strong></a></li>
+	                    <li><a href="/categories"><strong>DANH MỤC</strong></a></li>
+	                    <li><a href="/users/changepwd"><strong>ĐỔI MẬT KHẨU</strong></a></li>
 	                    <?php if ($current_user['role'] == ROLE_ADMIN){?>
-						<li><a href="/users">TÀI KHOẢN</a></li>
+						<li><a href="/users"><strong>TÀI KHOẢN</strong></a></li>
 						<?php }}?>
-	                    <li><a href="/homes/contact">LIÊN HỆ</a></li>
+	                    <li><a href="/homes/contact"><strong>LIÊN HỆ</strong></a></li>
 	                    
 	                </ul>
 	                <ul class="nav navbar-nav navbar-right">

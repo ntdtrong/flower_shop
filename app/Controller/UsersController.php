@@ -20,8 +20,11 @@ class UsersController extends AppController {
 // 			pr($data['user']);
 			$rs = $this->_save($data['user']);
 			if(!empty($rs['user'])){
+				if(empty($data['user']['id']))
+					$data['success'] = 'Lưu tài khoản thành công. Mật khẩu mặc định là: 12345678';
+				else
+					$data['success'] = 'Lưu tài khoản thành công';
 				$data['user'] = array();
-				$data['success'] = 'Lưu tài khoản thành công';
 			}
 			else{
 				$data['error'] = $rs['error'];
@@ -128,9 +131,8 @@ class UsersController extends AppController {
 	public function resetpwd($id){
 		$user = $this->User->find('first', array('conditions' => array('id' => $id)));
 		if($user){
-			
 			Utils::useComponents($this, array('Common'));
-			$password = Utils::generatePassword();
+			$password = '12345678';//Utils::generatePassword();
 			$user['User']['password'] = $this->Common->encodePassword($password);
 			
 			$this->User->id = $user['User']['id'];
@@ -143,7 +145,7 @@ class UsersController extends AppController {
 				echo "OK";
 			}
 			else{
-				echo "Reset mật khẩu không thành công";
+				echo "Reset mật khẩu không thành công.";
 			}
 		}
 		else{
@@ -192,7 +194,7 @@ class UsersController extends AppController {
 			}
 			if(empty($data['error'])){
 				if ($this->Auth->login()) {
-					return $this->redirect($this->Auth->redirect());
+					return $this->redirect('/homes');
 				} else {
 					$data['error'] = 'Email hoặc mật khẩu không đúng. Hãy thử lại';
 				}

@@ -132,7 +132,7 @@
 	    		  url: "/users/resetpwd/"+id,
 	    		  }).done(function( msg ) {
 		    		  if(msg == "OK"){
-		    			  $("#error_message").html("<h5><span class='label label-success'>Reset mật khẩu thành công</span><h5>");  
+		    			  $("#error_message").html("<h5><span class='label label-success'>Reset mật khẩu thành công. Mật khẩu mặc định là: 12345678</span><h5>");  
 		    			  
 		    		  }
 		    		  else{
