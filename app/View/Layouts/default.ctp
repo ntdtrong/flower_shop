@@ -18,6 +18,8 @@
 		echo $this->fetch('css');
 		
 	?>
+	
+	<script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

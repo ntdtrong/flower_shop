@@ -90,3 +90,17 @@ CREATE TABLE IF NOT EXISTS `companies` (
 INSERT INTO `companies` (`id`, `name`, `full_name`, `address`, `phone`, `email`, `image`, `description`) VALUES
 (1, 'Hoa ÄÃ  Láº¡t', 'Cá»­a hÃ ng hoa tÆ°Æ¡i Hoa ÄÃ  Láº¡t', '176 CMT8 PhÆ°á»ng 6 quáº­n 10 thÃ nh phá»‘ Há»“ ChÃ­ Minh', '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx', 'emai@email.com', NULL, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogs`
+--
+CREATE TABLE IF NOT EXISTS `blogs` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` nvarchar(400) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8_unicode_ci,
+  `category_id` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--carousel

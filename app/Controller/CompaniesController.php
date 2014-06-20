@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 App::uses('AppController', 'Controller');
 class CompaniesController extends AppController {
 	public function index($category = 0) {
