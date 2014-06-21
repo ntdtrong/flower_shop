@@ -13,7 +13,9 @@ class HomesController extends AppController {
 			'categories' => array(),
 			'flowers' => array()
 		);
-		$data['categories'] = $this->Category->find('all');
+		$data['categories'] = $this->Category->find('all',
+					array( 'conditions' => array('Category.type' => CATEGORY_TYPE_FLOWER))
+				);
 		if($category === 0 && !empty($data['categories'])){
 			$category = $data['categories'][0]['Category']['id'];
 		}

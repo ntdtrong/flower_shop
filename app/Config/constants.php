@@ -20,4 +20,8 @@ define('IMAGE_FLOWER_THUMB_HEIGHT', 250);
 define('ROLE_ADMIN', 1);
 define('ROLE_MANAGER', 2);
 
+define('CATEGORY_TYPE_FLOWER', 1);
+define('CATEGORY_TYPE_BLOG', 2);
+
+
 ?>

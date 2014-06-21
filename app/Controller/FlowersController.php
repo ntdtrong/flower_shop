@@ -195,7 +195,9 @@ class FlowersController extends AppController {
 		}
 		
 		
-		$data['categories'] = $this->Category->find('all');
+		$data['categories'] = $this->Category->find('all',
+					array( 'conditions' => array('Category.type' => CATEGORY_TYPE_FLOWER))
+				);
 		
 		$this->set('data', $data);
 	}

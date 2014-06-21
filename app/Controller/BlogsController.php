@@ -4,44 +4,24 @@ class BlogsController extends AppController {
 	var $uses = array('Blog', 'Category');
 	public function beforeFilter() {
 		parent::beforeFilter();
-	
-		$this->Auth->allow(array('index', 'save'));
 	}
 	
 	public function index($id = 0) {
 		$data = array();
 		if($this->request->is('post')){
 			$data['blog'] = $this->request->data;
-			if(empty($data['blog']['content'])){
-				$data['error'] = 'Nhập nội dung blog';
+			$rs = $this->_save($data['blog']);
+			if(!empty($rs['success'])){
+				$data['success'] = $rs['success'];
+				unset($data['blog']);
 			}
-			
-			if(empty($data['blog']['title'])){
-				$data['error'] = 'Nhập tiêu đề blog';
+			else{
+				$data['error'] = $rs['error'];
 			}
-			
-			if(empty($data['blog']['category_id'])){
-				$data['error'] = 'Chọn danh mục cho blog';
-			}
-			if(empty($data['error'])){
-				if(!empty($data['blog']['id']) && intval($data['blog']['id']) > 0){ //edit
-					$this->Blog->id = $data['blog']['id'];
-					if($this->Blog->save($data['blog'])){
-						$data['success'] = 'Lưu blog thành công';
-						$data['blog'] = array();
-					}
-				}
-				else{ // add
-					$this->Blog->create();
-					if($this->Blog->save($data['blog'])){
-						$data['success'] = 'Lưu blog thành công';
-						$data['blog'] = array();
-					}
-				}
-			}
-			
 		}
-		$data['categories'] = $this->Category->find('all');
+		$data['categories'] = $this->Category->find('all',
+					array( 'conditions' => array('Category.type' => CATEGORY_TYPE_BLOG))
+				);
 		
 		$joins = array(
 				array(
@@ -70,38 +50,45 @@ class BlogsController extends AppController {
 		$this->set('data', $data);
 	}
 	
-	public function save(){
+	private function _save($blog){
 		$data = array();
-		if($this->request->is('post')){
-			$data['blog'] = $this->request->data;
-			if(empty($data['blog']['content'])){
-				$data['error'] = 'Nhập nội dung cho blog';
-			}
-			
-			if(empty($data['blog']['title'])){
-				$data['error'] = 'Nhập tiêu đề cho blog';
-			}
-			
-			if(empty($data['blog']['category'])){
-				$data['error'] = 'Chọn danh mục cho blog';
-			}
-			
-			if(!empty($data['blog']['id']) && intval($data['blog']['id']) > 0){ //edit
-				$this->Blog->id = $data['blog']['id'];
-				if($this->Blog->save($data['blog'])){
+		if(empty($blog['content'])){
+			$data['error'] = 'Nhập nội dung blog';
+		}
+		
+		if(empty($blog['title'])){
+			$data['error'] = 'Nhập tiêu đề blog';
+		}
+		
+		if(empty($blog['category_id'])){
+			$data['error'] = 'Chọn danh mục cho blog';
+		}
+		if(empty($data['error'])){
+			if(!empty($blog['id']) && intval($blog['id']) > 0){ //edit
+				$this->Blog->id = $blog['id'];
+				if($this->Blog->save($blog)){
 					$data['success'] = 'Lưu blog thành công';
-					$data['blog'] = array();
 				}
 			}
 			else{ // add
 				$this->Blog->create();
-				if($this->Blog->save($data['blog'])){
+				if($this->Blog->save($blog)){
 					$data['success'] = 'Lưu blog thành công';
-					$data['blog'] = array();
 				}
 			}
 		}
-		
-		$this->set('data', $data);
+		return $data;
+	}
+	
+	public function delete($id){
+		$blog = $this->Blog->find('first', array('conditions' => array('id' => $id)));
+		if($blog){
+			$this->Blog->delete($id);
+			echo "OK";
+		}
+		else{
+			echo "Blog này không tồn tại.";
+		}
+		exit;
 	}
 }

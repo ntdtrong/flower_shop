@@ -32,7 +32,7 @@
 	                    <span class="icon-bar"></span>
 	                </button>
 	                <strong><a class="navbar-brand" 
-	                	<?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){ echo 'href="/companies"';}?> >
+	                	<?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN)){ echo 'href="/companies"';}?> >
 	                		<?php if(!empty($company)) echo $company['name'];?>
 	                	</a></strong>
 	            </div>
@@ -43,6 +43,7 @@
 	                    <li><a href="/homes"><strong>TRANG CHỦ</strong></a></li>
 	                    <?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){?>
 	                    <li><a href="/flowers"><strong>GIỎ HOA</strong></a></li>
+	                    <li><a href="/blogs"><strong>BLOG</strong></a></li>
 	                    <li><a href="/categories"><strong>DANH MỤC</strong></a></li>
 	                    <li><a href="/users/changepwd"><strong>ĐỔI MẬT KHẨU</strong></a></li>
 	                    <?php if ($current_user['role'] == ROLE_ADMIN){?>

@@ -41,6 +41,11 @@ class CategoriesController extends AppController {
 			return $rs;
 		}
 		
+		if(!empty($category['type']) && $category['type'] == CATEGORY_TYPE_BLOG){
+			unset($_FILES['image']);
+			unset($category['is_banner']);
+		}
+		
 		if(!empty($category['id']) && intval($category['id']) > 0){ //edit
 			$oldCate = $this->Category->find('first', array(
 					'conditions' => array('id' => $category['id'])

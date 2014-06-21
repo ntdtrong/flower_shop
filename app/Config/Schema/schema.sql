@@ -103,4 +103,8 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+
+-- Add column TYPE for Categories
+ALTER TABLE `categories` ADD `type` INT(10) NULL DEFAULT '1' COMMENT '1: flower, 2: blog' ;
+
 --carousel

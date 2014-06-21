@@ -16,8 +16,12 @@
 			}
 		?>
 	</p>
-	
-	
+	<div class="pagination-custom">
+	<input id="current_page" name="current_page" type="hidden" value="0">
+	<ul class="pagination" >
+		
+	</ul>
+	</div>
 	<div class="panel panel-default">
 	  <!-- Default panel contents -->
 	  <div class="panel-heading">Blog</div>
@@ -50,10 +54,9 @@
 	  </table>
 	  
 	</div>
-	<ul class="pagination" >
-		
-	</ul>
+	
 	<div class="row">
+	<h4 class="panel-heading">Thêm\Chỉnh Sửa Blog</h4>
 	<form id="post_blog" action="/blogs" method="post" role="form">
 		<input name="id" type="hidden" class="form-control"	value="<?php echo @$data['blog']['id'];?>">
 		<div class="form-group">
@@ -83,11 +86,12 @@
 		</div>
 		
 		<div class="form-group">
-			<textarea name="content"><?php echo @$data['blog']['content'];?></textarea>
+			<textarea id="content" name="content"><?php echo @$data['blog']['content'];?></textarea>
 		</div>
 	    
 	    <div class="form-group">
 	    	<button type="submit" class="btn btn-default">Lưu lại</button>
+	    	<button type="button" class="btn btn-default" onclick="reset()">Reset</button>
 	    </div>
 	    
 	</form>
@@ -116,6 +120,13 @@
 	    ]*/
 	 });
 
+	function reset(){
+		$("#id").val('0');
+		$('#title').val('');
+		$("#category_id").val($("#category_id option:first").val());
+		$('#content').val('');
+		
+	}
 	 function get_content(){
 		var content = tinyMCE.get('content').getContent();
 		// var id = $("#id").value;
@@ -143,73 +154,116 @@
 
 	 $(document).ready(function() {
          var $listElement = $('#table_blogs');
-			var perPage = 1; 
-			// var numItems = $('#newStuff tr').size();//listElement.children().size();
+			var perPage = 10; 
+			var maxPageShow = 5;
 			var numItems  = $listElement.find('tbody tr').length - 1;
 			var numPages = Math.ceil(numItems/perPage);
-			var currentPage = 0;
-			$('.pagination').data("curr",currentPage);
+			var currentPage = $('#current_page').val();
+			$('.pagination').attr("curr",currentPage);
 			var curr = 0;
+			$('<li id="paging_pre"><a href="#" class="page_link ">Pre</a></li>').appendTo('.pagination');
 			while(numPages > curr){
 				$('<li><a href="#" class="page_link ">'+(curr+1)+'</a></li>').appendTo('.pagination');
 				curr++;
 			}
-
+			$('<li id="paging_next"><a href="#" class="page_link ">Next</a></li>').appendTo('.pagination');
 			//$('.pagination .page_link:first').addClass('active');
 			//$listElement.find('tbody tr').hide();
 			//$listElement.find('tbody tr').slice(0, perPage + 1).show();
 			
 			goTo(currentPage);
+			$('.pagination').children().hide();
+			$('.pagination').children().slice(0, maxPageShow + 1).show();
+			$('.pagination').children().slice(numPages + 1, numPages + 2).show();
 
 			$('.pagination li a').click(function(){
-			  var clickedPage = $(this).html().valueOf() - 1;
-			  
-			  goTo(clickedPage,perPage);
+				var value = $(this).html().valueOf();
+				if(value == "Pre"){
+					previous();
+				}
+				else if(value == "Next"){
+					next();
+				}
+				else{
+					 var clickedPage = value - 1;
+					 goTo(clickedPage);
+				} 
 			});
 			
 			
 
 			function previous(){
-			  var goToPage = parseInt($('.pagination').data("curr")) - 1;
-			  if($('.active').prev('.page_link').length==true){
-				goTo(goToPage);
-			  }
+				var goToPage = (parseInt($('#current_page').val()) - 1)|0;
+			  	if(goToPage <= 0){
+			  		goToPage = 0;
+			  		$('#paging_pre').attr('class', 'disabled');
+			  		
+				}
+			  	$('#current_page').val(goToPage);
+			 	goTo(goToPage);
+
+			 	if(numPages > maxPageShow && (goToPage % maxPageShow) == (maxPageShow - 1) && goToPage >= (maxPageShow - 1)){
+					var endPage = goToPage + 2, startPage = endPage - maxPageShow;
+					$('.pagination').children().hide();
+					$('.pagination').children().slice(0, 1).show();
+					$('.pagination').children().slice(numPages + 1, numPages + 2).show();
+				  	$('.pagination').children().slice(startPage, endPage).show();
+				}
 			}
 
 			function next(){
-			  goToPage = parseInt($('.pagination').data("curr")) + 1;
-			  if($('.active_page').next('.page_link').length==true){
-				goTo(goToPage);
-			  }
+			  	var goToPage = (parseInt($('#current_page').val()) + 1)|0;
+			  	if(goToPage >= numPages - 1){
+			  		goToPage = numPages - 1;
+			  		$('#paging_next').attr('class', 'disabled');
+			  		
+				}
+			  	$('#current_page').val(goToPage);
+			 	goTo(goToPage);
+
+//			 	.pagination : index from 0 -> numPager + 1;
+//				goToPage = 0 => page show is page 1
+			 	if(numPages > maxPageShow && (goToPage % maxPageShow) == 0 && goToPage < numPages){
+					var startPage = goToPage + 1 , endPage = startPage + maxPageShow;
+					if(endPage > numPages)
+						endPage = numPages + 1;
+					$('.pagination').children().hide();
+					$('.pagination').children().slice(0, 1).show();
+					$('.pagination').children().slice(numPages + 1, numPages + 2).show();
+				  	$('.pagination').children().slice(startPage, endPage).show();
+				}
+			 	
 			}
 
-			var maxPageShow = 10;
+			
 			function goTo(page){
 			  	var startAt = page * perPage + 1,
 				endOn = startAt + perPage;
 			  	$listElement.find('tbody tr').hide().slice(startAt, endOn).show();
 			  	$listElement.find('tbody tr').slice(0, 1).show();
 			  	$('.pagination').attr("curr",page);
-
-				if(numPages > maxPageShow && Math.abs((page%maxPageShow) - maxPageShow) <2 ){
-					var startPage = page - Math.floor(maxPageShow/2) , endPage = startPage + maxPageShow;
-					if(startPage < 0){
-						startPage = 0;
-						endPage = startPage + maxPageShow
-					}
-					else if(endPage >= numPages){
-						endPage = numPages;
-						startPage = endPage - maxPageShow;
-					}
-
-					$('.pagination').children().hide();
-				  	$('.pagination').children().slice(startPage, endPage).show();
-				}
-				
-			  	
+			  	$('#current_page').val(page);
 			  	$('.pagination li').attr( 'class', 'paginate_button' );
-			  	$('.pagination li:nth-child('+(page+1)+')').attr( 'class', 'paginate_button active' );
+			  	$('.pagination li:nth-child('+(page+2)+')').attr( 'class', 'paginate_button active' );
 			}
      
      });
+
+	 function delete_blog(id) {
+		  	var answer = confirm("Có chắc bạn muốn xóa blog này?");
+		    if (answer){
+		    	$.ajax({
+		    		  type: "POST",
+		    		  url: "/blogs/delete/"+id,
+		    		  }).done(function( msg ) {
+			    		  if(msg == "OK"){
+			    			  location.reload();
+			    			//  $("#error_message").html("<h5><span class='label label-danger'>Blog đã được xóa</span><h5>");
+			    		  }
+			    		  else{
+				    		  $("#error_message").html("<h5><span class='label label-danger'>"+msg+"</span><h5>");
+			    		  }
+		    		  });
+		    }
+		}
 </script>

@@ -80,6 +80,10 @@ footer {
 	border-color: #bce8f1;
 }
 
+.pagination-custom {
+ 	text-align: right;
+}
+
 .nav-custom {
 	color: #31708f !important;
 	background-color: #d9edf7 !important;

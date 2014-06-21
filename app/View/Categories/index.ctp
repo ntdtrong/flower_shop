@@ -11,13 +11,14 @@
 	
 	<div class="panel panel-default">
 	  <!-- Default panel contents -->
-	  <div class="panel-heading">Categories</div>
+	  <div class="panel-heading">Danh mục</div>
 	
 	  <!-- Table -->
 	  <table class="table table-striped table-bordered table-condensed table-hover">
 	  	<tr>
 	  		<th>#</th>
 	  		<th>Tên danh mục</th>
+	  		<th>Loại</th>
 	  		<th>Làm banner</th>
 	  		<th>Chỉnh sửa</th>
 	  	</tr>
@@ -30,6 +31,7 @@
 			<tr>
 		  		<td><?php echo $i;?></td>
 		  		<td><?php echo $item['Category']['name']?></td>
+		  		<td><?php echo ( CATEGORY_TYPE_FLOWER == $item['Category']['type'])?'Giỏ hoa':'Blog'?></td>
 		  		<td><?php echo ($item['Category']['is_banner'])?'Có':'Không'?></td>
 		  		<td>
 		  			<a href="/categories/index/<?php echo $item['Category']['id']?>" >Sửa</a> | 
@@ -52,6 +54,22 @@
 				    <label for="txtName">Tên danh mục</label>
 				    <input name="name" type="text" class="form-control" id="txtName" placeholder="Nhập tên danh mục" value="<?php echo @$data['category']['name'];?>">
 				</div>
+				
+				<div class="form-group">
+					<label >Chọn loại danh mục</label>
+					<select id="selector_type" name="type" class="form-control">
+					  	<option value="<?php echo CATEGORY_TYPE_FLOWER;?>"
+					  		<?php if( CATEGORY_TYPE_FLOWER == @$data['category']['type']) echo 'selected="selected"'?>>
+					  		GIỎ HOA
+					  	</option>
+					  	<option value="<?php echo CATEGORY_TYPE_BLOG;?>" 
+					  		<?php if(CATEGORY_TYPE_BLOG == @$data['category']['type']) echo 'selected="selected"'?>>
+					  		BLOG
+					  	</option>
+					</select>
+				</div>
+				<div id="image_banner_panel" 
+					style="display:<?php echo (CATEGORY_TYPE_BLOG == @$data['category']['type'])?'none':'block'?>" >
 				<div class="form-group">
 					<label >Chọn làm banner</label>
 					<select name="is_banner" class="form-control">
@@ -70,6 +88,7 @@
                 	<img class="image-preview" src="/img/banner/<?php echo $data['category']['image'];?>" alt="">
 				</div>
 				<?php }?>
+				</div>
 				<div class="form-group">
 					<button class="btn btn-primary" type="submit" >Save!</button>
 				</div>
@@ -97,5 +116,17 @@
 	    		  });
 	    }
 	}
+
+	$( "#selector_type" ).change(function() {
+		var type = $(this).val();
+		if(parseInt(type) == 1){
+			$('#image_banner_panel').css('display', 'block');
+		}
+		else{
+			$('#image_banner_panel').css('display', 'none');
+		}
+	});
+
+	
 </script>
     
