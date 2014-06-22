@@ -11,15 +11,22 @@
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `is_banner` tinyint(1) DEFAULT '0',
-  `image` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT '0',
+  `type` int(10) DEFAULT '1' COMMENT '1: flower, 2: blog',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
-INSERT INTO `categories` (`id`, `name`, `is_banner`, `image`) VALUES
-(1, 'Hoa cÆ°á»›i', 1, 'banner_1.jpg'),
-(2, 'Hoa khai trÆ°Æ¡ng', 0, NULL),
-(3, 'Hoa sinh nháº­t', 1, 'banner_2.jpg');
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `is_active`, `type`) VALUES
+(1, 'Hoa cÆ°á»›i', 1, 1),
+(2, 'Hoa khai trÆ°Æ¡ng', 1, 1),
+(3, 'Hoa sinh nháº­t', 1, 1),
+(4, 'Hoa bÃ³', 1, 1),
+(5, 'Thá»i sá»±', 1, 2),
+(6, 'Tin thá»ƒ thao', 1, 2);
 -- --------------------------------------------------------
 
 --
@@ -103,8 +110,22 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+--
+-- Table structure for table `banners`
+--
 
--- Add column TYPE for Categories
-ALTER TABLE `categories` ADD `type` INT(10) NULL DEFAULT '1' COMMENT '1: flower, 2: blog' ;
+CREATE TABLE IF NOT EXISTS `banners` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
---carousel
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `title`, `image`, `is_active`) VALUES
+(1, 'Hoa ngÃ y cá»§a máº¹', 'banner_1.jpg', 1),
+(2, 'Hoa ngÃ y lá»… tÃ¬nh nhÃ¢n', 'banner_2.jpg', 1);

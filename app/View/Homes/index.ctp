@@ -62,8 +62,11 @@
                             	foreach ($data['banners'] as $banner) {?>
 							<div class="item <?php if($isFirst) echo "active" ?>">
 								<img class="slide-image"
-									src="/img/banner/<?php echo $banner['Category']['image'] ?>"
+									src="/img/banner/<?php echo $banner['Banner']['image'] ?>"
 									alt="">
+								<div class="carousel-caption-custom">
+									<p><?php echo $banner['Banner']['title'] ?></p>
+								</div>
 							</div>
 							<?php
 							$isFirst = false;
@@ -135,39 +138,15 @@
 						<?php }?>
 					</div>
 				</div>
+				
 				<?php
 							}
 						}
 						?>
 			</div>
-
-
 			<ul class="pagination">
 
 			</ul>
-
-
-
-
-			
-
-
-
-
-
-
-
-			<!--
-				<ul class="pagination">
-				  <li><a href="#">&laquo;</a></li>
-				  <li><a href="#">1</a></li>
-				  <li><a href="#">2</a></li>
-				  <li><a href="#">3</a></li>
-				  <li><a href="#">4</a></li>
-				  <li><a href="#">5</a></li>
-				  <li><a href="#">&raquo;</a></li>
-				</ul>
--->
 		</div>
 
 	</div>

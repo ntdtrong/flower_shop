@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 App::uses('AppController', 'Controller');
 App::uses('ErrorObject', 'Vendor/error-object');
 App::uses('ImageManipulator', 'Vendor/image-utils');
@@ -41,11 +41,6 @@ class CategoriesController extends AppController {
 			return $rs;
 		}
 		
-		if(!empty($category['type']) && $category['type'] == CATEGORY_TYPE_BLOG){
-			unset($_FILES['image']);
-			unset($category['is_banner']);
-		}
-		
 		if(!empty($category['id']) && intval($category['id']) > 0){ //edit
 			$oldCate = $this->Category->find('first', array(
 					'conditions' => array('id' => $category['id'])
@@ -56,42 +51,12 @@ class CategoriesController extends AppController {
 				return $rs;
 			}
 			
-			if((!empty($_FILES['image']) && intval($_FILES['image']['error'] == 0))){
-				$category['image'] = $this->_uploadBanner(@$oldCate['Category']['image']);
-				if(!$category['image']){
-					$rs['error'] = 'Dang tai hinh bi loi. Hay thu lai';
-					return $rs;
-				}
-			}
-			else{
-				$category['image'] = @$oldCate['Category']['image'];
-			}
-			
-			if(!empty($category['is_banner']) && empty($category['image'])){
-				$rs['error'] = 'Ban phai chon hinh de lam banner';
-				return $rs;
-			}
-			
 			$this->Category->id = $category['id'];
 			if($this->Category->save($category)){
 				$rs['category'] = $category;
 			}
 		}
 		else{ // add
-			
-			if((!empty($_FILES['image']) && intval($_FILES['image']['error'] == 0))){
-				$category['image'] = $this->_uploadBanner();
-				if(!$category['image']){
-					$rs['error'] = 'Dang tai hinh bi loi. Hay thu lai';
-					return $rs;
-				}
-			}
-			
-			if(!empty($category['is_banner']) && empty($category['image'])){
-				$rs['error'] = 'Ban phai chon hinh de lam banner';
-				return $rs;
-			}
-			
 			$this->Category->create();
 			if($this->Category->save($category)){
 				$rs['category'] = $category;
@@ -187,9 +152,13 @@ class CategoriesController extends AppController {
 	 * height : 300
 	 * dir : banner
 	 */
+	
+	/*
 	private function _uploadBanner($fileName = null){
 		return $this->Common->resizeAndUploadFile($_FILES['image'], IMAGE_BANNER_WIDTH, IMAGE_BANNER_HEIGHT, IMAGE_BANNER_DIR, $fileName);
 	}
+	*/
+	
 	
 	/*
 	public function _resizeAndUploadFile($file, $regWidth = 800, $regHeight = 300,  $dir = 'banner' , $fileName = null)

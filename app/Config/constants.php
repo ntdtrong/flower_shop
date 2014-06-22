@@ -23,5 +23,7 @@ define('ROLE_MANAGER', 2);
 define('CATEGORY_TYPE_FLOWER', 1);
 define('CATEGORY_TYPE_BLOG', 2);
 
+define('ACTIVE', 1);
+define('INACTIVE', 0);
 
 ?>

@@ -20,7 +20,10 @@ class BlogsController extends AppController {
 			}
 		}
 		$data['categories'] = $this->Category->find('all',
-					array( 'conditions' => array('Category.type' => CATEGORY_TYPE_BLOG))
+					array( 'conditions' => array(
+						'Category.type' => CATEGORY_TYPE_BLOG,
+						'Category.is_active' => ACTIVE
+					))
 				);
 		
 		$joins = array(

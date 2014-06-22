@@ -1,4 +1,4 @@
-<div class="container">
+﻿<div class="container">
 	<p  id="error_message">
 	<?php 
 		if(!empty($data['error'])){
@@ -19,7 +19,7 @@
 	  		<th>#</th>
 	  		<th>Tên danh mục</th>
 	  		<th>Loại</th>
-	  		<th>Làm banner</th>
+	  		<th>Hiển thị</th>
 	  		<th>Chỉnh sửa</th>
 	  	</tr>
 		<?php 
@@ -32,7 +32,7 @@
 		  		<td><?php echo $i;?></td>
 		  		<td><?php echo $item['Category']['name']?></td>
 		  		<td><?php echo ( CATEGORY_TYPE_FLOWER == $item['Category']['type'])?'Giỏ hoa':'Blog'?></td>
-		  		<td><?php echo ($item['Category']['is_banner'])?'Có':'Không'?></td>
+		  		<td><?php echo ($item['Category']['is_active'])?'Có':'Không'?></td>
 		  		<td>
 		  			<a href="/categories/index/<?php echo $item['Category']['id']?>" >Sửa</a> | 
 		  			<a href="javascript:delete_category(<?php echo $item['Category']['id']?>)" >Xóa</a>
@@ -68,27 +68,14 @@
 					  	</option>
 					</select>
 				</div>
-				<div id="image_banner_panel" 
-					style="display:<?php echo (CATEGORY_TYPE_BLOG == @$data['category']['type'])?'none':'block'?>" >
 				<div class="form-group">
-					<label >Chọn làm banner</label>
-					<select name="is_banner" class="form-control">
-					  	<option value="0" <?php if(empty($data['category']['is_banner'])) echo 'selected="selected"'?>>Không</option>
-					  	<option value="1" <?php if(!empty($data['category']['is_banner'])) echo 'selected="selected"'?>>Có</option>
+					<label >Hiển thị</label>
+					<select name="is_active" class="form-control">
+					  	<option value="0" <?php if(empty($data['category']['is_active'])) echo 'selected="selected"'?>>Không</option>
+					  	<option value="1" <?php if(!empty($data['category']['is_active'])) echo 'selected="selected"'?>>Có</option>
 					</select>
 				</div>
 				
-				<div name="image" class="form-group">
-				    <label for="txtImage">Hình banner</label>
-				    <input name="image" type="file" id="txtImage">
-				    <p class="help-block">Chọn hình có độ phân giải 800x300.</p>
-				 </div>
-				<?php if(!empty($data['category']['image'])) {?>
-				<div class="form-group">
-                	<img class="image-preview" src="/img/banner/<?php echo $data['category']['image'];?>" alt="">
-				</div>
-				<?php }?>
-				</div>
 				<div class="form-group">
 					<button class="btn btn-primary" type="submit" >Save!</button>
 				</div>
@@ -116,7 +103,7 @@
 	    		  });
 	    }
 	}
-
+/*
 	$( "#selector_type" ).change(function() {
 		var type = $(this).val();
 		if(parseInt(type) == 1){
@@ -126,7 +113,7 @@
 			$('#image_banner_panel').css('display', 'none');
 		}
 	});
-
+*/
 	
 </script>
     

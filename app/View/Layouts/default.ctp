@@ -45,6 +45,7 @@
 	                    <li><a href="/flowers"><strong>GIỎ HOA</strong></a></li>
 	                    <li><a href="/blogs"><strong>BLOG</strong></a></li>
 	                    <li><a href="/categories"><strong>DANH MỤC</strong></a></li>
+	                    <li><a href="/banners"><strong>BANNER</strong></a></li>
 	                    <li><a href="/users/changepwd"><strong>ĐỔI MẬT KHẨU</strong></a></li>
 	                    <?php if ($current_user['role'] == ROLE_ADMIN){?>
 						<li><a href="/users"><strong>TÀI KHOẢN</strong></a></li>
