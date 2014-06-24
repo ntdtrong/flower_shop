@@ -32,7 +32,7 @@
 	                    <span class="icon-bar"></span>
 	                </button>
 	                <strong><a class="navbar-brand" 
-	                	<?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN)){ echo 'href="/companies"';}?> >
+	                	<?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN)){ echo 'href='.$this->Html->url(array('controller' => 'companies', 'action' => 'index'));}?> >
 	                		<?php if(!empty($company)) echo $company['name'];?>
 	                	</a></strong>
 	            </div>
@@ -40,24 +40,24 @@
 	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse navbar-ex1-collapse">
 	                <ul class="nav navbar-nav">
-	                    <li><a href="/homes"><strong>TRANG CHỦ</strong></a></li>
+	                    <li><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>"><strong>TRANG CHỦ</strong></a></li>
 	                    <?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){?>
-	                    <li><a href="/flowers"><strong>GIỎ HOA</strong></a></li>
-	                    <li><a href="/blogs"><strong>BLOG</strong></a></li>
-	                    <li><a href="/categories"><strong>DANH MỤC</strong></a></li>
-	                    <li><a href="/banners"><strong>BANNER</strong></a></li>
-	                    <li><a href="/users/changepwd"><strong>ĐỔI MẬT KHẨU</strong></a></li>
+	                    <li><a href="<?php echo $this->Html->url(array('controller' => 'flowers', 'action' => 'index')); ?>"><strong>GIỎ HOA</strong></a></li>
+	                    <li><a href="<?php echo $this->Html->url(array('controller' => 'blogs', 'action' => 'index')); ?>"><strong>BLOG</strong></a></li>
+	                    <li><a href="<?php echo $this->Html->url(array('controller' => 'categories', 'action' => 'index')); ?>"><strong>DANH MỤC</strong></a></li>
+	                    <li><a href="<?php echo $this->Html->url(array('controller' => 'banners', 'action' => 'index')); ?>"><strong>BANNER</strong></a></li>
+	                    <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'changepwd')); ?>"><strong>ĐỔI MẬT KHẨU</strong></a></li>
 	                    <?php if ($current_user['role'] == ROLE_ADMIN){?>
-						<li><a href="/users"><strong>TÀI KHOẢN</strong></a></li>
+						<li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'index')); ?>"><strong>TÀI KHOẢN</strong></a></li>
 						<?php }}?>
-	                    <li><a href="/homes/contact"><strong>LIÊN HỆ</strong></a></li>
+	                    <li><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>"><strong>LIÊN HỆ</strong></a></li>
 	                    
 	                </ul>
 	                <ul class="nav navbar-nav navbar-right">
 	                	<?php if (!empty($current_user)){?>
-	                	<li class="logout"><a href="/users/logout">THOÁT</a></li>
+	                	<li class="logout"><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'logout')); ?>">THOÁT</a></li>
 	                	<?php } else { ?>
-	                	<li class="logout"><a href="/users/login">ĐĂNG NHẬP</a></li>
+	                	<li class="logout"><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'login')); ?>">ĐĂNG NHẬP</a></li>
 	                	<?php }?>
 	                </ul>
 	            </div>
@@ -65,9 +65,11 @@
 	        </div>
 	        <!-- /.container -->
 	</nav>
-
-	<?php echo $this->fetch('content'); ?>
 	
+	<div class="container">
+		<?php echo $this->Session->flash(); ?>
+		<?php echo $this->fetch('content'); ?>
+	</div>
 	<div class="container">
 
         <hr>

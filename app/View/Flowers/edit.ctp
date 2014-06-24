@@ -1,7 +1,7 @@
 ﻿<div class="row">
   <div class="col-md-8 col-md-push-2">
   	<h4 class="panel-heading">Tạo Giỏ Hoa</h4>
-  	<?php echo $this->Form->create('Flower', array('action' => 'add', 'type' => 'post', 'enctype' => 'multipart/form-data')); ?>
+  	<?php echo $this->Form->create('Flower', array('action' => 'edit/'.@$data['flower']['id'], 'type' => 'post', 'enctype' => 'multipart/form-data')); ?>
   		<input name="id" type="hidden" class="form-control" value="<?php echo @$data['flower']['id'];?>">
   		<div class="form-group">
 		    <label for="txtName">Tên giỏ hoa</label>
@@ -52,8 +52,7 @@
 			    
 			  </div>
 			</div>
-		 <button type="submit" class="btn btn-default">Save</button>
+		 <button type="submit" class="btn btn-default">Lưu lại</button>
   	<?php echo $this->Form->end(); ?>
   </div><!-- /.col-md-8 -->
 </div>
-    

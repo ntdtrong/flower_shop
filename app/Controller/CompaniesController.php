@@ -1,30 +1,37 @@
 ﻿<?php
 App::uses('AppController', 'Controller');
 class CompaniesController extends AppController {
-	public function index($category = 0) {
+	public function index() {
+		return $this->redirect(array( 'action' => 'edit'));
+	}
+	public function edit() {
 		$data = array();
 		if($this->request->is('post')){
 			$company = $this->request->data;
-			if(empty($company['address'])){
-				$data['error'] = 'Địa chỉ không hợp lệ';
+			$error = false;
+			if(empty($company['name'])){
+				$error = true;
+				$this->Session->setFlash(__('Tên của hàng không hợp lệ.'), 'flash_error');
 			}
 			
 			if(empty($company['full_name'])){
-				$data['error'] = 'Tên đầy đủ không hợp lệ';
+				$error = true;
+				$this->Session->setFlash(__('Tên đầy đủ không hợp lệ.'), 'flash_error');
 			}
 			
-			if(empty($company['name'])){
-				$data['error'] = 'Tên của hàng không hợp lệ';
+			if(empty($company['address'])){
+				$error = true;
+				$this->Session->setFlash(__('Địa chỉ cửa hàng không hợp lệ.'), 'flash_error');
 			}
 			
-			if(empty($data['error']) && !empty($company['id'])){
+			if(!$error && !empty($company['id'])){
 				$this->Company->id = $company['id'];
 				if($this->Company->save($company)){
-					$data['success'] = 'Cập nhật thông tin của hàng thành công';
+					$this->Session->setFlash(__('Cập nhật thông tin của hàng thành công.'), 'flash_success');
 					$this->set('company', $company);
 				}
 				else{
-					$data['error'] = 'Cập nhật thông tin của hàng thất bại. Hãy thử lại';
+					$this->Session->setFlash(__('Cập nhật thông tin của hàng thất bại. Hãy thử lại.'), 'flash_error');
 				}
 			}
 		}

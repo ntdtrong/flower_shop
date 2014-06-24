@@ -10,40 +10,82 @@ class UsersController extends AppController {
 		$this->Auth->allow(array('login', 'logout', 'index'));
 	}
 	
-	public function index($id = 0) {
+	public function index() {
 		$data = array(
 			'users' => array()
 		);
 		
-		if ($this->request->is('post')) {
-			$data['user'] = $this->request->data;
-// 			pr($data['user']);
-			$rs = $this->_save($data['user']);
-			if(!empty($rs['user'])){
-				if(empty($data['user']['id']))
-					$data['success'] = 'Lưu tài khoản thành công. Mật khẩu mặc định là: 12345678';
-				else
-					$data['success'] = 'Lưu tài khoản thành công';
-				$data['user'] = array();
-			}
-			else{
-				$data['error'] = $rs['error'];
-			}
-		}
-		else if($this->request->is('get')){
-			if(is_numeric($id) && intval($id) > 0){
-				$user = $this->User->find('first', array('conditions' => array('User.id' => $id)));
-				$data['user'] = @$user['User'];
-				unset($data['user']['password']);
-			}
+// 		if ($this->request->is('post')) {
+// 			$data['user'] = $this->request->data;
+// // 			pr($data['user']);
+// 			$rs = $this->_save($data['user']);
+// 			if(!empty($rs['user'])){
+// 				if(empty($data['user']['id']))
+// 					$data['success'] = 'Lưu tài khoản thành công. Mật khẩu mặc định là: 12345678';
+// 				else
+// 					$data['success'] = 'Lưu tài khoản thành công';
+// 				$data['user'] = array();
+// 			}
+// 			else{
+// 				$data['error'] = $rs['error'];
+// 			}
+// 		}
+// 		else if($this->request->is('get')){
+// 			if(is_numeric($id) && intval($id) > 0){
+// 				$user = $this->User->find('first', array('conditions' => array('User.id' => $id)));
+// 				$data['user'] = @$user['User'];
+// 				unset($data['user']['password']);
+// 			}
 				
-		}
+// 		}
 		
 		
 		$data['users'] = $this->User->find('all');
 		$this->set('data', $data);
 	}
 	
+	public function add(){
+		$data = array();
+		if ($this->request->is('post')) {
+			$data['user'] = $this->request->data;
+			$rs = $this->_save($data['user']);
+			if(!empty($rs['user'])){
+				$this->Session->setFlash(__('Lưu tài khoản thành công. Mật khẩu mặc định là: 12345678'), 'flash_success');
+				return $this->redirect(array('action' => 'index'));
+			}
+			else{
+				$data['error'] = $rs['error'];
+				$this->Session->setFlash(__($rs['error']), 'flash_error');
+			}
+		}
+		
+		$this->set('data', $data);
+	}
+	
+	public function edit($id){
+		$data = array();
+		if ($this->request->is('post')) {
+			$data['user'] = $this->request->data;
+			$rs = $this->_save($data['user']);
+			if(!empty($rs['user'])){
+				$this->Session->setFlash(__('Lưu tài khoản thành công.'), 'flash_success');
+				return $this->redirect(array('action' => 'index'));
+			}
+			else{
+				$data['error'] = $rs['error'];
+				$this->Session->setFlash(__($rs['error']), 'flash_error');
+			}
+		}
+		else{
+			if(is_numeric($id) && intval($id) > 0){
+				$user = $this->User->find('first', array('conditions' => array('User.id' => $id)));
+				$data['user'] = @$user['User'];
+				unset($data['user']['password']);
+			}
+		}
+		
+		$this->set('data', $data);
+	}
 	private function _save($user){
 		$rs = array();
 		if(empty($user['email']) || !filter_var($user['email'], FILTER_VALIDATE_EMAIL)){
@@ -120,12 +162,12 @@ class UsersController extends AppController {
 		$user = $this->User->find('first', array('conditions' => array('id' => $id)));
 		if($user){
 			$this->User->delete($id);
-			echo "OK";
+			$this->Session->setFlash(__('Xóa tài khoản thành công.'), 'flash_success');
 		}
 		else{
-			echo "Tài khoản này không tồn tại.";
+			$this->Session->setFlash(__("Tài khoản này không tồn tại."), 'flash_error');
 		}
-		exit;
+		return $this->redirect(array('action' => 'index'));
 	}
 	
 	public function resetpwd($id){
@@ -141,62 +183,61 @@ class UsersController extends AppController {
 					$this->Common->sendEmail($user['User']['email'], 'Shop Hoa', $password);
 				} catch (Exception $e) {
 				}
-				
-				echo "OK";
+				$this->Session->setFlash(__('Reset mật khẩu thành công. Mật khẩu mặc định là: 12345678'), 'flash_success');
 			}
 			else{
-				echo "Reset mật khẩu không thành công.";
+				$this->Session->setFlash(__("Reset mật khẩu không thành công."), 'flash_error');
 			}
 		}
 		else{
-			echo "Tài khoản này không tồn tại.";
+			$this->Session->setFlash(__("Tài khoản này không tồn tại."), 'flash_error');
 		}
-		exit;
+		return $this->redirect(array('action' => 'index'));
 	}
 	
 	public function changepwd(){
 		if(!$this->Auth->user('id')){
 			return $this->redirect($this->Auth->logout());
 		}
-		
-		$data = array();
 		if ($this->request->is('post')) {
+			$error = false;
 			$user = $this->request->data;
 			if(empty($user['new_password']) || strlen($user['new_password']) < 8){
-				$data['error'] = 'Mật khẩu không hợp lệ. Mật khẩu phải có ít nhất 8 ký tự';
+				$error = true;
+				$this->Session->setFlash(__("Mật khẩu không hợp lệ. Mật khẩu phải có ít nhất 8 ký tự."), 'flash_error');
 			}
 			if($user['new_password'] !== $user['confirm']){
-				$data['error'] = 'Mật khẩu xác nhận không đúng';
+				$error = true;
+				$this->Session->setFlash(__("Mật khẩu xác nhận không đúng."), 'flash_error');
 			}
 			
-			if(empty($data['error'])){
+			if(!$error){
 				if($this->Common->changePwd($this->Auth->user('id'), $user['new_password'], $user['old_password'])){
-					$data['success'] = 'Mật khẩu đã được thay đổi';
+					$this->Session->setFlash(__('Mật khẩu đã được thay đổi.'), 'flash_success');
 				}
 				else{
-					$data['error'] = 'Mật khẩu hiện tại không đúng';
+					$this->Session->setFlash(__("Mật khẩu hiện tại không đúng."), 'flash_error');
 				}
 			}
 		}
-		
-		$this->set('data', $data);
-		
 	}
 	
 	public function login() {
-		$data = array();
 		if ($this->request->is('post')) {
+			$error = false;
 			if(empty($this->request->data['User']['password'])){
-				$data['error'] = 'Hãy nhập mật khẩu';
+				$this->Session->setFlash(__("Hãy nhập mật khẩu."), 'flash_error');
+				$error = true;
 			}
 			if(empty($this->request->data['User']['email'])){
-				$data['error'] = 'Hãy nhập email';
+				$this->Session->setFlash(__("Hãy nhập email."), 'flash_error');
+				$error = true;
 			}
-			if(empty($data['error'])){
+			if(!$error){
 				if ($this->Auth->login()) {
 					return $this->redirect('/homes');
 				} else {
-					$data['error'] = 'Email hoặc mật khẩu không đúng. Hãy thử lại';
+					$this->Session->setFlash(__("Email hoặc mật khẩu không đúng. Hãy thử lại."), 'flash_error');
 				}
 			}
 			
@@ -205,7 +246,6 @@ class UsersController extends AppController {
 				return $this->redirect($this->Auth->redirect());
 			}
 		}
-		$this->set('data', $data);
 	}
 	
 	public function logout() {

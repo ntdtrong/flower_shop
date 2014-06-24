@@ -8,93 +8,89 @@ class FlowersController extends AppController {
 	public function index() {
 		$this->redirect('add');
 	}
-	/*
-	public function dialogAdd() {
-		$data = array('error' => null, 'success' => null);
+	
+	public function add() {
+		$data = array();
+		$data['categories_selected'] = array();
 		if ($this->request->is('post')) {
 			$data['flower'] = $this->request->data;
-			//	pr($data);exit;
-			if(!is_numeric($data['flower']['price'])){
-				$data['error'] = 'Nhập giá tiền không hợp lệ';
+			$rs = $this->_save($data['flower']);
+			if(!empty($rs['success'])){
+				$this->Session->setFlash(__('Lưu giỏ hoa thành công.'), 'flash_success');
+				return $this->redirect(array('controller' => 'homes', 'action' => 'index'));
 			}
-				
-			if(empty($data['flower']['name'])){
-				$data['error'] = 'Nhập tên giỏ hoa';
+			else{
+				$data['categories_selected'] = @$rs['categories_selected'];
+				$this->Session->setFlash(__($rs['error']), 'flash_error');
 			}
-				
-			$categoriesSelected = @$data['flower']['categories_selected'];
-			if(empty($categoriesSelected)){
-				$data['error'] = 'Chọn danh mục';
-			}
-				
-			if(empty($_FILES['image']) || $_FILES['image']['error'] > 0){
-				$data['error'] = 'Chọn hình ảnh';
-			}
-				
-			if(empty($data['error'])){
-				// up hinh
-				$data['flower']['image'] = $this->_sizeAndUploadFile($_FILES['image']);
-				$data['flower']['thumb'] = $data['flower']['image'];
+			
+		}
 		
-				if($data['flower']['image'] && $data['flower']['thumb']){
-					$this->Flowers->create();
-					if ($this->Flowers->save($data['flower'])){
-						$flowerId = $this->Flowers->id;
+		$data['categories'] = $this->Category->find('all',
+					array( 'conditions' => array(
+							'Category.type' => CATEGORY_TYPE_FLOWER,
+							'Category.is_active' => ACTIVE
+							))
+				);
 		
-						foreach ($categoriesSelected as $key => $value){
-							$item = array(
-									'flower_id' => $flowerId,
-									'category_id' => $key
-							);
-							$this->FlowerCategory->create();
-							$this->FlowerCategory->save($item);
-						}
-						$data['success'] = 'Tạo giỏ hoa thành công.';
-						$data['flower'] = array();
-					}
-					else {
-						$data['error'] = 'Tạo giỏ hoa bị lỗi.';
+		$this->set('data', $data);
+	}
+	public function edit($id) {
+		$data = array();
+		$data['categories_selected'] = array();
+		if ($this->request->is('post')) {
+			$data['flower'] = $this->request->data;
+			$rs = $this->_save($data['flower']);
+			if(!empty($rs['success'])){
+				$this->Session->setFlash(__('Lưu giỏ hoa thành công.'), 'flash_success');
+				return $this->redirect(array('controller' => 'homes', 'action' => 'index'));
+			}
+			else{
+				$data['categories_selected'] = @$rs['categories_selected'];
+				$this->Session->setFlash(__($rs['error']), 'flash_error');
+			}
+			
+		} else if($this->request->is('get')){
+			if($id){
+				$conditions = array('Flowers.id' => $id);
+				$flower = $this->Flowers->find('first', array(
+						'conditions' => $conditions
+						)
+					);
+				if($flower){
+					$data['flower'] = $flower['Flowers'];
+				}
+				
+				$conditions = array('FlowerCategory.flower_id' => $id);
+				$flowerCate = $this->FlowerCategory->find('all', array(
+						'conditions' => $conditions
+						)
+					);
+				if($flowerCate){
+					foreach ($flowerCate as $value){
+						$data['categories_selected'][] = $value['FlowerCategory']['category_id'];
 					}
 				}
-				else
-					$data['error'] = 'Đăng tải hình ảnh bị lỗi';
-		
-			}
-			// 			pr($_FILES);
-			// 			pr($this->request->data);
-		}
-		
-		
-		$data['categories'] = $this->Category->find('all');
-		$data['categories_selected'] = array();
-		if(!empty($data['flower']['categories_selected'])){
-			foreach ($data['flower']['categories_selected'] as $key => $value){
-				$data['categories_selected'][] = $key;
 			}
 		}
+		$data['categories'] = $this->Category->find('all',
+					array( 'conditions' => array(
+							'Category.type' => CATEGORY_TYPE_FLOWER,
+							'Category.is_active' => ACTIVE
+							))
+				);
 		
 		$this->set('data', $data);
 	}
 	
-	*/
-	public function add($id = 0) {
+	public function _save($flower) {
 		$data = array('error' => null, 'success' => null);
-		$data['categories_selected'] = array();
 		if ($this->request->is('post')) {
-			$data['flower'] = $this->request->data;
-//			pr($_FILES['image']);
-//	pr($data);exit;
-			if(!is_numeric($data['flower']['price'])){
-				$data['error'] = 'Nhập giá tiền không hợp lệ';
-			}
-			
-			if(empty($data['flower']['name'])){
-				$data['error'] = 'Nhập tên giỏ hoa';
-			}
-			
+			$data['flower'] = $flower;
 			$categoriesSelected = @$data['flower']['categories_selected'];
 			if(empty($categoriesSelected)){
-				$data['error'] = 'Chọn danh mục';
+				$data['error'] = 'Bạn chưa chọn danh mục.';
+				$data['categories_selected'] = array();
 			}
 			else{
 				foreach ($categoriesSelected as $key => $value){
@@ -104,7 +100,7 @@ class FlowersController extends AppController {
 			
 			if(empty($data['flower']['id'])){
 				if(empty($_FILES['image']) || $_FILES['image']['error'] > 0){
-					$data['error'] = 'Chọn hình ảnh';
+					$data['error'] = 'Bạn phải chọn hình ảnh.';
 				}
 			}
 			else {
@@ -112,11 +108,15 @@ class FlowersController extends AppController {
 				unset($data['flower']['thumb']);
 			}
 			
+			if(!is_numeric($data['flower']['price'])){
+				$data['error'] = 'Bạn nhập giá tiền không hợp lệ.';
+			}
+				
+			if(empty($data['flower']['name'])){
+				$data['error'] = 'Bạn chưa nhập tên giỏ hoa.';
+			}
 			
 			if(empty($data['error'])){
-				
-				
-				
 				if(!empty($data['flower']['id']) && intval($data['flower']['id']) > 0){ // edit
 					
 					// up hinh
@@ -166,40 +166,10 @@ class FlowersController extends AppController {
 					$data['flower'] = array();
 					$data['categories_selected'] = array();
 				}
-				
-				
-				
-			}
-		} else if($this->request->is('get')){
-			if($id){
-				$conditions = array('Flowers.id' => $id);
-				$flower = $this->Flowers->find('first', array(
-						'conditions' => $conditions
-						)
-					);
-				if($flower){
-					$data['flower'] = $flower['Flowers'];
-				}
-				
-				$conditions = array('FlowerCategory.flower_id' => $id);
-				$flowerCate = $this->FlowerCategory->find('all', array(
-						'conditions' => $conditions
-						)
-					);
-				if($flowerCate){
-					foreach ($flowerCate as $value){
-						$data['categories_selected'][] = $value['FlowerCategory']['category_id'];
-					}
-				}
 			}
 		}
 		
-		
-		$data['categories'] = $this->Category->find('all',
-					array( 'conditions' => array('Category.type' => CATEGORY_TYPE_FLOWER))
-				);
-		
-		$this->set('data', $data);
+		return $data;
 	}
 	
 	public function delete($id){
@@ -213,13 +183,14 @@ class FlowersController extends AppController {
 			if($fileThumb->exists()&& $fileThumb->delete()){
 				$this->Flowers->delete($id, true);
 				$this->FlowerCategory->deleteAll(array('FlowerCategory.flower_id' => $id), true);
-				echo "OK";
+				$this->Session->setFlash(__('Xóa giỏ hoa thành công.'), 'flash_success');
 			}
 		}
 		else{
-			echo "Xóa giỏ hoa bị lỗi";
+			echo "";
+			$this->Session->setFlash(__('Xóa giỏ hoa bị lỗi. Hãy thử lại.'), 'flash_error');
 		}
-		exit;
+		return $this->redirect(array('controller' => 'homes', 'action' => 'index'));
 	}
 	
 	private function _uploadFile($fileName = null)
@@ -230,74 +201,4 @@ class FlowersController extends AppController {
 		}
 		return $fileName;
 	}
-/*	
-	public function _sizeAndUploadFile($file, $dir = 'image' , $id = null)
-	{
-		$regWidth = 300;
-		$regHeight = 250;
-		
-		if(empty($id)){
-			$id = time();
-		}
-		$fileName = $id.'.jpg';
-		
-		$newNamePrefix = time() . '_';
-		$manipulator = new ImageManipulator($file['tmp_name']);
-		$uploads_dir = APP. 'webroot'. DS .'img' . DS . 'image' . DS . $fileName;
-		$manipulator->save($uploads_dir);
-		
-		$width  = $manipulator->getWidth();
-		$height = $manipulator->getHeight();
-		
-		if($width > $regWidth || $height > $regHeight){
-			
-			if($width > $regWidth && $height > $regHeight){
-				$w = $regWidth;
-				$h = $regHeight;
-				if($width/$regWidth > $height/$regHeight){
-					$w = $width * $regHeight / $height;
-				}
-				else{
-					$h = $height * $regWidth / $width;
-				}
-				$width = $w;
-				$height = $h;
-				$manipulator->resample($w, $h);
-			}
-			else{
-				if($width  < $regWidth){
-					$regHeight = $regHeight * $width/$regWidth;
-					$regWidth = $width;
-						
-				}
-				else{
-					$regWidth = $regWidth * $height/$regHeight;
-					$regHeight = $height;
-				}
-			}
-		}
-		else{
-			$regHeight = $regHeight * $width / $regWidth;
-			$regWidth = $width;
-		}
-		
-		
-		$centreX = round($width / 2);
-		$centreY = round($height / 2);
-		// our dimensions will be 200x130
-		$x1 = $centreX - $regWidth/2;
-		$y1 = $centreY - $regHeight/2;
-		
-		$x2 = $centreX + $regWidth/2;
-		$y2 = $centreY + $regHeight/2;
-		
-		// center cropping to 200x130
-		$manipulator->crop($x1, $y1, $x2, $y2);
-		
-		// saving file to uploads folder
-		$uploads_dir_thumd = APP. 'webroot'. DS .'img' . DS . 'thumb' . DS . $fileName;
-		$manipulator->save($uploads_dir_thumd);
-		return $fileName;
-	}
-	*/
 }

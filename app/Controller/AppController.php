@@ -81,6 +81,30 @@ class AppController extends Controller {
 // 			)
 // 	);
 
+	/**
+	 *
+	 * @param int $total
+	 * @param int $currentPage
+	 * @param int $size
+	 * @return array $paginatorObj
+	 */
+	public function paginatorObj($total, $currentPage, $size) {
+		$totalPages = ceil($total / $size);
+		if ($currentPage < 1 || $currentPage > $totalPages) $currentPage = 1;
+		$prevPage = $currentPage - 1;
+		if ($prevPage < 0) $prevpage = 0;
+		$nextPage = $currentPage + 1;
+		if ($nextPage > $totalPages) $nextPage = 0;
+	
+		return array(
+				'total_items' => $total,
+				'total_pages' => $totalPages,
+				'page_size' => $size,
+				'current_page' => $currentPage,
+				'prev_page'	=> $prevPage,
+				'next_page' =>$nextPage
+		);
+	}
 	
 	public function beforeFilter() {
 		parent::beforeFilter();

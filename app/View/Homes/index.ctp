@@ -93,25 +93,11 @@
 			<?php } ?>
 
 			<div id="newStuff" class="row">
-		<!-- 			
-			<div class="col-sm-4 col-lg-4 col-md-4">	
-				<ul class="enlarge">
-					<li>
-						<img src="/img/thumb/1402988820.jpg" width="150px"	height="100px" alt="Dechairs" />
-						<span><img src="/img/image/1402988820.jpg" alt="Deckchairs" />
-						<br />
-							Deckchairs on Blackpool beach
-						</span>
-					</li>
-					
-				</ul>
-			</div>
-			 -->
 				<?php 
 				if(!empty($data['flowers'])){
 						foreach($data['flowers'] as $item){
 		
-							?>
+				?>
 				<div class="col-sm-4 col-lg-4 col-md-4">
 					<div class="thumbnail">
 						<img src="/img/thumb/<?php echo $item['Flower']['thumb'];?>" alt="">
@@ -130,9 +116,9 @@
 						</div>
 						<?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){?>
 						<div class="flower-action">
-							<a href="/flowers/add/<?php echo $item['Flower']['id'];?>"><span
-								class="glyphicon glyphicon-pencil"></span> </a> <a
-								href="javascript:delete_flower(<?php echo $item['Flower']['id'];?>)"><span
+							<a href="<?php echo $this->Html->url(array('controller' => 'flowers', 'action' => 'edit', $item['Flower']['id'])); ?>"><span
+								class="glyphicon glyphicon-pencil"></span> </a> 
+							<a href="javascript:delete_flower('<?php echo $this->Html->url(array('controller' => 'flowers', 'action' => 'delete', $item['Flower']['id']));?>')"><span
 								class="glyphicon glyphicon-remove"></span> </a>
 						</div>
 						<?php }?>
@@ -140,9 +126,9 @@
 				</div>
 				
 				<?php
-							}
 						}
-						?>
+					}
+				?>
 			</div>
 			<ul class="pagination">
 
@@ -217,26 +203,11 @@
         
         });
 
-        function delete_flower(id) {
+        function delete_flower(url) {
   		  	var answer = confirm("Có chắc bạn muốn xóa giỏ hoa này?");
 	  	    if (answer){
-	  	    	$.ajax({
-	  	    		  type: "POST",
-	  	    		  url: "/flowers/delete/"+id,
-	  	    		  }).done(function( msg ) {
-	  		    		  if(msg == "OK"){
-	  		    			  location.reload();  
-	  		    		  }
-	  		    		  else{
-	  			    		  $("#error_message").html("<h5><span class='label label-danger'>"+msg+"</span><h5>");
-	  		    		  }
-	  	    		  });
+	  	    	window.location.replace(url);
 	  	    }
-	  	}
-	  	
-        function show_flower(url) {
-        	//$.colorbox({href:"/img/image/"+url});
-        	$.colorbox({html:"<h1>Welcome</h1>"});
 	  	}
 </script>
 <!-- /.container -->
