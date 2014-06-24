@@ -1,8 +1,9 @@
-﻿<div class="pagination-custom">
+﻿<!-- 
+<div class="pagination-custom">
 	<input id="current_page" name="current_page" type="hidden" value="0">
 	<ul class="pagination" ></ul>
 </div>
-
+ -->
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -36,10 +37,14 @@
   	<?php }
 		}?>
   </table>
- 
+
 </div>
- <?php echo $this->Paging->render( $pagingObj, $this->Html->url(array("controller" => "blogs", "action" => "index")) ); ?>
+<div class="pagination-custom">
+	<?php echo $this->Paging->render( $pagingObj, $this->Html->url(array("controller" => "blogs", "action" => "all")),'' ); ?>
+</div> 
+ 
 <script type='text/javascript'>
+/*
 	 $(document).ready(function() {
          var $listElement = $('#table_blogs');
 			var perPage = 10; 
@@ -136,7 +141,7 @@
 			}
      
      });
-
+*/
 	 function delete_blog(url) {
 		  	var answer = confirm("Có chắc bạn muốn xóa blog này?");
 		    if (answer){

@@ -1,3 +1,4 @@
+#Tue Jun 24 21:53:29 ICT 2014
 eclipse.preferences.version=1
 encoding//app/Config/constants.php=UTF-8
 encoding//app/Controller/AppController.php=UTF-8
@@ -8,6 +9,6 @@ encoding//app/Controller/FlowersController.php=UTF-8
 encoding//app/Controller/UsersController.php=UTF-8
 encoding//app/Vendor/error-object/ErrorObject.php=UTF-8
 encoding//app/View/Categories/index.ctp=UTF-8
-encoding//app/View/Homes/index.ctp=UTF-8
+encoding//app/View/Homes/all.ctp=UTF-8
 encoding//app/View/Layouts/default.ctp=UTF-8
 encoding//app/View/Users/index.ctp=UTF-8

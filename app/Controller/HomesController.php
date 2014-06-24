@@ -2,13 +2,18 @@
 App::uses('AppController', 'Controller');
 class HomesController extends AppController {
 	public $uses = array('Category', 'Flower', 'Banner');
+	public $helpers = array('Paging');
+	const PAGE_SIZE = 10;
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow(array('index', 'contact'));
 	}
+	public function index(){
+		return $this->redirect(array('action' => 'all'));
+	}
 	
-	public function index($category = 0) {
+	public function all($page = 1, $category = 0) {
 		$data = array(
 			'categories' => array(),
 			'flowers' => array()
@@ -38,12 +43,24 @@ class HomesController extends AppController {
 				)
 			);
 		$conditions = array('FlowerCategory.category_id' => $category);
-		$data['flowers'] = $this->Flower->find('all', array(
+		
+		$total = $this->Flower->find('count', array(
 				'conditions' => $conditions,
 				'joins' => $joins
+		));
+		
+		$pagingObj = $this->paginatorObj($total, (int)$page, self::PAGE_SIZE);
+		
+		$data['flowers'] = $this->Flower->find('all', array(
+				'conditions' => $conditions,
+				'joins' => $joins,
+				'order' => array('Flower.id DESC'),
+				'limit' => self::PAGE_SIZE,
+				'offset' => ($pagingObj['current_page'] - 1) * self::PAGE_SIZE
 				)
 			);
 		$this->set('data', $data);
+		$this->set('pagingObj', $pagingObj);
 	}
 	
 	public function contact(){

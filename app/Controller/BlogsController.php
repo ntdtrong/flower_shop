@@ -9,7 +9,11 @@ class BlogsController extends AppController {
 		parent::beforeFilter();
 	}
 	
-	public function index($page = 1) {
+	public function index() {
+		return $this->redirect(array('action' => 'all'));
+	}
+	
+	public function all($page = 1) {
 		$data = array();
 		
 		// get categories
