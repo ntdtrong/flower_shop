@@ -18,7 +18,7 @@
 					placeholder="Nhập mật khẩu">
 			</div>
 
-			<button type="submit" class="btn btn-default">Thay đổi</button>
+			<button type="submit" class="btn btn-primary">Thay đổi</button>
 		<?php echo $this->Form->end(); ?>
 	</div>
 </div>

@@ -23,7 +23,8 @@
 					value="<?php echo @$data['user']['last_name'];?>">
 			</div>
 
-			<button type="submit" class="btn btn-default">Lưu lại</button>
+			<button class="btn btn-primary" type="submit" >Lưu lại</button>
+			<a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'index')); ?>"><button class="btn btn-default" type="button" >Hủy</button></a>
 		<?php echo $this->Form->end(); ?>
 	</div>
 </div>

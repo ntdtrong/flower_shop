@@ -1,4 +1,3 @@
-<?php echo $this->element('navbar'); ?>
 <div class="row">
 
 	<div class="col-md-3">
@@ -11,7 +10,7 @@
 			if(!empty($data['categories'])){
                 		foreach($data['categories'] as $cate){
 						?>
-			<a href="<?php echo $this->Html->url(array("controller" => "homes", "action" => "all", 1)).'/'.$cate['Category']['id']; ?>"
+			<a href="<?php echo $this->Html->url(array("controller" => "admin", "action" => "all", 1)).'/'.$cate['Category']['id']; ?>"
 				class="list-group-item <?php echo ($cate['Category']['id'] == $data['category'])?'active':''?>">
 				<?php echo $cate['Category']['name'];?>
 			</a>
@@ -20,75 +19,9 @@
                 	}
                 	?>
 		</div>
-
-
-		<div id="categories_list" class="list-group">
-			<p class="list-group-item panel-heading-custom">
-				<strong>Liên Hệ Đặt Hoa</strong>
-			</p>
-			<?php  
-			if(!empty($company) && !empty($company['phone'])){
-						$listPhone = explode("-", $company['phone']);
-						foreach ($listPhone as $phone){
-							?>
-			<p class="list-group-item-custom">
-				<?php echo trim($phone);?>
-			</p>
-			<?php 
-						}
-					}
-					?>
-		</div>
 	</div>
 
 	<div class="col-md-9">
-		<?php if(!empty($data['banners'])) {?>
-		<div class="row carousel-holder">
-
-			<div class="col-md-12">
-				<div id="carousel-example-generic" class="carousel slide"
-					data-ride="carousel">
-					<!--  
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                             -->
-					<div class="carousel-inner">
-						<?php
-						$isFirst = true;
-                            foreach ($data['banners'] as $banner) {?>
-						<div class="item <?php if($isFirst) echo "active" ?>">
-							<?php echo $this->Html->image('banner/'.$banner['Banner']['image'], array('class' => 'slide-image')); ?>
-							<div class="carousel-caption-custom">
-								<p><?php echo $banner['Banner']['title'] ?></p>
-							</div>
-						</div>
-						<?php
-						$isFirst = false;
-							}?>
-						<!--
-                                <div class="item">
-                                    <img class="slide-image" src="/img/banner/banner_2.jpg" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                 -->
-					</div>
-					<a class="left carousel-control" href="#carousel-example-generic"
-						data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
-					</a> <a class="right carousel-control"
-						href="#carousel-example-generic" data-slide="next"> <span
-						class="glyphicon glyphicon-chevron-right"></span>
-					</a>
-				</div>
-			</div>
-
-		</div>
-		<?php } ?>
-
 		<div id="newStuff" class="row">
 			<?php 
 			if(!empty($data['flowers'])){
@@ -111,6 +44,14 @@
 						</p>
 
 					</div>
+					<?php if (!empty($current_user) && ($current_user['role'] == ROLE_ADMIN || $current_user['role'] == ROLE_MANAGER)){?>
+					<div class="flower-action">
+						<a href="<?php echo $this->Html->url(array('controller' => 'flowers', 'action' => 'edit', $item['Flower']['id'])); ?>"><span
+							class="glyphicon glyphicon-pencil"></span> </a> 
+						<a href="javascript:delete_flower('<?php echo $this->Html->url(array('controller' => 'flowers', 'action' => 'delete', $item['Flower']['id']));?>')"><span
+							class="glyphicon glyphicon-remove"></span> </a>
+					</div>
+					<?php }?>
 				</div>
 			</div>
 			
@@ -192,7 +133,7 @@
         });
 */
         function delete_flower(url) {
-  		  	var answer = confirm("Có chắc bạn muốn xóa giỏ hoa này?");
+  		  	var answer = confirm("CÃ³ cháº¯c báº¡n muá»‘n xÃ³a giá»� hoa nÃ y?");
 	  	    if (answer){
 	  	    	window.location.replace(url);
 	  	    }

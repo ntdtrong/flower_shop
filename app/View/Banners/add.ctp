@@ -9,6 +9,11 @@
 		</div>
 		
 		<div class="form-group">
+		    <label for="txtDescription">Mô tả thêm</label>
+		    <textarea name="description" class="form-control" rows="3" id="txtDescription" placeholder="Nhập mô tả" ><?php if(isset($data['banner']['description'])) echo $data['banner']['description'];?></textarea>
+		 </div>
+		
+		<div class="form-group">
 			<label >Hiển thị</label>
 			<select name="is_active" class="form-control">
 			  	<option value="1" <?php if(!empty($data['banner']['is_active'])) echo 'selected="selected"'?>>Có</option>
@@ -21,9 +26,12 @@
 		    <input name="image" type="file" id="txtImage">
 		    <p class="help-block">Chọn hình có độ phân giải 800x300.</p>
 		 </div>
+		 
+		 
 		
 		<div class="form-group">
-			<button class="btn btn-primary" type="submit" >Save</button>
+			<button class="btn btn-primary" type="submit" >Lưu lại</button>
+			<a href="<?php echo $this->Html->url(array('controller' => 'banners', 'action' => 'index')); ?>"><button class="btn btn-default" type="button" >Hủy</button></a>
 		</div>
   	<?php echo $this->Form->end(); ?>
   </div><!-- /.col-md-6 -->

@@ -1,4 +1,5 @@
-﻿<div class="container">
+﻿<?php echo $this->element('navbar'); ?>
+<div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-push-2">
 			<h4>Liên hệ với chúng tôi</h4>

@@ -40,7 +40,7 @@
 					placeholder="Nhập số email"
 					value="<?php echo @$data['company']['email'];?>">
 			</div>
-			<button type="submit" class="btn btn-default">Lưu lại</button>
+			<button type="submit" class="btn btn-primary">Lưu lại</button>
 		<?php echo $this->Form->end(); ?>
 	</div>
 </div>

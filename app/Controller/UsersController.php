@@ -235,15 +235,14 @@ class UsersController extends AppController {
 			}
 			if(!$error){
 				if ($this->Auth->login()) {
-					return $this->redirect('/homes');
+					return $this->redirect(array('controller' => 'admin', 'action' => 'index'));
 				} else {
 					$this->Session->setFlash(__("Email hoặc mật khẩu không đúng. Hãy thử lại."), 'flash_error');
 				}
 			}
-			
 		} else {
 			if ( $this->Auth->user('id') ) {
-				return $this->redirect($this->Auth->redirect());
+				return $this->redirect(array('controller' => 'admin', 'action' => 'index'));
 			}
 		}
 	}

@@ -57,7 +57,7 @@
 						placeholder="Nhập mật khẩu">
 				</div>
 
-				<button type="submit" class="btn btn-default">Đăng nhập</button>
+				<button type="submit" class="btn btn-primary">Đăng nhập</button>
 			<?php echo $this->Form->end(); ?>
 		</div>
 	</div>

@@ -9,6 +9,11 @@
 		</div>
 		
 		<div class="form-group">
+		    <label for="txtDescription">Mô tả thêm</label>
+		    <textarea name="description" class="form-control" rows="3" id="txtDescription" placeholder="Nhập mô tả" ><?php if(isset($data['banner']['description'])) echo $data['banner']['description'];?></textarea>
+		 </div>
+		 
+		<div class="form-group">
 			<label >Hiển thị</label>
 			<select name="is_active" class="form-control">
 			  	<option value="1" <?php if(!empty($data['banner']['is_active'])) echo 'selected="selected"'?>>Có</option>
@@ -23,12 +28,13 @@
 		 </div>
 		<?php if(!empty($data['banner']['image'])) {?>
 				<div class="form-group">
-                	<img class="image-preview" src="/img/banner/<?php echo $data['banner']['image'];?>" alt="">
+					<?php echo $this->Html->image('banner/'.$data['banner']['image'], array('class' => 'image-preview')); ?>
 		</div>
 		<?php }?>
 		
 		<div class="form-group">
-			<button class="btn btn-primary" type="submit" >Save</button>
+			<button class="btn btn-primary" type="submit" >Lưu lại</button>
+			<a href="<?php echo $this->Html->url(array('controller' => 'banners', 'action' => 'index')); ?>"><button class="btn btn-default" type="button" >Hủy</button></a>
 		</div>
   	<?php echo $this->Form->end(); ?>
   </div><!-- /.col-md-6 -->

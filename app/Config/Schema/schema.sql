@@ -11,6 +11,7 @@
 CREATE TABLE IF NOT EXISTS `banners` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `title` varchar(300) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
@@ -20,9 +21,9 @@ CREATE TABLE IF NOT EXISTS `banners` (
 -- Dumping data for table `banners`
 --
 
-INSERT INTO `banners` (`id`, `title`, `image`, `is_active`) VALUES
-(1, 'Hoa ngÃ y cá»§a máº¹', 'banner_1.jpg', 1),
-(2, 'Hoa ngÃ y lá»… tÃ¬nh nhÃ¢n', 'banner_2.jpg', 1);
+INSERT INTO `banners` (`id`, `title`, `description`, `image`, `is_active`) VALUES
+(1, 'Hoa ngÃ y cá»§a máº¹', 'Mo ta', 'banner_1.jpg', 1),
+(2, 'Hoa ngÃ y lá»… tÃ¬nh nhÃ¢n', 'Mo ta', 'banner_2.jpg', 1);
 
 -- --------------------------------------------------------
 

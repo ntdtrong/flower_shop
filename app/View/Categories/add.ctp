@@ -30,7 +30,8 @@
 		</div>
 		
 		<div class="form-group">
-			<button class="btn btn-primary" type="submit" >Save!</button>
+			<button class="btn btn-primary" type="submit" >Lưu lại</button>
+			<a href="<?php echo $this->Html->url(array('controller' => 'categories', 'action' => 'index')); ?>"><button class="btn btn-default" type="button" >Hủy</button></a>
 		</div>
   	<?php echo $this->Form->end(); ?>
   </div><!-- /.col-md-6 -->

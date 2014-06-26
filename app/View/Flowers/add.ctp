@@ -52,7 +52,9 @@
 			    
 			  </div>
 			</div>
-		 <button type="submit" class="btn btn-default">Save</button>
+			
+		<button class="btn btn-primary" type="submit" >Lưu lại</button>
+		<a href="<?php echo $this->Html->url(array('controller' => 'admin', 'action' => 'index')); ?>"><button class="btn btn-default" type="button" >Hủy</button></a>
   	<?php echo $this->Form->end(); ?>
   </div><!-- /.col-md-8 -->
 </div>

@@ -7,7 +7,7 @@ class HomesController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow(array('index', 'contact'));
+		$this->Auth->allow(array('index', 'contact', 'all'));
 	}
 	public function index(){
 		return $this->redirect(array('action' => 'all'));

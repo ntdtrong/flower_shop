@@ -32,8 +32,8 @@
 		</div>
 	    
 	    <div class="form-group">
-	    	<button type="submit" class="btn btn-default">Lưu lại</button>
-	    	<button type="button" class="btn btn-default" onclick="reset()">Reset</button>
+	    	<button type="submit" class="btn btn-primary">Lưu lại</button>
+	    	<a href="<?php echo $this->Html->url(array('controller' => 'blogs', 'action' => 'index')); ?>"><button class="btn btn-default" type="button" >Hủy</button></a>
 	    </div>
 	<?php echo $this->Form->end(); ?>
 </div>

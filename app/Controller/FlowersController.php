@@ -17,7 +17,7 @@ class FlowersController extends AppController {
 			$rs = $this->_save($data['flower']);
 			if(!empty($rs['success'])){
 				$this->Session->setFlash(__('Lưu giỏ hoa thành công.'), 'flash_success');
-				return $this->redirect(array('controller' => 'homes', 'action' => 'index'));
+				return $this->redirect(array('controller' => 'admin', 'action' => 'index'));
 			}
 			else{
 				$data['categories_selected'] = @$rs['categories_selected'];
@@ -43,7 +43,7 @@ class FlowersController extends AppController {
 			$rs = $this->_save($data['flower']);
 			if(!empty($rs['success'])){
 				$this->Session->setFlash(__('Lưu giỏ hoa thành công.'), 'flash_success');
-				return $this->redirect(array('controller' => 'homes', 'action' => 'index'));
+				return $this->redirect(array('controller' => 'admin', 'action' => 'index'));
 			}
 			else{
 				$data['categories_selected'] = @$rs['categories_selected'];
@@ -83,7 +83,7 @@ class FlowersController extends AppController {
 		$this->set('data', $data);
 	}
 	
-	public function _save($flower) {
+	private function _save($flower) {
 		$data = array('error' => null, 'success' => null);
 		if ($this->request->is('post')) {
 			$data['flower'] = $flower;
@@ -190,7 +190,7 @@ class FlowersController extends AppController {
 			echo "";
 			$this->Session->setFlash(__('Xóa giỏ hoa bị lỗi. Hãy thử lại.'), 'flash_error');
 		}
-		return $this->redirect(array('controller' => 'homes', 'action' => 'index'));
+		return $this->redirect(array('controller' => 'admin', 'action' => 'index'));
 	}
 	
 	private function _uploadFile($fileName = null)
