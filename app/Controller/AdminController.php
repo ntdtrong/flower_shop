@@ -7,6 +7,7 @@ class AdminController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
+// $this->layout = 'admin';
 	}
 	public function index(){
 		return $this->redirect(array('action' => 'all'));

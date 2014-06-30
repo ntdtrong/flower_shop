@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+    <title>AdminLTE | Dashboard</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        
 	<title>Flower Shop</title>
 	<?php
 		// load css cua bootstrap
@@ -14,10 +16,6 @@
 		echo $this->Html->script('jquery-1.11.1.min');
 		echo $this->Html->script('jquery.colorbox-min');
 		echo $this->Html->script('tinymce/tinymce.min');
-		echo $this->fetch('script');
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		
 	?>
 </head>
 <body>
