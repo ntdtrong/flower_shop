@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS `banners` (
 --
 
 INSERT INTO `banners` (`id`, `title`, `description`, `image`, `is_active`) VALUES
-(1, 'Hoa ngÃ y cá»§a máº¹', 'Mo ta', 'banner_1.jpg', 1),
-(2, 'Hoa ngÃ y lá»… tÃ¬nh nhÃ¢n', 'Mo ta', 'banner_2.jpg', 1);
+(1, 'Mỗi ngày một giỏ hoa', 'Mo ta', 'banner_1.jpg', 1),
+(2, 'Lãng mạn ngày lễ tình nhân', 'Mo ta', 'banner_2.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -58,12 +58,12 @@ CREATE TABLE IF NOT EXISTS `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `is_active`, `type`) VALUES
-(1, 'Hoa cÆ°á»›i', 1, 1),
-(2, 'Hoa khai trÆ°Æ¡ng', 1, 1),
-(3, 'Hoa sinh nháº­t', 1, 1),
-(4, 'Hoa bÃ³', 1, 1),
-(5, 'Thá»i sá»±', 1, 2),
-(6, 'Tin thá»ƒ thao', 1, 2);
+(1, 'Hoa giỏ', 1, 1),
+(2, 'Hoa bó', 1, 1),
+(3, 'Hoa cưới', 1, 1),
+(4, 'Hoa sinh nhật', 1, 1),
+(5, 'Kiến thức', 1, 2),
+(6, 'Tin tức', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `full_name`, `address`, `phone`, `email`, `image`, `description`) VALUES
-(1, 'Hoa ÄÃ  Láº¡t', 'Cá»­a hÃ ng hoa tÆ°Æ¡i Hoa ÄÃ  Láº¡t', '176 CMT8 PhÆ°á»ng 6 quáº­n 10 thÃ nh phá»‘ Há»“ ChÃ­ Minh', '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx', 'emai@email.com', '', '');
+(1, 'Flowersinlove', 'Lãng Hoa Tình Yêu', '176 CMT8 P.6 Q.3 TP.HCM', '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx', 'emai@email.com', '', '');
 
 -- --------------------------------------------------------
 

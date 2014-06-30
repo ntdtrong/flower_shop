@@ -8,14 +8,14 @@ define('IMAGE_THUMB_URL', APP . 'webroot' . DS . 'img' . DS . 'thumb' . DS);
 define('IMAGE_UPLOAD_DIR', APP . 'webroot' . DS . 'img' . DS);
 
 define('IMAGE_BANNER_DIR', 'banner' . DS);
-define('IMAGE_BANNER_WIDTH', 800);
-define('IMAGE_BANNER_HEIGHT', 300);
+define('IMAGE_BANNER_WIDTH', 1600);
+define('IMAGE_BANNER_HEIGHT', 482);
 
 
 define('IMAGE_FLOWER_DIR', 'image' . DS);
 define('IMAGE_FLOWER_THUMB_DIR', 'thumb' . DS);
-define('IMAGE_FLOWER_THUMB_WIDTH', 300);
-define('IMAGE_FLOWER_THUMB_HEIGHT', 250);
+define('IMAGE_FLOWER_THUMB_WIDTH', 320);
+define('IMAGE_FLOWER_THUMB_HEIGHT', 320);
 
 define('ROLE_ADMIN', 1);
 define('ROLE_MANAGER', 2);

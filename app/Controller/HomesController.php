@@ -3,13 +3,20 @@ App::uses('AppController', 'Controller');
 class HomesController extends AppController {
 	public $uses = array('Category', 'Flower', 'Banner');
 	public $helpers = array('Paging');
+	
 	const PAGE_SIZE = 10;
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow(array('index', 'contact', 'all'));
+		$this->Auth->allow(array('index', 'contact', 'all', 'shop'));
 	}
 	public function index(){
+		$this->set('banner1', $this->Banner->findById(1));
+		$this->set('banner2', $this->Banner->findById(2));
+		$this->layout = 'front';
+	}
+	
+	public function shop() {
 		return $this->redirect(array('action' => 'all'));
 	}
 	

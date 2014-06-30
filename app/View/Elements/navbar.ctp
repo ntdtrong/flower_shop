@@ -1,26 +1,99 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <strong><a class="navbar-brand" >
-                		<?php if(!empty($company)) echo $company['name'];?>
-                	</a></strong>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>"><strong>TRANG CHỦ</strong></a></li>
-                    <li><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>"><strong>LIÊN HỆ</strong></a></li>
-                    
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+<nav id="mobile-nav" role="navigation">
+	<ul>
+		<li class="teas"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a></li>
+		<li class="about"><a href="#">Giới thiệu</a></li>
+		<li class="press"><a href="#">Tin Tức</a></li>
+		<li class="contact"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a></li>
+	</ul>
 </nav>
+	
+<header id="header">
+	<div id="top-header">
+		<div class="container">
+			<div class="row">
+				<div id="free-shipping-pink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="textwidget">
+						<a href="#" id="btn_free_shipping"><span>Giao hàng miễn phí nội thành</span></a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+					<ul id="menu-reseaux-sociaux" class="social-icons">
+						<li class="instagram menu-item menu-item-type-custom menu-item-object-custom menu-name-instagram">
+							<a target="_blank" href="#"><span>Instagram</span></a>
+						</li>
+						<li class="facebook menu-item menu-item-type-custom menu-item-object-custom menu-name-facebook">
+							<a target="_blank" href="#"><span>Facebook</span></a>
+						</li>
+					</ul>
+					<ul class="meta-nav langmenu">
+						<li class="active">
+							<a href="#"><span>Tiếng Việt</span></a>
+						</li>
+						<li>
+							<a href="#"><span>English</span></a>
+						</li>
+					</ul>
+
+				</div>
+				<div id="free-shipping" class="col-lg-4 col-md-4">
+					<div class="textwidget">
+						<a href="#" id="btn_free_shipping"><span> Giao hàng miễn phí nội thành </span></a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+					<ul class="meta-nav cart-menu" role="menu">
+						<li class="cart">
+							<a class="cart-contents" href="#"><span>0 items</span></a>
+						</li>
+						<li class="montant">
+							<span class="amount">$0.00</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="mid-header" role="navigation">
+		<div class="container">
+			<div class="row">
+				<a id="mobile-logo" href="#" rel="home" class="icon icon-logo visible-xs" title="My Beauty Tea"></a>
+				<a id="btn_open_nav" href="#header" class="mobile_toggle" title="Open main navigation">☰</a>
+				<a id="btn_close_nav" href="#body" class="mobile_toggle" title="Close main navigation">☰</a>
+				<nav id="main_nav" role="navigation">
+					<ul id="menu-navigation-principale" class="menu">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-name-shop skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a>
+						</li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-about skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+							<a href="#">Giới thiệu</a>
+						</li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item menu-name-home skrollable skrollable-after" data-0="height:155px;" data-300="height:60px;" data-anchor-target="#mid-header" style="height: 60px;">
+							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a>
+						</li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-faq skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+							<a href="#">Tin Tức</a>
+						</li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-contact skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<?php if (isset($banner1)): ?>
+	<div id="slider">
+		<picture data-anchor-target="#slider" data-0="transform:translate(0px, 0px);" data-600="transform:translate(0px, 300px);" class="skrollable skrollable-between" style="-webkit-transform: translate(0px, 34px);">
+
+			<!--[if IE 9]><video style='display: none;'><![endif]-->
+			<source srcset="img/banner/<?php echo $banner1['Banner']['image']; ?>" media="(min-width:768px)">
+			<source srcset="img/slide_home_mobile.jpg" media="(max-width:767px)">
+			<!--[if IE 9]></video><![endif]-->
+
+			<img alt="" title="slide_home" src="img/banner/<?php echo $banner1['Banner']['image']; ?>">
+
+		</picture>
+	</div>
+	<?php endif; ?>
+</header>
+<!-- END HEADER -->

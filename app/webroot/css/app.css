@@ -1,0 +1,36 @@
+#instagram-container .instagram-image {
+	margin-left: 3%;
+}
+
+.product .desc-content h3 {
+	background: url(../img/sep@2x.png) bottom center no-repeat;
+	background-size: 763px 7px;
+}
+
+#main_nav>ul>li#logo, 
+#main_nav>ul#menu-navigation-principale>li.menu-name-home, 
+#main_nav>ul>li#menu-item-202 {
+	margin: 0 0 0 1em;
+	height: 155px;
+}
+#main_nav>ul#menu-navigation-principale>li#logo a, 
+#main_nav>ul#menu-navigation-principale>li.menu-name-home a{
+	background: url(../img/logo_combined@2x.png) center no-repeat;
+	background-size: 210px 123px;
+	background-color: transparent;
+	display: inline-block;
+	width: 210px;
+	height: 123px;
+	margin: 0;
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	border: 0;
+}
+
+.cssanimations.js #main_nav ul li {
+	opacity: 1;
+	transform: none;
+	-webkit-transform: none;
+	-ms-transform: none;	
+}

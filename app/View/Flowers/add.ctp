@@ -16,7 +16,7 @@
 		 <div class="form-group">
 		    <label for="txtImage">Hình ảnh</label>
 		    <input name="image" type="file" id="txtImage">
-		    <p class="help-block">Chọn hình có độ phân giải 300x250.</p>
+		    <p class="help-block">Chọn hình có độ phân giải 320 x 320.</p>
 		  </div>
 		 
   		<div class="form-group">

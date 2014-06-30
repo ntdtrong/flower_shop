@@ -24,7 +24,7 @@
 		<div name="image" class="form-group">
 		    <label for="txtImage">Hình banner</label>
 		    <input name="image" type="file" id="txtImage">
-		    <p class="help-block">Chọn hình có độ phân giải 800x300.</p>
+		    <p class="help-block">Chọn hình có độ phân giải 1600 x 482.</p>
 		 </div>
 		<?php if(!empty($data['banner']['image'])) {?>
 				<div class="form-group">
