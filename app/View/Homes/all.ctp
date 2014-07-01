@@ -1,131 +1,48 @@
-<?php echo $this->element('navbar'); ?>
-<div class="row">
-
-	<div class="col-md-3">
-
-		<div id="categories_list" class="list-group">
-			<p class="list-group-item panel-heading-custom">
-				<strong>Danh Mục</strong>
-			</p>
-			<?php  
-			if(!empty($data['categories'])){
-                		foreach($data['categories'] as $cate){
-						?>
-			<a href="<?php echo $this->Html->url(array("controller" => "homes", "action" => "all", 1)).'/'.$cate['Category']['id']; ?>"
-				class="list-group-item <?php echo ($cate['Category']['id'] == $data['category'])?'active':''?>">
-				<?php echo $cate['Category']['name'];?>
-			</a>
-			<?php 
-						}
-                	}
-                	?>
-		</div>
 
 
-		<div id="categories_list" class="list-group">
-			<p class="list-group-item panel-heading-custom">
-				<strong>Liên Hệ Đặt Hoa</strong>
-			</p>
-			<?php  
-			if(!empty($company) && !empty($company['phone'])){
-						$listPhone = explode("-", $company['phone']);
-						foreach ($listPhone as $phone){
-							?>
-			<p class="list-group-item-custom">
-				<?php echo trim($phone);?>
-			</p>
-			<?php 
-						}
-					}
-					?>
-		</div>
-	</div>
+	<div class="container">
 
-	<div class="col-md-9">
-		<?php if(!empty($data['banners'])) {?>
-		<div class="row carousel-holder">
-
-			<div class="col-md-12">
-				<div id="carousel-example-generic" class="carousel slide"
-					data-ride="carousel">
-					<!--  
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                             -->
-					<div class="carousel-inner">
-						<?php
-						$isFirst = true;
-                            foreach ($data['banners'] as $banner) {?>
-						<div class="item <?php if($isFirst) echo "active" ?>">
-							<?php echo $this->Html->image('banner/'.$banner['Banner']['image'], array('class' => 'slide-image')); ?>
-							<div class="carousel-caption-custom">
-								<p><?php echo $banner['Banner']['title'] ?></p>
-							</div>
-						</div>
-						<?php
-						$isFirst = false;
-							}?>
-						<!--
-                                <div class="item">
-                                    <img class="slide-image" src="/img/banner/banner_2.jpg" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                 -->
-					</div>
-					<a class="left carousel-control" href="#carousel-example-generic"
-						data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
-					</a> <a class="right carousel-control"
-						href="#carousel-example-generic" data-slide="next"> <span
-						class="glyphicon glyphicon-chevron-right"></span>
-					</a>
-				</div>
-			</div>
-
-		</div>
-		<?php } ?>
-
-		<div id="newStuff" class="row">
+		<ul class="products row">
 			<?php 
 			if(!empty($data['flowers'])){
 					foreach($data['flowers'] as $item){
 	
 			?>
-			<div class="col-sm-4 col-lg-4 col-md-4">
-				<div class="thumbnail">
-					<?php echo $this->Html->image('thumb/'. $item['Flower']['thumb'], array('alt' => '')); ?>
-					<div class="caption">
-						<p class="caption-header">
-							<strong><?php echo $item['Flower']['name'];?> </strong>
-						</p>
-						<p class="caption-money">
-							<strong><?php echo number_format(floatval($item['Flower']['price'])); ?>
-								VND</strong>
-						</p>
-						<p>
-							<?php echo $item['Flower']['description'];?>
-						</p>
-
-					</div>
+			<li class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-6 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
+			<a href="#"><img src="img/thumb/<?php echo $item['Flower']['thumb']; ?>" alt="" title="<?php echo $item['Flower']['name']; ?>"> </a>
+			<div class="desc">
+				<div class="desc-content">
+					<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
+					<a href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
+						<!-- <i class="icon icon-cart"></i>
+						<i class="icon hover icon-cart"></i>
+						<i class="icon loading"></i> -->
+						<span class="amount">
+							<?php echo $this->Number->format($item['Flower']['price'],  array(
+							    'places' => 0,
+							    'before' => '$ ',
+							    'escape' => false,
+							    'decimals' => '',
+							    'thousands' => '.'
+							));?>
+						</span>
+					</a>
 				</div>
 			</div>
+		</li>
 			
 			<?php
 					}
 				}
 			?>
+		</ul>
+		<div class="pagination-custom">
+			<?php echo $this->Paging->render( $pagingObj, $this->Html->url(array("controller" => "homes", "action" => "all")), '/'.$data['category']); ?>
 		</div>
-		
 	</div>
 	
-	<div class="pagination-custom">
-		<?php echo $this->Paging->render( $pagingObj, $this->Html->url(array("controller" => "homes", "action" => "all")), '/'.$data['category']); ?>
-	</div> 
-</div>
+	 
+
 
 <script type='text/javascript'>
         /*
