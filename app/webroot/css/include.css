@@ -8125,7 +8125,7 @@ a.mobile_toggle {
 #content {
     position: relative;
     z-index: 10;
-    padding-top: 40px;
+    padding-top: 1em;
     background: #fff;
     min-height: 100%;
 }
@@ -8876,7 +8876,7 @@ ul.products {
 #content ul.products li.type-product.product-cat-tea-blends,#content ul.products li.type-product.product-cat-tea-blends-fr {
     padding-left: 0;
     padding-right: 0;
-    margin: 10px 0 0;
+    margin: 3em 0 0;
 }
 
 #content ul.products li.type-product.product-cat-original-products,#content ul.products li.type-product.product-cat-produits-originaux {

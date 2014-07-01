@@ -89,9 +89,8 @@
 			<source srcset="img/banner/<?php echo $banner1['Banner']['image']; ?>" media="(min-width:768px)">
 			<source srcset="img/slide_home_mobile.jpg" media="(max-width:767px)">
 			<!--[if IE 9]></video><![endif]-->
-
-			<img alt="" title="slide_home" src="img/banner/<?php echo $banner1['Banner']['image']; ?>">
-
+			
+			<?php echo $this->Html->image('banner/' . $banner1['Banner']['image'], array('alt' => 'slide_home', 'title' => 'slide_home'));?>
 		</picture>
 	</div>
 	<?php endif; ?>

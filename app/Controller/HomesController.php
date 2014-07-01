@@ -37,16 +37,22 @@ class HomesController extends AppController {
 			'categories' => array(),
 			'flowers' => array()
 		);
-		$data['categories'] = $this->Category->find('all',
-					array( 'conditions' => array(
-							'Category.type' => CATEGORY_TYPE_FLOWER,						
-							'Category.is_active' => ACTIVE
-						))
-				);
-		if($category === 0 && !empty($data['categories'])){
-			$category = $data['categories'][0]['Category']['id'];
+		$data['categories'] = $this->Category->find('list',
+			array( 'conditions' => array(
+				'Category.type' => CATEGORY_TYPE_FLOWER,						
+				'Category.is_active' => ACTIVE
+			))
+		);
+		
+		if($category === 0){
+			$categoryName = 'Tất cả';
+			$conditions = array();
+		} else {
+			$categoryName = $data['categories'][$category];
+			$conditions = array('FlowerCategory.category_id' => $category);
 		}
 		$data['category'] = $category;
+		$data['categoryName'] = $categoryName;
 		
 		$joins = array(
 				array(
@@ -56,7 +62,6 @@ class HomesController extends AppController {
 						'conditions' => array('Flower.id = FlowerCategory.flower_id')
 				)
 			);
-		$conditions = array('FlowerCategory.category_id' => $category);
 		
 		$total = $this->Flower->find('count', array(
 				'conditions' => $conditions,

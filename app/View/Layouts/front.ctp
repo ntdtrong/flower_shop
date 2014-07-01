@@ -8,8 +8,12 @@
 
 		<!-- Bootstrap -->
 		<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-		<link href="css/include.css" rel="stylesheet">
-		<link href="css/app.css" rel="stylesheet">
+		<?php
+		echo $this->Html->css('include');
+		echo $this->Html->css('app');
+		
+		echo $this->Html->script('vendor/modernizr.min.js');
+		?>
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +25,7 @@
 		<!-- All JavaScript at the bottom, except for Modernizr / Respond.
        	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
        	For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
-		<script type="text/javascript" src="js/vendor/modernizr.min.js"></script>
+		
 	
 	</head>
 	<body>
@@ -43,9 +47,15 @@
 										<span class="inner">Instagram <span class="rochester">Beauties</span></span>
 									</h2>
 									<div id="instagram-container">
-										<a href="#" target="_blank" class="instagram-image"><img src="img/thumb/1404138174.jpg"></a>
-										<a href="#" target="_blank" class="instagram-image"><img src="img/thumb/1404138187.jpg"></a>
-										<a href="#" target="_blank" class="instagram-image"><img src="img/thumb/1404138209.jpg"></a>
+										<a href="#" target="_blank" class="instagram-image">
+											<?php echo $this->Html->image('thumb/1404138174.jpg', array());?>
+										</a>
+										<a href="#" target="_blank" class="instagram-image">
+											<?php echo $this->Html->image('thumb/1404138187.jpg', array());?>
+										</a>
+										<a href="#" target="_blank" class="instagram-image">
+											<?php echo $this->Html->image('thumb/1404138209.jpg', array());?>
+										</a>
 									</div>
 									<a href="#" target="_blank" class="mbt-button primary">See more</a>
 								</div>
@@ -131,9 +141,11 @@
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/vendor/skrollr.min.js"></script>
-		<script src="js/include.js"></script>
-		<script src="js/app.js"></script>
+		<?php
+		echo $this->Html->script('bootstrap.min.js');
+		echo $this->Html->script('vendor/skrollr.min.js');
+		echo $this->Html->script('include.js');
+		echo $this->Html->script('app.js');
+		?>
 	</body>
 </html>
