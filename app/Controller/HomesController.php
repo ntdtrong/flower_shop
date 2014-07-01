@@ -13,17 +13,6 @@ class HomesController extends AppController {
 	public function index(){
 		$this->set('banner1', $this->Banner->findById(1));
 		$this->set('banner2', $this->Banner->findById(2));
-		
-		$this->set('featured', $this->Flower->find('all',array(
-			'recursive' => 1, //int
-			'fields' => array(
-				'Flower.id', 'Flower.name', 'Flower.price', 'Flower.thumb'
-			),
-			'order' => array('Flower.id DESC'),
-			'limit' => 3,
-			'offset' => 0
-		)));
-		
 		$this->layout = 'front';
 	}
 	
@@ -32,7 +21,6 @@ class HomesController extends AppController {
 	}
 	
 	public function all($page = 1, $category = 0) {
-		$this->layout = 'front';
 		$data = array(
 			'categories' => array(),
 			'flowers' => array()
@@ -47,6 +35,11 @@ class HomesController extends AppController {
 			$category = $data['categories'][0]['Category']['id'];
 		}
 		$data['category'] = $category;
+		
+		$data['banners'] = $this->Banner->find('all', array(
+				'conditions' => array('is_active' => ACTIVE)
+				));
+// 		pr($data['banners']);
 		
 		$joins = array(
 				array(

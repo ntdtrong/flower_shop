@@ -25,7 +25,23 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-push-2">
-			<?php echo $this->Session->flash(); ?>
+			<p id="error_message">
+				<?php 
+					if(!empty($data['error'])){
+				?>
+					<h5><span class="label label-danger"><?php echo $data['error'];?></span><h5>
+				<?php 
+					}
+				?>
+				
+				<?php 
+					if(!empty($data['success'])){
+				?>
+					<h5><span class="label label-success"><?php echo $data['success'];?></span><h5>
+				<?php 
+					}
+				?>
+			</p>
 			<h4 class="panel-heading">Đăng nhập</h4>
 			<?php echo $this->Form->create('User', array('action' => 'login', 'type' => 'post')); ?>
 				<div class="form-group">

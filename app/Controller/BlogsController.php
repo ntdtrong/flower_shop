@@ -9,8 +9,6 @@ class BlogsController extends AppController {
 		parent::beforeFilter();
 	}
 	
-	
-	
 	public function index() {
 		return $this->redirect(array('action' => 'all'));
 	}

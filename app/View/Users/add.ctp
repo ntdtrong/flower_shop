@@ -1,6 +1,5 @@
 ﻿<div class="row">
 	<div class="col-md-8 col-md-push-2">
-		<?php echo $this->Session->flash(); ?>
 		<h4 class="panel-heading">Tạo tài khoản</h4>
 		<?php echo $this->Form->create('User', array('action' => 'add', 'type' => 'post')); ?>
 			<input name="id" type="hidden" class="form-control"

@@ -43,9 +43,9 @@
 										<span class="inner">Instagram <span class="rochester">Beauties</span></span>
 									</h2>
 									<div id="instagram-container">
-										<a href="#" target="_blank" class="instagram-image"><img src="img/thumb/1404138174.jpg"></a>
-										<a href="#" target="_blank" class="instagram-image"><img src="img/thumb/1404138187.jpg"></a>
-										<a href="#" target="_blank" class="instagram-image"><img src="img/thumb/1404138209.jpg"></a>
+										<a href="#" target="_blank" class="instagram-image"><img src="img/ig2.jpg"></a>
+										<a href="#" target="_blank" class="instagram-image"><img src="img/ig2.jpg"></a>
+										<a href="#" target="_blank" class="instagram-image"><img src="img/ig2.jpg"></a>
 									</div>
 									<a href="#" target="_blank" class="mbt-button primary">See more</a>
 								</div>

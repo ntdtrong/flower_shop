@@ -1,6 +1,5 @@
 ﻿<div class="row">
 	<div class="col-md-8 col-md-push-2">
-		<?php echo $this->Session->flash(); ?>
 		<h4 class="panel-heading">Đổi Mật Khẩu</h4>
 		<?php echo $this->Form->create('User', array('action' => 'changepwd/'.@$data['user']['id'], 'type' => 'post')); ?>
 			<div class="form-group">

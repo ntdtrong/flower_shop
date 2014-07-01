@@ -1,51 +1,44 @@
-<section class="content-header">
-	<span class="page-title">Tạo Blogs</span>
-</section>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-		<?php echo $this->Session->flash(); ?>
-		<?php echo $this->Form->create('Blog', array('action' => 'add', 'type' => 'post', 'enctype' => 'multipart/form-data')); ?>
-			<div class="form-group">
-					<label for="title">Tiêu đề</label> 
-					<input name="title" type="text" class="form-control" id="title" placeholder="Nhập tiêu đề"
-							value="<?php echo @$data['blog']['title'];?>">
-			</div>
-			
-			<div class="form-group">
-				<label >Chọn danh mục</label>
-				<select name="category_id" class="form-control">
-					<?php 
-					if(!empty($data['categories'])){
-						$selectedCategory = @$data['blog']['category_id'];
-						foreach ($data['categories'] as $cate){
-							?>
-							<option value="<?php echo $cate['Category']['id'];?>" 
-								<?php if( $cate['Category']['id'] == $selectedCategory) echo 'selected="selected"'?>>
-								<?php echo $cate['Category']['name'];?>
-							</option>
-							<?php 
-						}
-					}
-					?>
-				  	
-				</select>
-			</div>
-			
-			<div class="form-group">
-				<textarea id="content" name="content"><?php echo @$data['blog']['content'];?></textarea>
-			</div>
-		    
-		    <div class="form-group">
-		    	<button type="submit" class="btn btn-primary">Lưu lại</button>
-		    	<a href="<?php echo $this->Html->url(array('controller' => 'blogs', 'action' => 'index')); ?>"><button class="btn btn-default" type="button" >Hủy</button></a>
-		    </div>
-		<?php echo $this->Form->end(); ?>
+﻿<div class="row">
+	<h4 class="panel-heading">Tạo Blog</h4>
+	<?php echo $this->Form->create('Blog', array('action' => 'add', 'type' => 'post', 'enctype' => 'multipart/form-data')); ?>
+		<div class="form-group">
+				<label for="title">Tiêu đề</label> 
+				<input name="title" type="text" class="form-control" id="title" placeholder="Nhập tiêu đề"
+						value="<?php echo @$data['blog']['title'];?>">
 		</div>
-	</div>
-</section>
+		
+		<div class="form-group">
+			<label >Chọn danh mục</label>
+			<select name="category_id" class="form-control">
+				<?php 
+				if(!empty($data['categories'])){
+					$selectedCategory = @$data['blog']['category_id'];
+					foreach ($data['categories'] as $cate){
+						?>
+						<option value="<?php echo $cate['Category']['id'];?>" 
+							<?php if( $cate['Category']['id'] == $selectedCategory) echo 'selected="selected"'?>>
+							<?php echo $cate['Category']['name'];?>
+						</option>
+						<?php 
+					}
+				}
+				?>
+			  	
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<textarea id="content" name="content"><?php echo @$data['blog']['content'];?></textarea>
+		</div>
+	    
+	    <div class="form-group">
+	    	<button type="submit" class="btn btn-primary">Lưu lại</button>
+	    	<a href="<?php echo $this->Html->url(array('controller' => 'blogs', 'action' => 'index')); ?>"><button class="btn btn-default" type="button" >Hủy</button></a>
+	    </div>
+	<?php echo $this->Form->end(); ?>
+</div>
+
 <script type='text/javascript'>
-	
 	tinymce.init({
 	    selector: "textarea",
 	    theme: "modern",
