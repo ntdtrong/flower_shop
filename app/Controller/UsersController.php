@@ -245,6 +245,8 @@ class UsersController extends AppController {
 				return $this->redirect(array('controller' => 'admin', 'action' => 'index'));
 			}
 		}
+		
+		$this->layout = 'login';
 	}
 	
 	public function logout() {

@@ -6,48 +6,32 @@
 	</div>
 
 	<ul class="products row">
+	<?php if ( !empty($featured) && count($featured) > 0 ): ?>
+	<?php foreach ($featured as $item): ?>
 		<li class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-6 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
-			<a href="#"><img src="img/thumb/1404138174.jpg" alt="" title="nuts_for_coco"> </a>
+			<a href="#"><img src="img/thumb/<?php echo $item['Flower']['thumb']; ?>" alt="" title="<?php echo $item['Flower']['name']; ?>"> </a>
 			<div class="desc">
 				<div class="desc-content">
-					<div class="tea-type">Name...</div>
+					<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
 					<a href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
-						<i class="icon icon-cart"></i>
+						<!-- <i class="icon icon-cart"></i>
 						<i class="icon hover icon-cart"></i>
-						<i class="icon loading"></i>
-						<span><span class="amount">$8.50</span></span>
+						<i class="icon loading"></i> -->
+						<span class="amount">
+							<?php echo $this->Number->format($item['Flower']['price'],  array(
+							    'places' => 0,
+							    'before' => '$ ',
+							    'escape' => false,
+							    'decimals' => '',
+							    'thousands' => '.'
+							));?>
+						</span>
 					</a>
 				</div>
 			</div>
 		</li>
-		<li class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-6 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
-			<a href="#"><img src="img/thumb/1404138187.jpg" alt="" title="nuts_for_coco"> </a>
-			<div class="desc">
-				<div class="desc-content">
-					<div class="tea-type">Name...</div>
-					<a href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
-						<i class="icon icon-cart"></i>
-						<i class="icon hover icon-cart"></i>
-						<i class="icon loading"></i>
-						<span><span class="amount">$8.50</span></span>
-					</a>
-				</div>
-			</div>
-		</li>
-		<li class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-6 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
-			<a href="#"><img src="img/thumb/1404138209.jpg" alt="" title="nuts_for_coco"> </a>
-			<div class="desc">
-				<div class="desc-content">
-					<div class="tea-type">Name...</div>
-					<a href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
-						<i class="icon icon-cart"></i>
-						<i class="icon hover icon-cart"></i>
-						<i class="icon loading"></i>
-						<span><span class="amount">$8.50</span></span>
-					</a>
-				</div>
-			</div>
-		</li>
+	<?php endforeach; ?>
+	<?php endif; ?>
 	</ul><!-- END PRODUCTS -->
 </div>
 

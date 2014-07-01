@@ -10,7 +10,6 @@
  * to change the values in the less files!
  */
 var left_side_width = 220; //Sidebar width in pixels
-
 $(function() {
     "use strict";
 

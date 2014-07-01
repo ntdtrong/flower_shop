@@ -1,5 +1,6 @@
 ﻿<div class="row">
   <div class="col-md-8 col-md-push-2">
+  	<?php echo $this->Session->flash(); ?>
   	<h4 class="panel-heading">Tạo Banner</h4>
   	<?php echo $this->Form->create('Banner', array('action' => 'add/'.@$data['banner']['id'], 'type' => 'post', 'enctype' => 'multipart/form-data')); ?>
   		<input name="id" type="hidden" class="form-control" value="<?php echo @$data['banner']['id'];?>">

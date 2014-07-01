@@ -7,7 +7,6 @@ class AdminController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-// $this->layout = 'admin';
 	}
 	public function index(){
 		return $this->redirect(array('action' => 'all'));
@@ -28,6 +27,11 @@ class AdminController extends AppController {
 			$category = $data['categories'][0]['Category']['id'];
 		}
 		$data['category'] = $category;
+		foreach ($data['categories'] as $cate){
+			if($cate['Category']['id'] == $category){
+				$data['category_name'] = $cate['Category']['name'];
+			}
+		}
 		
 		$data['banners'] = $this->Banner->find('all', array(
 				'conditions' => array('is_active' => ACTIVE)
