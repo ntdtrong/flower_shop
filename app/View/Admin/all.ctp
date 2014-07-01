@@ -1,34 +1,40 @@
-<div class="row">
-
-	<div class="col-md-3">
-
-		<div id="categories_list" class="list-group">
-			<p class="list-group-item panel-heading-custom">
-				<strong>Danh Mục</strong>
-			</p>
-			<?php  
+<section class="content-header">
+	  
+	  <span >
+	  	<span class="page-title">Giỏ Hoa</span>
+	  	<small><i class="fa fa-angle-right"></i></small>
+	  	<small class="dropdown page-title-sub" data-toggle="dropdown"><a href="#"><?php echo $data['category_name']; ?></a></small>
+	  	<ul id="drop-category" class="dropdown-menu " role="menu">
+	    <?php  
 			if(!empty($data['categories'])){
                 		foreach($data['categories'] as $cate){
 						?>
-			<a href="<?php echo $this->Html->url(array("controller" => "admin", "action" => "all", 1)).'/'.$cate['Category']['id']; ?>"
-				class="list-group-item <?php echo ($cate['Category']['id'] == $data['category'])?'active':''?>">
-				<?php echo $cate['Category']['name'];?>
-			</a>
+			<li role="presentation">
+				<a href="<?php echo $this->Html->url(array("controller" => "admin", "action" => "all", 1)).'/'.$cate['Category']['id']; ?>"
+					role="menuitem" >
+					<?php echo $cate['Category']['name'];?>
+				</a>
+			</li>
 			<?php 
 						}
                 	}
-                	?>
-		</div>
-	</div>
+            ?>
+	  	</ul>
+	</span>
+	
+	<?php echo $this->Html->link('<i class="fa fa-plus"></i> Tạo giỏ hoa', array('controller' => 'flowers', 'action' => 'add'), array('escapeTitle' => false, 'class' => 'pull-right') ); ?>
+</section>
+<section class="content">
 
-	<div class="col-md-9">
+<div class="row">
+	<div class="col-md-12">
 		<div id="newStuff" class="row">
 			<?php 
 			if(!empty($data['flowers'])){
 					foreach($data['flowers'] as $item){
 	
 			?>
-			<div class="col-sm-4 col-lg-4 col-md-4">
+			<div class="col-sm-3 col-lg-3 col-md-3">
 				<div class="thumbnail">
 					<?php echo $this->Html->image('thumb/'. $item['Flower']['thumb'], array('alt' => '')); ?>
 					<div class="caption">
@@ -62,12 +68,14 @@
 		</div>
 		
 	</div>
-	
-	<div class="pagination-custom">
-		<?php echo $this->Paging->render( $pagingObj, $this->Html->url(array("controller" => "homes", "action" => "all")), '/'.$data['category']); ?>
-	</div> 
+	<div class="col-md-12">
+		<div class="pagination">
+			<?php echo $this->Paging->render( $pagingObj, $this->Html->url(array("controller" => "homes", "action" => "all")), '/'.$data['category']); ?>
+		</div>
+	</div>
+	 
 </div>
-
+</section>
 <script type='text/javascript'>
         /*
         $(document).ready(function() {
@@ -139,5 +147,8 @@
 	  	    }
 	  	}
 </script>
-<!-- /.container -->
+
+<style>
+	#drop-category { margin-left: 120px;}
+</style>
 

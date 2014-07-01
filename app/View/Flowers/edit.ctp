@@ -1,5 +1,6 @@
 ﻿<div class="row">
   <div class="col-md-8 col-md-push-2">
+  	<?php echo $this->Session->flash(); ?>
   	<h4 class="panel-heading">Tạo Giỏ Hoa</h4>
   	<?php echo $this->Form->create('Flower', array('action' => 'edit/'.@$data['flower']['id'], 'type' => 'post', 'enctype' => 'multipart/form-data')); ?>
   		<input name="id" type="hidden" class="form-control" value="<?php echo @$data['flower']['id'];?>">
