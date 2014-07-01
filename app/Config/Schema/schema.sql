@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   `title` varchar(400) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `category_id` int(10) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -103,6 +105,8 @@ CREATE TABLE IF NOT EXISTS `flowers` (
   `image` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `thumb` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
