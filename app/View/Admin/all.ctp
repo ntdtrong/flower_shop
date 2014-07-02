@@ -64,6 +64,9 @@
 			<?php
 					}
 				}
+				else{
+					echo '<div class="col-md-6"><h4>Chưa có giỏ hoa</h4></div>';
+				}
 			?>
 		</div>
 		

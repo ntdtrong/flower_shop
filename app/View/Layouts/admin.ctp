@@ -18,7 +18,7 @@
 			echo $this->Html->script('tinymce/tinymce.min');
 		?>
 	</head>
-	<body class="skin-blue">
+	<body class="skin-blue" style="min-height: 600px;">
 		<?php echo $this->element('admin_header'); ?>
 		<div class="wrapper row-offcanvas row-offcanvas-left">
 			<?php echo $this->element('admin_menu_left'); ?>
