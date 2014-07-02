@@ -62,8 +62,12 @@
 						font-size: 1.2em;'>
 					Flowers in Love
 				</a>
-				<a id="btn_open_nav" href="#header" class="mobile_toggle" title="Open main navigation">☰</a>
-				<a id="btn_close_nav" href="#body" class="mobile_toggle" title="Close main navigation">☰</a>
+				<a id="btn_open_nav" href="#header" class="mobile_toggle" title="Open main navigation">
+					<span class="glyphicon glyphicon-th-list"></span>
+				</a>
+				<a id="btn_close_nav" href="#body" class="mobile_toggle" title="Close main navigation">
+					<span class="glyphicon glyphicon-th-list"></span>
+				</a>
 				<nav id="main_nav" role="navigation">
 					<ul id="menu-navigation-principale" class="menu">
 						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-name-shop skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
