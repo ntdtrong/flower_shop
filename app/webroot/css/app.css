@@ -34,3 +34,12 @@
 	-webkit-transform: none;
 	-ms-transform: none;	
 }
+
+.product .description-type {
+    color: #000;
+    display: block;
+    font-family: "Palatino Linotype",Georgia,serif, "rochesterregular", "Big Caslon", "Book Antiqua";
+    font-size: 1em;
+    margin: 1em 0;
+    text-align:left;
+}

@@ -11,8 +11,15 @@
 		<?php
 		echo $this->Html->css('include');
 		echo $this->Html->css('app');
+		echo $this->Html->css('colorbox');
+		?>
 		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		
+		<?php 
 		echo $this->Html->script('vendor/modernizr.min.js');
+		echo $this->Html->script('jquery.colorbox-min.js');
 		?>
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -138,14 +145,14 @@
 
 		</div> <!-- END WRAPPER -->
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<?php
 		echo $this->Html->script('bootstrap.min.js');
 		echo $this->Html->script('vendor/skrollr.min.js');
 		echo $this->Html->script('include.js');
 		echo $this->Html->script('app.js');
+		
 		?>
 	</body>
 </html>
