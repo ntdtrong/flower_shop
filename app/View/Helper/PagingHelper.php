@@ -11,7 +11,7 @@ class PagingHelper extends AppHelper {
 	public function render($paginatorObj, $url, $queryString = '') {
 		if ($paginatorObj['total_pages'] == 0) return '';
 		$frame = $this->frame($paginatorObj['current_page'], 1, $paginatorObj['total_pages']);
-		$html = '<div class="thire-pag-wrap"><ul class="pagination pagination--sm">';
+		$html = '<div style="text-align: center;" class="thire-pag-wrap"><ul class="pagination pagination-sm">';
 		if ($paginatorObj['prev_page'] == 0) {
 			$html .= '<li class="prev disabled"><a href="#">&laquo;</a></li>';
 		} else {

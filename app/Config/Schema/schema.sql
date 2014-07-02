@@ -1,7 +1,19 @@
-﻿
+﻿-- phpMyAdmin SQL Dump
+-- version 4.1.6
+-- http://www.phpmyadmin.net
 --
--- Database: `flower_shop_db`
+-- Host: 127.0.0.1
+-- Generation Time: Jul 02, 2014 at 07:26 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 --
+-- Database: `flowers`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -15,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `banners` (
   `image` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `banners`
@@ -39,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -90,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `full_name`, `address`, `phone`, `email`, `image`, `description`) VALUES
-(1, 'Flowersinlove', 'Lãng Hoa Tình Yêu', '176 CMT8 P.6 Q.3 TP.HCM', '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx', 'emai@email.com', '', '');
+(1, 'Flowersinlove', 'Lãng Hoa Tình Yêu', '16 Nguyễn Quý Cảnh, P. An Phú, Quận 2', '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx', 'info@flowersinlove.vn', '', '');
 
 -- --------------------------------------------------------
 
@@ -108,7 +120,17 @@ CREATE TABLE IF NOT EXISTS `flowers` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `flowers`
+--
+
+INSERT INTO `flowers` (`id`, `name`, `price`, `image`, `thumb`, `description`, `created`, `modified`) VALUES
+(1, 'Hoa hồng', 2000000, '1404138187.jpg', '1404138187.jpg', 'Hehe', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Hoa tulip', 200000, '1404138174.jpg', '1404138174.jpg', 'Dis', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Hoa cưới', 20000, '1404138209.jpg', '1404138209.jpg', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Hoa hong do', 200000, '1404138209.jpg', '1404138209.jpg', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -121,7 +143,17 @@ CREATE TABLE IF NOT EXISTS `flower_categories` (
   `flower_id` int(10) NOT NULL DEFAULT '0',
   `category_id` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `flower_categories`
+--
+
+INSERT INTO `flower_categories` (`id`, `flower_id`, `category_id`) VALUES
+(3, 2, 1),
+(4, 1, 1),
+(5, 3, 1),
+(6, 4, 1);
 
 -- --------------------------------------------------------
 

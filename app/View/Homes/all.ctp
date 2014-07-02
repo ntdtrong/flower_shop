@@ -26,30 +26,30 @@
 				foreach($data['flowers'] as $item){
 
 		?>
-		<li class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-6 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
-		<a href="#">
-			<?php echo $this->Html->image('thumb/' . $item['Flower']['thumb'], array('alt' => $item['Flower']['name'], 'title' => $item['Flower']['name']));?>
-		</a>
-		<div class="desc">
-			<div class="desc-content">
-				<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
-				<a href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
-					<!-- <i class="icon icon-cart"></i>
-					<i class="icon hover icon-cart"></i>
-					<i class="icon loading"></i> -->
-					<span class="amount">
-						<?php echo $this->Number->format($item['Flower']['price'],  array(
-						    'places' => 0,
-						    'before' => '$ ',
-						    'escape' => false,
-						    'decimals' => '',
-						    'thousands' => '.'
-						));?>
-					</span>
-				</a>
+		<li style="padding: 0 5px;" class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-6 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
+			<a href="#">
+				<?php echo $this->Html->image('thumb/' . $item['Flower']['thumb'], array('alt' => $item['Flower']['name'], 'title' => $item['Flower']['name']));?>
+			</a>
+			<div class="desc">
+				<div class="desc-content">
+					<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
+					<a href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
+						<!-- <i class="icon icon-cart"></i>
+						<i class="icon hover icon-cart"></i>
+						<i class="icon loading"></i> -->
+						<span class="amount">
+							<?php echo $this->Number->format($item['Flower']['price'],  array(
+							    'places' => 0,
+							    'before' => '$ ',
+							    'escape' => false,
+							    'decimals' => '',
+							    'thousands' => '.'
+							));?>
+						</span>
+					</a>
+				</div>
 			</div>
-		</div>
-	</li>
+		</li>
 		
 		<?php
 				}

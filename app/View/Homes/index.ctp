@@ -8,7 +8,7 @@
 	<ul class="products row">
 	<?php if ( !empty($featured) && count($featured) > 0 ): ?>
 	<?php foreach ($featured as $item): ?>
-		<li class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-6 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
+		<li style="padding: 0 5px;" class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-4 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
 			<a href="#">
 				<?php echo $this->Html->image('thumb/' . $item['Flower']['thumb'], array('alt' => $item['Flower']['name'], 'title' => $item['Flower']['name']));?>
 			</a>
@@ -36,7 +36,6 @@
 	<?php endif; ?>
 	</ul><!-- END PRODUCTS -->
 </div>
-
 <div id="wrap_promo">
 	<section id="promo" class="turquoise">
 		<div id="inner-promo">

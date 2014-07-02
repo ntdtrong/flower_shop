@@ -64,14 +64,14 @@
 										<h2>Talking about us</h2>
 										<h3>Trinkets and Trends</h3>
 										<p>
-											I am such a tea fanatic …
+											I am such a flower fanatic …
 										</p>
 										<p>
 											<a class="mbt-button" target="_blank" href="#">View article</a>
 										</p>
-										<h3>@jesssouthern Instagram</h3>
+										<h3>@jesssouthern Facebook</h3>
 										<p>
-											Absolutely in love with the tea from @mybeautytea …
+											Absolutely in love with the flowers from @flowersinlove …
 										</p>
 										<p>
 											<a class="mbt-button" target="_blank" href="#">view Picture</a>
@@ -80,11 +80,14 @@
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div id="contact-us">
-										<h2>Contact us</h2>
+										<h2>Liên hệ</h2>
+										<p><span class="glyphicon glyphicon-home"></span> &nbsp; <?php echo @$company['address'];?></p>
+										<p><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; <?php echo @$company['phone'];?></p>
 										<p>
-											For questions or comments please do not hesitate to contact us !
+											<span class="glyphicon glyphicon-envelope"></span> &nbsp; 
+											<a href="mailto:<?php echo @$company['email'];?>" class="mbt-button primary"><?php echo @$company['email'];?></a>
 										</p>
-										<a href="mailto:info@mybeautytea.com" class="mbt-button primary">info@mybeautytea.com</a>
+										
 									</div>
 								</div>
 							</div>
@@ -97,6 +100,9 @@
 								<div class="col-lg-12">
 									<div id="footer-nav">
 										<ul id="menu-footer" class="menu">
+										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-teas">
+												<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a>
+											</li>
 											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-teas">
 												<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a>
 											</li>

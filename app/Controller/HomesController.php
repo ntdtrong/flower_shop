@@ -83,6 +83,6 @@ class HomesController extends AppController {
 	}
 	
 	public function contact(){
-		
+		$this->layout = 'front';
 	}
 }

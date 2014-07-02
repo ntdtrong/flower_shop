@@ -1,5 +1,6 @@
 <nav id="mobile-nav" role="navigation">
 	<ul>
+		<li class="teas"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a></li>
 		<li class="teas"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a></li>
 		<li class="about"><a href="#">Giới thiệu</a></li>
 		<li class="press"><a href="#">Tin Tức</a></li>
@@ -56,7 +57,11 @@
 	<div id="mid-header" role="navigation">
 		<div class="container">
 			<div class="row">
-				<a id="mobile-logo" href="#" rel="home" class="icon icon-logo visible-xs" title="My Beauty Tea"></a>
+				<a id="mobile-logo" href="#" rel="home" class="visible-xs" title="Flowers in Love"
+					style='font-family: "PlutoRegular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+						font-size: 1.2em;'>
+					Flowers in Love
+				</a>
 				<a id="btn_open_nav" href="#header" class="mobile_toggle" title="Open main navigation">☰</a>
 				<a id="btn_close_nav" href="#body" class="mobile_toggle" title="Close main navigation">☰</a>
 				<nav id="main_nav" role="navigation">
