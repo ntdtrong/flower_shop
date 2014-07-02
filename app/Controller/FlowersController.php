@@ -5,6 +5,12 @@ App::uses('File', 'Utility');
 class FlowersController extends AppController {
 	public $uses = array('Category', 'Flowers', 'FlowerCategory');
 	public $helpers = array('Form', 'Html');
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->layout = 'admin';
+	}
+	
 	public function index() {
 		$this->redirect('add');
 	}

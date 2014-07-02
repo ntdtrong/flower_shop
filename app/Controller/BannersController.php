@@ -4,6 +4,12 @@ App::uses('ImageManipulator', 'Vendor/image-utils');
 App::uses('File', 'Utility');
 class BannersController extends AppController {
 	public $uses = array('Banner');
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->layout = 'admin';
+	}
+	
 	public function index($id = 0) {
 		$data = array();
 		$data['banners'] = $this->Banner->find('all');

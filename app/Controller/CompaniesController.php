@@ -1,6 +1,12 @@
 ﻿<?php
 App::uses('AppController', 'Controller');
 class CompaniesController extends AppController {
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->layout = 'admin';
+	}
+	
 	public function index() {
 		return $this->redirect(array( 'action' => 'edit'));
 	}

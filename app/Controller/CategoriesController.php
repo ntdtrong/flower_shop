@@ -6,6 +6,12 @@ App::uses('File', 'Utility');
 class CategoriesController extends AppController {
 	public $uses = array('Category');
 	public $helpers = array('Html');
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->layout = 'admin';
+	}
+	
 	public function index($id = 0) {
 		$data = array('categories' => array());
 		$data['categories'] = $this->Category->find('all');

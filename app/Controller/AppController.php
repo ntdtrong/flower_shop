@@ -110,7 +110,6 @@ class AppController extends Controller {
 		parent::beforeFilter();
 		
 		if($this->Auth->user('id')){
-			$this->layout = 'admin';
 			$user = $this->User->find('first', array('conditions' => array('User.id' => $this->Auth->user('id'))));
 			$this->set('current_user', $user['User']);
 		}

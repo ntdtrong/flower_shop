@@ -14,7 +14,7 @@
                     <ul class="sidebar-menu">
                         <li class="active">
                             <a href="<?php echo $this->Html->url(array('controller' => 'admin', 'action' => 'index')); ?>">
-                                <i class="fa fa-dashboard"></i> <span>Flowers</span>
+                                <i class="fa fa-dashboard"></i> <span>Giỏ Hoa</span>
                             </a>
                         </li>
                         <li>
@@ -24,7 +24,7 @@
                         </li>
                         <li>
                             <a href="<?php echo $this->Html->url(array('controller' => 'categories', 'action' => 'index')); ?>">
-                                <i class="fa fa-bar-chart-o"></i> <span>Categories</span>
+                                <i class="fa fa-bar-chart-o"></i> <span>Danh Mục</span>
                             </a>
                         </li>
                         
@@ -36,7 +36,7 @@
                         
                         <li>
                             <a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'index')); ?>">
-                                <i class="fa fa-user"></i> <span>Users</span>
+                                <i class="fa fa-user"></i> <span>Tài Khoản</span>
                             </a>
                         </li>
                         
