@@ -1,0 +1,73 @@
+.slide-image {
+  width: 100%;
+}
+
+.caption {
+  height: 120px;
+  overflow: hidden;
+}
+
+.caption h4 {
+  white-space: nowrap;
+}
+
+.caption-header {
+	color: #428BCA;
+	font-size:125%;
+}
+
+.caption-money {
+	color: #d17581;
+	font-size:120%;
+}
+
+.thumbnail img {
+  width: 100%;
+}
+
+.ratings {
+  color: #d17581;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.thumbnail .caption-full {
+  padding: 9px;
+  color: #333;
+}
+
+.flower-action {
+ 	text-align: right;
+}
+
+.image-preview {
+	width: 400px;
+  	height: 150px;
+}
+
+.list-group-item-custom{
+	padding: 5px 15px;
+	color: #880000;
+}
+.panel-heading-custom {
+	color: #31708f;
+	font-size:125%;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+
+.page-title { 
+	font-size: 1.5em; 
+}
+
+.page-title-sub { 
+	font-size: 1em; 
+}
+
+.right-side {
+	padding-top: 0px !important; 
+}
