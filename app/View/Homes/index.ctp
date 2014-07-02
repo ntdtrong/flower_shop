@@ -9,13 +9,13 @@
 	<?php if ( !empty($featured) && count($featured) > 0 ): ?>
 	<?php foreach ($featured as $item): ?>
 		<li style="padding: 0 5px;" class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-4 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
-			<a href="#">
+			<a href="<?php echo $this->Html->url(array("controller" => "homes", "action" => "detail", $item['Flower']['id']));?>">
 				<?php echo $this->Html->image('thumb/' . $item['Flower']['thumb'], array('alt' => $item['Flower']['name'], 'title' => $item['Flower']['name']));?>
 			</a>
 			<div class="desc">
 				<div class="desc-content">
 					<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
-					<a href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
+					<a href="<?php echo $this->Html->url(array("controller" => "homes", "action" => "detail", $item['Flower']['id']));?>" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
 						<!-- <i class="icon icon-cart"></i>
 						<i class="icon hover icon-cart"></i>
 						<i class="icon loading"></i> -->
