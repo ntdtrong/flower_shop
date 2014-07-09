@@ -1,4 +1,4 @@
-﻿<div class="row">
+<div class="row">
   <div class="col-md-8 col-md-push-2">
   	<?php echo $this->Session->flash(); ?>
   	<h4 class="panel-heading">Tạo Danh Mục</h4>

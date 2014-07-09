@@ -1,4 +1,4 @@
-﻿<div class="container">
+<div class="container">
 	<div class="row">
 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-push-2">
 			<li class="product type-product status-publish has-post-thumbnail first featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">

@@ -1,6 +1,6 @@
-﻿<div class="row">
-	<?php echo $this->Session->flash(); ?>
+<div class="row">
 	<div class="col-md-8 col-md-push-2">
+		<?php echo $this->Session->flash(); ?>
 		<h4 class="panel-heading">Thông Tin Cửa Hàng</h4>
 		<?php echo $this->Form->create('Company', array('action' => 'edit/'.@$data['company']['id'], 'type' => 'post', 'enctype' => 'multipart/form-data')); ?>
 			<input name="id" type="hidden" class="form-control"

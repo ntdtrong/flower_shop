@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 App::uses('AppController', 'Controller');
 App::uses('ImageManipulator', 'Vendor/image-utils');
 App::uses('File', 'Utility');
