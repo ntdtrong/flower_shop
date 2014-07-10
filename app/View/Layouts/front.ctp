@@ -44,7 +44,7 @@
 				<?php echo $this->fetch('content'); ?>
 
 				<footer id="footer" class="clearfix">
-					<div id="top-footer">
+					<!-- <div id="top-footer">
 						<div class="container">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 instagram-block">
@@ -99,7 +99,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					
 					<div id="bottom-footer" class="clearfix">
 						<div class="container">
@@ -107,7 +107,7 @@
 								<div class="col-lg-12">
 									<div id="footer-nav">
 										<ul id="menu-footer" class="menu">
-										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-teas">
+											<!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-teas">
 												<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a>
 											</li>
 											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-teas">
@@ -118,7 +118,7 @@
 											</li>
 											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-contact">
 												<a href="#">Tin Tức</a>
-											</li>
+											</li> -->
 											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-faq">
 												<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a>
 											</li>
