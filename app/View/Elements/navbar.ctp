@@ -1,9 +1,9 @@
 <nav id="mobile-nav" role="navigation">
 	<ul>
-		<li class="teas"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a></li>
+		<!-- <li class="teas"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a></li>
 		<li class="teas"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a></li>
 		<li class="about"><a href="#">Giới thiệu</a></li>
-		<li class="press"><a href="#">Tin Tức</a></li>
+		<li class="press"><a href="#">Tin Tức</a></li> -->
 		<li class="contact"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a></li>
 	</ul>
 </nav>
@@ -38,18 +38,18 @@
 				</div>
 				<div id="free-shipping" class="col-lg-4 col-md-4">
 					<div class="textwidget">
-						<a href="#" id="btn_free_shipping"><span> Giao hàng miễn phí nội thành </span></a>
+						<a href="#" id="btn_free_shipping"><span> Website hiện đang được nâng cấp... </span></a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-					<ul class="meta-nav cart-menu" role="menu">
+					<!-- <ul class="meta-nav cart-menu" role="menu">
 						<li class="cart">
 							<a class="cart-contents" href="#"><span>0 items</span></a>
 						</li>
 						<li class="montant">
 							<span class="amount">$0.00</span>
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
 		</div>
@@ -70,21 +70,21 @@
 				</a>
 				<nav id="main_nav" role="navigation">
 					<ul id="menu-navigation-principale" class="menu">
-						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-name-shop skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+						<!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-name-shop skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
 							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a>
 						</li>
 						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-about skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
 							<a href="#">Giới thiệu</a>
-						</li>
+						</li> -->
 						<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item menu-name-home skrollable skrollable-after" data-0="height:155px;" data-300="height:60px;" data-anchor-target="#mid-header" style="height: 60px;">
-							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a>
+							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Home</a>
 						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-faq skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+						<!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-faq skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
 							<a href="#">Tin Tức</a>
 						</li>
 						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-contact skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
 							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a>
-						</li>
+						</li> -->
 					</ul>
 				</nav>
 			</div>

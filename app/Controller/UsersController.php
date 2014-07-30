@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 App::import('Lib', 'Utils');
 App::uses('AppController', 'Controller');
 class UsersController extends AppController {

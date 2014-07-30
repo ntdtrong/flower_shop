@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 App::uses('AppController', 'Controller');
 App::uses('ErrorObject', 'Vendor/error-object');
 App::uses('ImageManipulator', 'Vendor/image-utils');
@@ -94,12 +94,6 @@ class CategoriesController extends AppController {
 	public function delete($id){
 		$cate = $this->Category->find('first', array('conditions' => array('id' => $id)));
 		if($cate){
-			if($cate['Category']['image']){
-				$fileImage = new File(IMAGE_UPLOAD_DIR.IMAGE_BANNER_DIR.$cate['Category']['image'], true, 0777);
-				if($fileImage->exists())
-					$fileImage->delete();
-			}
-			
 			$this->Category->delete($id);
 			$this->Session->setFlash(__('Xóa danh mục thành công.'), 'flash_success');
 		}

@@ -894,7 +894,7 @@ body {
     font-family: "PlutoRegular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
-    color: #333;
+    color: #601f6a;
     background-color: #fff;
 }
 
@@ -7694,7 +7694,7 @@ em {
 }
 
 #top-header {
-    background: #f2f2f2;
+    background: #a154a0;
     position: fixed;
     top: 0;
     z-index: 15;
@@ -7761,7 +7761,7 @@ a {
 }
 
 .social-icons li a,.social-icons li a:link,.social-icons li a:visited,.social-icons li a:active {
-    color: #acabab;
+    color: #FFF;
     display: inline-block;
     font-size: 24px;
     line-height: 36px;
@@ -7777,7 +7777,7 @@ span {
 }
 
 .social-icons li a:hover,.social-icons li a:focus {
-    color: #2e2e2e;
+    color: #DDD;
 }
 
 .meta-nav {
@@ -7834,7 +7834,7 @@ a {
 }
 
 .meta-nav li a,.meta-nav li a:link,.meta-nav li a:visited,.meta-nav li a:active {
-    color: #acabab;
+    color: #DDD;
     display: inline-block;
     line-height: 1em;
 }
@@ -7850,7 +7850,7 @@ span {
 
 .meta-nav li a:hover,.meta-nav li a:focus,.meta-nav li.active
 a {
-    color: #2e2e2e;
+    color: #FFF;
 }
 
 .meta-nav li:last-child a span,.meta-nav li:last-child a:link span,.meta-nav li:last-child a:visited span,.meta-nav li:last-child a:active
@@ -7871,7 +7871,7 @@ li.account {
 }
 
 #mid-header {
-    background: #fff url(https://mybeautytea.com/wp-content/themes/mybeautytea/img/fioriture_flat.jpg) top center repeat-x;
+    background: #fff; /*url(https://mybeautytea.com/wp-content/themes/mybeautytea/img/fioriture_flat.jpg) top center repeat-x;*/
     background-size: 9px 3px;
     -webkit-backface-visibility: hidden;
     border-bottom: 1px solid #f2f2f2;
@@ -7951,7 +7951,7 @@ span {
 }
 
 #free-shipping a,#free-shipping a:link,#free-shipping a:visited,#free-shipping a:active {
-    color: #acabab;
+    color: #FFF;
     display: inline-block;
     line-height: 36px;
 }
@@ -8171,7 +8171,7 @@ button,.mbt-button,input.button,.woocommerce #main a.button,.woocommerce #main b
     border-radius: 6px;
     padding: 0.4em 0.9em 0.2em 0.9em;
     background: #d1c0a4;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -8611,7 +8611,7 @@ p {
 }
 
 #top-footer {
-    background: #e6e6e6;
+    background: #efcff3;
 }
 
 #top-footer
@@ -8778,7 +8778,7 @@ p {
 }
 
 #bottom-footer {
-    background: #d1c0a4;
+    background: #fbe8fd;
 }
 
 #footer-nav {

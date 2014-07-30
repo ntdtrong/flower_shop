@@ -44,24 +44,26 @@ class HomesController extends AppController {
 			))
 		);
 		
+		$options = array();
 		if($category === 0){
 			$categoryName = 'Tất cả';
 			$conditions = array();
+			$joins = array();
 		} else {
 			$categoryName = $data['categories'][$category];
 			$conditions = array('FlowerCategory.category_id' => $category);
+			$joins = array(
+					array(
+							'table' => 'flower_categories',
+							'alias' => 'FlowerCategory',
+							'type' => 'inner',
+							'conditions' => array('Flower.id = FlowerCategory.flower_id')
+					)
+			);
 		}
+		
 		$data['category'] = $category;
 		$data['categoryName'] = $categoryName;
-		
-		$joins = array(
-				array(
-						'table' => 'flower_categories',
-						'alias' => 'FlowerCategory',
-						'type' => 'inner',
-						'conditions' => array('Flower.id = FlowerCategory.flower_id')
-				)
-			);
 		
 		$total = $this->Flower->find('count', array(
 				'conditions' => $conditions,

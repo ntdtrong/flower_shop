@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 App::uses('AppController', 'Controller');
 class BlogsController extends AppController {
 	var $uses = array('Blog', 'Category');
