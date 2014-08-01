@@ -9,7 +9,7 @@
 		    <input name="name" type="text" class="form-control" id="txtName" placeholder="Nhập tên" value="<?php echo @$data['flower']['name'];?>">
 		</div>
 		 
-  		<div class="form-group">
+  		<div class="form-group" style="display: none;">
 		    <label for="txtPrice">Giá tiền</label>
 		    <input name="price" type="text" class="form-control" id="txtPrice" placeholder="Nhập giá" value="<?php echo @$data['flower']['price'];?>">
 		</div>

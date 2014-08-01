@@ -113,7 +113,7 @@ class FlowersController extends AppController {
 				unset($data['flower']['image']);
 				unset($data['flower']['thumb']);
 			}
-			
+			$data['flower']['price'] = 0;
 			if(!is_numeric($data['flower']['price'])){
 				$data['error'] = 'Bạn nhập giá tiền không hợp lệ.';
 			}
