@@ -4,7 +4,7 @@ class HomesController extends AppController {
 	public $uses = array('Category', 'Flower', 'Banner');
 	public $helpers = array('Paging');
 	
-	const PAGE_SIZE = 10;
+	const PAGE_SIZE = 100;
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
