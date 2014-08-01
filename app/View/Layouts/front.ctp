@@ -50,23 +50,23 @@
 								<div class="col-lg-6 col-md-6 instagram-block">
 									<div class="top"></div>
 									<h2 class="title-instagram">
-										<i class="icon icon-instagram"></i>
-										<span class="inner">Instagram <span class="rochester">Beauties</span></span>
+										<i class="icon icon-facebook"></i>
+										<span class="inner">Facebook <span class="rochester">Hoa Tình Yêu</span></span>
 									</h2>
 									<div id="instagram-container">
 										<a href="#" target="_blank" class="instagram-image">
-											<?php echo $this->Html->image('thumb/1404138174.jpg', array());?>
+											<?php echo $this->Html->image('thumb/1406879228.jpg', array());?>
 										</a>
 										<a href="#" target="_blank" class="instagram-image">
-											<?php echo $this->Html->image('thumb/1404138187.jpg', array());?>
+											<?php echo $this->Html->image('thumb/1406880249.jpg', array());?>
 										</a>
 										<a href="#" target="_blank" class="instagram-image">
-											<?php echo $this->Html->image('thumb/1404138209.jpg', array());?>
+											<?php echo $this->Html->image('thumb/1406878461.jpg', array());?>
 										</a>
 									</div>
-									<a href="#" target="_blank" class="mbt-button primary">See more</a>
+									<a href="https://www.facebook.com/profile.php?id=100007818017096&fref=ts" target="_blank" class="mbt-button primary">Xem thêm</a>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div id="talking-about-us">
 										<h2>Talking about us</h2>
 										<h3>Trinkets and Trends</h3>
@@ -84,8 +84,8 @@
 											<a class="mbt-button" target="_blank" href="#">view Picture</a>
 										</p>
 									</div>
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								</div>  -->
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div id="contact-us">
 										<h2>Liên hệ</h2>
 										<p><span class="glyphicon glyphicon-home"></span> &nbsp; <?php echo @$company['address'];?></p>

@@ -23,7 +23,7 @@
 							<a target="_blank" href="#"><span>Instagram</span></a>
 						</li>
 						<li class="facebook menu-item menu-item-type-custom menu-item-object-custom menu-name-facebook">
-							<a target="_blank" href="#"><span>Facebook</span></a>
+							<a target="_blank" href="https://www.facebook.com/profile.php?id=100007818017096&fref=ts"><span>Facebook</span></a>
 						</li>
 					</ul>
 					<ul class="meta-nav langmenu">

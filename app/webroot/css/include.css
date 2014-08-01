@@ -8462,11 +8462,11 @@ h3 {
 }
 
 .product .tea-type {
-    font-family: "rochesterregular","Big Caslon","Book Antiqua","Palatino Linotype",Georgia,serif;
+    font-family: /*"rochesterregular","Big Caslon",*/"Book Antiqua","Palatino Linotype",Georgia,serif;
     display: block;
     margin: 0.2em 0;
     font-size: 1.2em;
-    color: #000;
+    color: #601f6a;
 }
 
 @media screen and (max-width: 1199px) {
