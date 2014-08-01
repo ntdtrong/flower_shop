@@ -9,7 +9,7 @@
 				<input name="id" type="hidden" class="form-control"	value="<?php echo @$data['blog']['id'];?>">
 				<div class="form-group">
 						<label for="title">Tiêu đề</label> 
-						<input name="title" type="text" class="form-control" id="title" placeholder="Nháº­p tiÃªu Ä‘á»�"
+						<input name="title" type="text" class="form-control" id="title" placeholder="Nhập tiêu đề"
 								value="<?php echo @$data['blog']['title'];?>">
 				</div>
 				

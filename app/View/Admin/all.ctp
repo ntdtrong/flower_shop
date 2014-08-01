@@ -41,7 +41,7 @@
 						<p class="caption-header">
 							<strong><?php echo $item['Flower']['name'];?> </strong>
 						</p>
-						<p class="caption-money">
+						<p style="display: none;" class="caption-money">
 							<strong><?php echo number_format(floatval($item['Flower']['price'])); ?>
 								VND</strong>
 						</p>
@@ -144,7 +144,7 @@
         });
 */
         function delete_flower(url) {
-  		  	var answer = confirm("CÃ³ cháº¯c báº¡n muá»‘n xÃ³a giá»� hoa nÃ y?");
+  		  	var answer = confirm("Có chắc bạn muốn xóa giỏ hoa này?");
 	  	    if (answer){
 	  	    	window.location.replace(url);
 	  	    }

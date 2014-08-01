@@ -41,7 +41,7 @@
 						<a href="#" id="btn_free_shipping"><span> Website hiện đang được nâng cấp... </span></a>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+				<div style="display: none;" class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
 					<ul class="meta-nav cart-menu" role="menu">
 						<li class="cart">
 							<a class="cart-contents" href="#"><span>0 items</span></a>

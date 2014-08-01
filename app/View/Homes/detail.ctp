@@ -11,7 +11,7 @@
 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-push-2">
 			<li class="product">
 				<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
-				<a href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
+				<a style="display: none;" href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
 					<!-- <i class="icon icon-cart"></i>
 					<i class="icon hover icon-cart"></i>
 					<i class="icon loading"></i> -->
