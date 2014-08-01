@@ -58,13 +58,13 @@
 											<?php echo $this->Html->image('thumb/1406879228.jpg', array());?>
 										</a>
 										<a href="#" target="_blank" class="instagram-image">
-											<?php echo $this->Html->image('thumb/1404202046.jpg', array());?>
+											<?php echo $this->Html->image('thumb/1406880249.jpg', array());?>
 										</a>
 										<a href="#" target="_blank" class="instagram-image">
 											<?php echo $this->Html->image('thumb/1406878461.jpg', array());?>
 										</a>
 									</div>
-									<a href="https://www.facebook.com/profile.php?id=100007818017096&fref=ts" target="_blank" class="mbt-button primary">See more</a>
+									<a href="https://www.facebook.com/profile.php?id=100007818017096&fref=ts" target="_blank" class="mbt-button primary">Xem thêm</a>
 								</div>
 								<!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div id="talking-about-us">
