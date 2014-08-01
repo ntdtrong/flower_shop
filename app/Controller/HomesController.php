@@ -44,8 +44,7 @@ class HomesController extends AppController {
 			))
 		);
 		
-		$options = array();
-		if($category === 0){
+		if($category == 0){
 			$categoryName = 'Tất cả';
 			$conditions = array();
 			$joins = array();

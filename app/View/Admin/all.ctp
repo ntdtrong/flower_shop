@@ -73,7 +73,7 @@
 	</div>
 	<div class="col-md-12">
 		<div class="pagination">
-			<?php echo $this->Paging->render( $pagingObj, $this->Html->url(array("controller" => "homes", "action" => "all")), '/'.$data['category']); ?>
+			<?php echo $this->Paging->render( $pagingObj, $this->Html->url(array("controller" => "admin", "action" => "all")), '/'.$data['category']); ?>
 		</div>
 	</div>
 	 

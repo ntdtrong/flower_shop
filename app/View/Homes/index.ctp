@@ -15,7 +15,7 @@
 			<div class="desc">
 				<div class="desc-content">
 					<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
-					<a href="<?php echo $this->Html->url(array("controller" => "homes", "action" => "detail", $item['Flower']['id']));?>" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
+					<a style="display: none;" href="<?php echo $this->Html->url(array("controller" => "homes", "action" => "detail", $item['Flower']['id']));?>" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
 						<!-- <i class="icon icon-cart"></i>
 						<i class="icon hover icon-cart"></i>
 						<i class="icon loading"></i> -->

@@ -19,36 +19,50 @@ class AdminController extends AppController {
 			'categories' => array(),
 			'flowers' => array()
 		);
-		$data['categories'] = $this->Category->find('all',
+		$categories = array();
+		$categories[] = array('Category' => array('id' => 0, 'name' => 'Tất cả'));
+		$categoriesInDB = $this->Category->find('all',
 					array( 'conditions' => array(
-							'Category.type' => CATEGORY_TYPE_FLOWER,						
-							'Category.is_active' => ACTIVE
-						))
+								'Category.type' => CATEGORY_TYPE_FLOWER,						
+								'Category.is_active' => ACTIVE
+								),
+							'fields' => array('Category.id', 'Category.name')
+					)
 				);
-		if($category === 0 && !empty($data['categories'])){
-			$category = $data['categories'][0]['Category']['id'];
-		}
-		$data['category'] = $category;
-		foreach ($data['categories'] as $cate){
-			if($cate['Category']['id'] == $category){
-				$data['category_name'] = $cate['Category']['name'];
+		$categories = array_merge($categories, $categoriesInDB);
+		$categoryName = "Tất cả";
+		if(!empty($categories)){
+			foreach ($categories as $cate){
+				if($cate['Category']['id'] == $category){
+					$categoryName = $cate['Category']['name'];
+				}
 			}
 		}
+		$data['categories'] = $categories;
+		$data['category'] = $category;
+		$data['category_name'] = $categoryName;
 		
-		$data['banners'] = $this->Banner->find('all', array(
-				'conditions' => array('is_active' => ACTIVE)
-				));
+// 		$data['banners'] = $this->Banner->find('all', array(
+// 				'conditions' => array('is_active' => ACTIVE)
+// 				));
 // 		pr($data['banners']);
 		
-		$joins = array(
-				array(
-						'table' => 'flower_categories',
-						'alias' => 'FlowerCategory',
-						'type' => 'inner',
-						'conditions' => array('Flower.id = FlowerCategory.flower_id')
-				)
+		if($category == 0){
+			$joins = array();
+			$conditions = array();
+		}
+		else{
+			$joins = array(
+					array(
+							'table' => 'flower_categories',
+							'alias' => 'FlowerCategory',
+							'type' => 'inner',
+							'conditions' => array('Flower.id = FlowerCategory.flower_id')
+					)
 			);
-		$conditions = array('FlowerCategory.category_id' => $category);
+			$conditions = array('FlowerCategory.category_id' => $category);
+		}
+		
 		
 		$total = $this->Flower->find('count', array(
 				'conditions' => $conditions,
