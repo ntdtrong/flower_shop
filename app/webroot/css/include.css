@@ -7579,7 +7579,8 @@ body,html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
-    font-family: "PlutoRegular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    /*font-family: "PlutoRegular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;*/
+    font-family: Verdana,sans-serif;
 }
 
 a,a:link,a:visited,a:active {
@@ -7694,7 +7695,7 @@ em {
 }
 
 #top-header {
-    background: #a154a0;
+    background: #8f478e;
     position: fixed;
     top: 0;
     z-index: 15;
