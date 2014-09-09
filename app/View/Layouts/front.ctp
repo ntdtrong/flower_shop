@@ -86,10 +86,11 @@
 									</div>
 								</div>  -->
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-									<div id="contact-us">
+									<div id="contact-us" style="color: #FAFAFA;">
 										<h2>Liên hệ</h2>
 										<p><span class="glyphicon glyphicon-home"></span> &nbsp; <?php echo @$company['address'];?></p>
-										<p><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; <?php echo @$company['phone'];?></p>
+										<p><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; <?php echo @substr($company['phone'], 0, 20);?></p>
+										<p><span class="glyphicon glyphicon-phone"></span> &nbsp; <?php echo @substr($company['phone'], 22, @(strlen($company['phone']) - 22));?></p>
 										<p>
 											<span class="glyphicon glyphicon-envelope"></span> &nbsp; 
 											<a href="mailto:<?php echo @$company['email'];?>" class="mbt-button primary"><?php echo @$company['email'];?></a>

@@ -38,7 +38,7 @@
 				</div>
 				<div id="free-shipping" class="col-lg-4 col-md-4">
 					<div class="textwidget">
-						<a href="#" id="btn_free_shipping"><span> Website hiện đang được nâng cấp... </span></a>
+						<a href="#" id="btn_free_shipping"><span> </span></a>
 					</div>
 				</div>
 				<div style="display: none;" class="col-lg-4 col-md-4 col-sm-6 col-xs-6">

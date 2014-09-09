@@ -23,7 +23,7 @@
 				</script></a></p>
 			<p>&nbsp;</p>
 			<p>Bạn đang tìm kiếm sự cơ hội hợp tác với Flowersinlove?</p>
-			<p><a href="mailto:nguyet.vt@flowersinlove.vn" class="mbt-button">nguyet.vt@flowersinlove.vn<script type="text/javascript">
+			<p><a href="mailto:<?php echo @$company['email'];?>" class="mbt-button"><?php echo @$company['email'];?><script type="text/javascript">
 			/* &lt;![CDATA[ */
 			(function(){try{var s,a,i,j,r,c,l,b=document.getElementsByTagName("script");l=b[b.length-1].previousSibling;a=l.getAttribute('data-cfemail');if(a){s='';r=parseInt(a.substr(0,2),16);for(j=2;a.length-j;j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}s=document.createTextNode(s);l.parentNode.replaceChild(s,l);}}catch(e){}})();
 			/* ]]&gt; */
