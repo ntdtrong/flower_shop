@@ -8,7 +8,7 @@ class HomesController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow(array('index', 'contact', 'all', 'shop', 'detail'));
+		$this->Auth->allow(array('index', 'contact', 'all', 'shop', 'detail', 'about'));
 	}
 	public function index(){
 		$this->set('banner1', $this->Banner->findById(1));
@@ -90,5 +90,9 @@ class HomesController extends AppController {
 	public function detail($id){
 		$this->layout = 'front';
 		$this->set('item', $this->Flower->findById($id));
+	}
+	
+	public function about() {
+		$this->layout = 'front';
 	}
 }

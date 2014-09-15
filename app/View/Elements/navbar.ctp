@@ -2,7 +2,7 @@
 	<ul>
 	 	<li class="teas"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a></li>
 		<li class="teas"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a></li>
-		<li class="about"><a href="#">Giới thiệu</a></li>
+		<li class="about"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'about')); ?>">Giới thiệu</a></li>
 		<li class="press"><a href="#">Tin Tức</a></li>
 		<li class="contact"><a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a></li>
 	</ul>
@@ -12,11 +12,11 @@
 	<div id="top-header">
 		<div class="container">
 			<div class="row">
-				<div id="free-shipping-pink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<!-- <div id="free-shipping-pink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="textwidget">
 						<a href="#" id="btn_free_shipping"><span>Giao hàng miễn phí nội thành</span></a>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
 					<ul id="menu-reseaux-sociaux" class="social-icons">
 						<li class="instagram menu-item menu-item-type-custom menu-item-object-custom menu-name-instagram">
@@ -70,19 +70,19 @@
 				</a>
 				<nav id="main_nav" role="navigation">
 					<ul id="menu-navigation-principale" class="menu">
-						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-name-shop skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-name-shop skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 20px;">
 							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a>
 						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-about skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
-							<a href="#">Giới thiệu</a>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-about skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 20px;">
+							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'about')); ?>">Giới thiệu</a>
 						</li>
 						<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item menu-name-home skrollable skrollable-after" data-0="height:155px;" data-300="height:60px;" data-anchor-target="#mid-header" style="height: 60px;">
 							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a>
 						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-faq skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-faq skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 20px;">
 							<a href="#">Tin Tức</a>
 						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-contact skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 33px;">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-contact skrollable skrollable-after" data-0="margin-top:85px;" data-300="margin-top:33px;" data-anchor-target="#mid-header" style="margin-top: 20px;">
 							<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a>
 						</li>
 					</ul>

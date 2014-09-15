@@ -7679,18 +7679,18 @@ em {
 }
 
 #header {
-    padding-top: 194px;
+    padding-top: 100px;
 }
 
 @media screen and (max-width: 991px) {
     #header {
-        padding-top: 194px;
+        padding-top: 100px;
     }
 }
 
 @media screen and (max-width: 767px) {
     #header {
-        padding-top: 160px;
+        padding-top: 105px;
     }
 }
 
@@ -8112,7 +8112,7 @@ a.mobile_toggle {
     line-height: 1em;
     padding: 0.09em 0.2em 0.1em;
     position: absolute;
-    top: 24px;
+    top: 5px;
     right: 25px;
     vertical-align: middle;
 }
@@ -10446,7 +10446,7 @@ h3 {
     font-size: 54px;
     float: left;
     margin-left: 25px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 #mobile-nav {
@@ -10469,8 +10469,8 @@ h3 {
 
     #mid-header {
         overflow: visible;
-        height: 85px;
-        top: 72px;
+        height: 55px;
+        top: 40px;
     }
 
     #btn_open_nav {

@@ -51,14 +51,14 @@
 									<div class="top"></div>
 									<h2 class="title-instagram">
 										<i class="icon icon-facebook"></i>
-										<span class="inner">Facebook <span class="rochester">Hoa Tình Yêu</span></span>
+										<span class="inner">Facebook Hoa Tình Yêu</span>
 									</h2>
 									<div id="instagram-container">
 										<a href="#" target="_blank" class="instagram-image">
 											<?php echo $this->Html->image('thumb/1406879228.jpg', array());?>
 										</a>
 										<a href="#" target="_blank" class="instagram-image">
-											<?php echo $this->Html->image('thumb/1406880249.jpg', array());?>
+											<?php echo $this->Html->image('thumb/1410179733.jpg', array());?>
 										</a>
 										<a href="#" target="_blank" class="instagram-image">
 											<?php echo $this->Html->image('thumb/1406878461.jpg', array());?>
@@ -156,7 +156,7 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<?php
 		echo $this->Html->script('bootstrap.min.js');
-		echo $this->Html->script('vendor/skrollr.min.js');
+		//echo $this->Html->script('vendor/skrollr.min.js');
 		echo $this->Html->script('include.js');
 		echo $this->Html->script('app.js');
 		
