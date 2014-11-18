@@ -1,5 +1,5 @@
 window.onload = function() {
-	skrollr.init({
+	/*skrollr.init({
 		forceHeight : false
-	});
+	});*/
 }

@@ -7171,7 +7171,11 @@ print {
 }
 
 @font-face {
-    font-family:'mbt_icons';src:url('https://mybeautytea.com/wp-content/themes/mybeautytea/fonts/mbt_icons.eot?jqylew');src:url('https://mybeautytea.com/wp-content/themes/mybeautytea/fonts/mbt_icons.eot?#iefixjqylew') format('embedded-opentype'), url('https://mybeautytea.com/wp-content/themes/mybeautytea/fonts/mbt_icons.woff?jqylew') format('woff'), url('https://mybeautytea.com/wp-content/themes/mybeautytea/fonts/mbt_icons.ttf?jqylew') format('truetype'), url('https://mybeautytea.com/wp-content/themes/mybeautytea/fonts/mbt_icons.svg?jqylew#mbt_icons') format('svg');font-weight:normal;font-style:normal;
+    font-family:'mbt_icons';
+    src:url('../fonts/mbt_icons.eot?jqylew');
+    src:url('../fonts/mbt_icons.eot?#iefixjqylew') format('embedded-opentype'), url('../fonts/mbt_icons.woff?jqylew') format('woff'), url('../fonts/mbt_icons.ttf?jqylew') format('truetype'), url('../fonts/mbt_icons.svg?jqylew#mbt_icons') format('svg');
+    font-weight:normal;
+    font-style:normal;
 }
 
 .icon {
@@ -7283,11 +7287,11 @@ print {
 }
 
 .icon-facebook:before {
-    content: "\e611";
+    content: "\e612";
 }
 
 .icon-instagram:before {
-    content: "\e612";
+    content: "\e613";
 }
 
 .tea-icon {
@@ -7741,7 +7745,7 @@ a {
 }
 
 .social-icons li.instagram a:before {
-    content: "\e612";
+    content: "\e613";
 }
 
 .social-icons li.facebook
@@ -7758,7 +7762,7 @@ a {
 }
 
 .social-icons li.facebook a:before {
-    content: "\e611";
+    content: "\e612";
 }
 
 .social-icons li a,.social-icons li a:link,.social-icons li a:visited,.social-icons li a:active {
@@ -8517,15 +8521,15 @@ picture {
 
 #inner-promo picture
 img {
-    margin-top: -36px;
-    margin-bottom: -36px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     width: 100%;
     height: auto;
     position: relative;
     z-index: -1;
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
+    -webkit-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    transform: scale(1.0);
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -8636,7 +8640,7 @@ h2 {
 
 #top-footer h2.title-instagram
 i.icon {
-    margin-top: 11px;
+    margin-top: 2px;
     float: left;
     color: #d1c0a4;
 }
@@ -10442,7 +10446,7 @@ h3 {
 }
 
 #mobile-logo {
-    color: #f98798;
+    color: #8f478e;
     font-size: 54px;
     float: left;
     margin-left: 25px;

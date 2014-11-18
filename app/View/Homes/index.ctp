@@ -48,13 +48,10 @@
 					<?php echo $this->Html->image('banner/' . $banner2['Banner']['image'], array(
 						'data-anchor-target' => '#wrap_promo',
 						'class' => "skrollable skrollable-before",
-						'style' => "-webkit-transform: scale(1.2) translate(0px, 36px);",
-						'data-bottom-top' => "transform:scale(1.2) translate(0px, 36px);",
-						'data-top-bottom' => "transform:scale(1.2) translate(0px, -36px);",
 						'alt' => 'Buy flowers today, get back 5%',
 						'title' => 'Buy flowers today, get back 5%'));?>
 				</picture>
-				<h2>Buy our new tea - Nuts for coco - today!</h2>
+				<h2>Buy flowers today, get back 5%!</h2>
 			</a>
 		</div>
 	</section>

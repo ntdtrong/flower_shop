@@ -32,8 +32,6 @@
 		<!-- All JavaScript at the bottom, except for Modernizr / Respond.
        	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
        	For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
-		
-	
 	</head>
 	<body>
 		<?php echo $this->element('navbar'); ?>
@@ -85,12 +83,12 @@
 										</p>
 									</div>
 								</div>  -->
-								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div id="contact-us" style="color: #FAFAFA;">
 										<h2>Liên hệ</h2>
 										<p><span class="glyphicon glyphicon-home"></span> &nbsp; <?php echo @$company['address'];?></p>
-										<p><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; <?php echo @substr($company['phone'], 0, 20);?></p>
-										<p><span class="glyphicon glyphicon-phone"></span> &nbsp; <?php echo @substr($company['phone'], 22, @(strlen($company['phone']) - 22));?></p>
+										<p><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; <?php echo @substr($company['phone'], 0, 18);?></p>
+										<p><span class="glyphicon glyphicon-phone"></span> &nbsp; <?php echo @substr($company['phone'], 20, @(strlen($company['phone']) - 20));?></p>
 										<p>
 											<span class="glyphicon glyphicon-envelope"></span> &nbsp; 
 											<a href="mailto:<?php echo @$company['email'];?>" class="mbt-button primary"><?php echo @$company['email'];?></a>
@@ -161,5 +159,14 @@
 		echo $this->Html->script('app.js');
 		
 		?>
+		<!-- Google Tag Manager -->
+		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5W84WJ"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-5W84WJ');</script>
+		<!-- End Google Tag Manager -->
 	</body>
 </html>
