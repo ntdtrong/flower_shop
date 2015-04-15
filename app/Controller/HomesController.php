@@ -37,48 +37,41 @@ class HomesController extends AppController {
 			'categories' => array(),
 			'flowers' => array()
 		);
-		$data['categories'] = $this->Category->find('list',
-			array( 'conditions' => array(
-				'Category.type' => CATEGORY_TYPE_FLOWER,						
-				'Category.is_active' => ACTIVE
-			))
-		);
 		
 		if($category == 0){
-			$categoryName = 'Tất cả';
 			$conditions = array();
 			$joins = array();
 		} else {
 			$categoryName = $data['categories'][$category];
 			$conditions = array('FlowerCategory.category_id' => $category);
 			$joins = array(
-					array(
-							'table' => 'flower_categories',
-							'alias' => 'FlowerCategory',
-							'type' => 'inner',
-							'conditions' => array('Flower.id = FlowerCategory.flower_id')
-					)
+				array(
+					'table' => 'flower_categories',
+					'alias' => 'FlowerCategory',
+					'type' => 'inner',
+					'conditions' => array('Flower.id = FlowerCategory.flower_id')
+				)
 			);
 		}
 		
 		$data['category'] = $category;
-		$data['categoryName'] = $categoryName;
 		
 		$total = $this->Flower->find('count', array(
-				'conditions' => $conditions,
-				'joins' => $joins
+			'conditions' => $conditions,
+			'joins' => $joins
 		));
 		
 		$pagingObj = $this->paginatorObj($total, (int)$page, self::PAGE_SIZE);
 		
 		$data['flowers'] = $this->Flower->find('all', array(
-				'conditions' => $conditions,
-				'joins' => $joins,
-				'order' => array('Flower.id DESC'),
-				'limit' => self::PAGE_SIZE,
-				'offset' => ($pagingObj['current_page'] - 1) * self::PAGE_SIZE
-				)
-			);
+			'conditions' => $conditions,
+			'joins' => $joins,
+			'order' => array('Flower.id DESC'),
+			'limit' => self::PAGE_SIZE,
+			'offset' => ($pagingObj['current_page'] - 1) * self::PAGE_SIZE
+			)
+		);
+		
 		$this->set('data', $data);
 		$this->set('pagingObj', $pagingObj);
 	}

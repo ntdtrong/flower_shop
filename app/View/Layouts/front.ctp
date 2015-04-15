@@ -2,163 +2,142 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Fav and touch icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $this->webroot; ?>ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $this->webroot; ?>ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $this->webroot; ?>ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="<?php echo $this->webroot; ?>apple-touch-icon-57-precomposed.png">
+		<link rel="shortcut icon" href="<?php echo $this->webroot; ?>ico/favicon.png">
 		<title>Flowers in Love</title>
-
-		<!-- Bootstrap -->
-		<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-		<?php
-		echo $this->Html->css('include');
-		echo $this->Html->css('app');
-		echo $this->Html->css('colorbox');
-		?>
+		<!-- Bootstrap core CSS -->
+		<?php echo $this->Html->css('bootstrap'); ?>
 		
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!-- Custom styles for this template -->
+		<?php echo $this->Html->css('style'); ?>
 		
-		<?php 
-		echo $this->Html->script('vendor/modernizr.min.js');
-		echo $this->Html->script('jquery.colorbox-min.js');
-		?>
-
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!-- css3 animation effect for this template -->
+		<?php echo $this->Html->css('animate.min'); ?>
+		
+		<!-- styles needed by carousel slider -->
+		<?php echo $this->Html->css('owl.carousel'); ?>
+		<?php echo $this->Html->css('owl.theme'); ?>
+		
+		<!-- styles needed by checkRadio -->
+		<?php echo $this->Html->css('ion.checkRadio'); ?>
+		<?php echo $this->Html->css('ion.checkRadio.cloudy'); ?>
+		
+		<!-- styles needed by mCustomScrollbar -->
+		<?php echo $this->Html->css('jquery.mCustomScrollbar'); ?>
+		
+		<!-- Just for debugging purposes. -->
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 		<![endif]-->
-		
-		<!-- All JavaScript at the bottom, except for Modernizr / Respond.
-       	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
-       	For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+		<style>
+			.footer {background-color: #9b59b6; border-bottom: none;}
+			.footer h3 {border-bottom: 1px solid #f2f2f2;}
+			.footer h3, .footer h4, .footer h5, .footer a {color: #f2f2f2;}
+			.footer a:hover {color: #601782;}
+			.social li {background: none repeat scroll 0 0 #f2f2f2; border: 2px solid #f2f2f2;}
+			.social li a i {color: #9b59b6 !important;}
+			.social li a:hover i {color: #f2f2f2 !important;}
+			.footer-bottom {background-color: #9b59b6; border-top: none;}
+			.footer-bottom p {color: #f2f2f2;}
+			.breadcrumb li a, .breadcrumb li span {color: #9b59b6 !important;}
+		</style>
 	</head>
 	<body>
 		<?php echo $this->element('navbar'); ?>
 		
-		<div id="skrollr-body" class="main-wrapper">
-			<main id="content" role="main">
+		<?php echo $this->fetch('content'); ?>
 				
-				<?php echo $this->fetch('content'); ?>
-
-				<footer id="footer" class="clearfix">
-					<div id="top-footer">
-						<div class="container">
-							<div class="row">
-								<div class="col-lg-6 col-md-6 instagram-block">
-									<div class="top"></div>
-									<h2 class="title-instagram">
-										<i class="icon icon-facebook"></i>
-										<span class="inner">Facebook Hoa Tình Yêu</span>
-									</h2>
-									<div id="instagram-container">
-										<a href="#" target="_blank" class="instagram-image">
-											<?php echo $this->Html->image('thumb/1406879228.jpg', array());?>
-										</a>
-										<a href="#" target="_blank" class="instagram-image">
-											<?php echo $this->Html->image('thumb/1410179733.jpg', array());?>
-										</a>
-										<a href="#" target="_blank" class="instagram-image">
-											<?php echo $this->Html->image('thumb/1406878461.jpg', array());?>
-										</a>
-									</div>
-									<a href="https://www.facebook.com/profile.php?id=100007818017096&fref=ts" target="_blank" class="mbt-button primary">Xem thêm</a>
-								</div>
-								<!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<div id="talking-about-us">
-										<h2>Talking about us</h2>
-										<h3>Trinkets and Trends</h3>
-										<p>
-											I am such a flower fanatic …
-										</p>
-										<p>
-											<a class="mbt-button" target="_blank" href="#">View article</a>
-										</p>
-										<h3>@jesssouthern Facebook</h3>
-										<p>
-											Absolutely in love with the flowers from @flowersinlove …
-										</p>
-										<p>
-											<a class="mbt-button" target="_blank" href="#">view Picture</a>
-										</p>
-									</div>
-								</div>  -->
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-									<div id="contact-us" style="color: #FAFAFA;">
-										<h2>Liên hệ</h2>
-										<p><span class="glyphicon glyphicon-home"></span> &nbsp; <?php echo @$company['address'];?></p>
-										<p><span class="glyphicon glyphicon-phone-alt"></span> &nbsp; <?php echo @substr($company['phone'], 0, 18);?></p>
-										<p><span class="glyphicon glyphicon-phone"></span> &nbsp; <?php echo @substr($company['phone'], 20, @(strlen($company['phone']) - 20));?></p>
-										<p>
-											<span class="glyphicon glyphicon-envelope"></span> &nbsp; 
-											<a href="mailto:<?php echo @$company['email'];?>" class="mbt-button primary"><?php echo @$company['email'];?></a>
-										</p>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div id="bottom-footer" class="clearfix">
-						<div class="container">
-							<div class="row">
-								<div class="col-lg-12">
-									<div id="footer-nav">
-										<ul id="menu-footer" class="menu">
-											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-teas">
-												<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>">Home</a>
-											</li>
-											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-teas">
-												<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>">Hoa</a>
-											</li>
-											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-about">
-												<a href="#">Giới thiệu</a>
-											</li>
-											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-contact">
-												<a href="#">Tin Tức</a>
-											</li>
-											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-name-faq">
-												<a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a>
-											</li>
-										</ul>
-										<ul class="footer-meta-nav">
-											<li class="active">
-												<a href="#"><span>Tiếng Việt</span></a>
-											</li>
-											<li>
-												<a href="#"><span>English</span></a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="row credits">
-								<div class="col-lg-12">
-									<div id="credits">
-										Flowersinlove © 2014
-										<br>
-										Made by <a target="_blank" href="#">Diep Nguyen</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</footer><!-- END FOOTER -->
-				
-			</main> <!-- END MAIN -->
-
-		</div> <!-- END WRAPPER -->
-
+		<footer>
+		  <div class="footer" id="footer">
+		    <div class="container">
+		      <div class="row">
+		        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+		          <h3> Liên Hệ </h3>
+		          <ul>
+		            <li class="supportLi">
+		              <h5> 16 Nguyễn Quý Cảnh, P. An Phú, Quận 2, TP.HCM </h5>
+		              <h5> <a class="inline" href="callto:0862810328"> <strong> <i class="fa fa-phone"> </i> (08) 6281.0328 - 0909.781.099 - 0903.749.989</strong> </a> </h5>
+		              <h4> <a class="inline" href="mailto:flowersinlove.info@gmail.com"> <i class="fa fa-envelope-o"> </i> flowersinlove.info@gmail.com </a> </h4>
+		            </li>
+		          </ul>
+		        </div>
+		        <div class="col-lg-4  col-md-4 col-sm-6 col-xs-6">
+		          <h3> Trang Chính </h3>
+		          <ul>
+		            <li> <a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>"> Trang Chủ </a> </li>
+		            <li> <a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'shop')); ?>"> Sản Phẩm </a> </li>
+		            <li> <a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'about')); ?>"> Giới thiệu </a> </li>
+     				<li> <a href="#">Tin Tức</a> </li>
+					<li> <a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'contact')); ?>">Liên Hệ</a> </li>
+		          </ul>
+		        </div>
+		        <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
+		          <h3> Kết Nối </h3>
+		          <ul class="social">
+		            <li> <a href="https://www.facebook.com/profile.php?id=100007818017096&fref=ts" target="_blank"> <i class=" fa fa-facebook"> &nbsp; </i> </a> </li>
+		          </ul>
+		        </div>
+		      </div>
+		      <!--/.row--> 
+		    </div>
+		    <!--/.container--> 
+		  </div>
+		  <!--/.footer-->
+  
+		  <div class="footer-bottom">
+		    <div class="container">
+		      <p class="pull-left"> &copy; Flowers in Love 2054. All right reserved. </p>
+		    </div>
+		  </div>
+		  <!--/.footer-bottom--> 
+		</footer>
 		
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<?php
-		echo $this->Html->script('bootstrap.min.js');
-		//echo $this->Html->script('vendor/skrollr.min.js');
-		echo $this->Html->script('include.js');
-		echo $this->Html->script('app.js');
+		<!-- Placed at the end of the document so the pages load faster -->
+		<?php echo $this->Html->script('jquery/1.8.3/jquery.js');?>
+		<?php echo $this->Html->script('bootstrap.min.js');?>
 		
-		?>
+		<!-- include jqueryCycle plugin --> 
+		<?php echo $this->Html->script('jquery.cycle2.min.js');?>
+		
+		<!-- include easing plugin -->
+		<?php echo $this->Html->script('jquery.easing.1.3.js');?>
+		
+		<!-- include  parallax plugin --> 
+		<?php echo $this->Html->script('jquery.parallax-1.1.js');?>
+		
+		<!-- optionally include helper plugins -->
+		<?php echo $this->Html->script('helper-plugins/jquery.mousewheel.min.js');?>
+		
+		<!-- include mCustomScrollbar plugin //Custom Scrollbar  --> 
+		<?php echo $this->Html->script('jquery.mCustomScrollbar.js');?> 
+		
+		<!-- include checkRadio plugin //Custom check & Radio  --> 
+		<?php echo $this->Html->script('ion.checkRadio.min.js');?>
+		
+		<!-- include grid.js // for equal Div height  -->
+		<?php echo $this->Html->script('grids.js');?> 
+		
+		<!-- include carousel slider plugin  --> 
+		<?php echo $this->Html->script('owl.carousel.min.js');?>
+		
+		<!-- jQuery minimalect // custom select   -->
+		<?php echo $this->Html->script('jquery.minimalect.min.js');?>
+		
+		<!-- include touchspin.js // touch friendly input spinner component   -->
+		<?php echo $this->Html->script('bootstrap.touchspin.js');?>
+		
+		<!-- include custom script for only homepage  --> 
+		<?php echo $this->Html->script('home.js');?>
+		<!-- include custom script for site  --> 
+		<?php echo $this->Html->script('script.js');?>
+
 		<!-- Google Tag Manager -->
 		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5W84WJ"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

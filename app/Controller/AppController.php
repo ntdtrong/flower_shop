@@ -32,21 +32,21 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $helpers = array('Html', 'Form', 'Session');
-	var $uses = array('User', 'Company');
+	var $uses = array('User', 'Company', 'Category');
 	public $components = array(
 			'Session',
 			'Common',
 			'Auth' => array(
 					'authenticate'=> array(
-							'all' => array('userModel' => 'User'),
-							'PF' => array(
-									//TP-326 Update to bcrypt
-									'passwordHasher' => 'Blowfish',
-									//Code review TP-327
-									'fields' => array(
-											'username' => 'email'
-									),
-							)
+						'all' => array('userModel' => 'User'),
+						'PF' => array(
+							//TP-326 Update to bcrypt
+							'passwordHasher' => 'Blowfish',
+							//Code review TP-327
+							'fields' => array(
+								'username' => 'email'
+							),
+						)
 					),
 					'loginRedirect' => array(
 		                'controller' => 'homes',
@@ -58,28 +58,6 @@ class AppController extends Controller {
 		            )
 			)
 	);
-	
-	
-// 	public $components = array(
-// 			'Session',
-// 			'Common',
-// 			'Auth' => array(
-// 					'authenticate'=> array(
-// 							'Form' => array(
-// 									'passwordHasher' => 'Blowfish',
-// 									'fields' => array('username' => 'email')
-// 							)
-// 					),
-// 					'loginRedirect' => array(
-// 							'controller' => 'homes',
-// 							'action' => 'index'
-// 					),
-// 					'logoutRedirect' => array(
-// 							'controller' => 'users',
-// 							'action' => 'login'
-// 					)
-// 			)
-// 	);
 
 	/**
 	 *
@@ -97,12 +75,12 @@ class AppController extends Controller {
 		if ($nextPage > $totalPages) $nextPage = 0;
 	
 		return array(
-				'total_items' => $total,
-				'total_pages' => $totalPages,
-				'page_size' => $size,
-				'current_page' => $currentPage,
-				'prev_page'	=> $prevPage,
-				'next_page' =>$nextPage
+			'total_items' => $total,
+			'total_pages' => $totalPages,
+			'page_size' => $size,
+			'current_page' => $currentPage,
+			'prev_page'	=> $prevPage,
+			'next_page' => $nextPage
 		);
 	}
 	
@@ -114,18 +92,11 @@ class AppController extends Controller {
 			$this->set('current_user', $user['User']);
 		}
 		
-// 		$co = array(
-// 				'name' => 'Hoa Đà Lạt',
-// 				'full_name' => 'Cửa hàng hoa tươi Hoa Đà Lạt',
-// 				'phone' => '08.31312xxx - 0905. 000 xxx - 0905. 000 xxx',
-// 				'email' => 'emai@email.com',
-// 				'address' => '176 CMT8 Phường 6 quận 10 thành phố Hồ Chí Minh',
-// 				'image' => null,
-// 				'description' => null
-// 				);
-// 		$this->Company->create();
-// 		$this->Company->save($co);
 		$company = $this->Company->find('first');
 		$this->set('company', @$company['Company']);
+		$categories = $this->Category->find('all', array(
+			'conditions' => array('type' => CATEGORY_TYPE_FLOWER, 'is_active' => ACTIVE)
+		));
+		$this->set('categories', $categories);
 	}
 }

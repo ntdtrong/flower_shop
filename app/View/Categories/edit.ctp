@@ -8,7 +8,17 @@
 		    <label for="txtName">Tên danh mục</label>
 		    <input name="name" type="text" class="form-control" id="txtName" placeholder="Nhập tên danh mục" value="<?php echo @$data['category']['name'];?>">
 		</div>
-		
+		<div class="form-group">
+			<label >Phân loại</label>
+			<select id="parent" name="parent" class="form-control">
+			  	<option value="<?php echo Utils::FLOWER_CATEGORY_PARENT_BY_DESIGN; ?>" <?php if( Utils::FLOWER_CATEGORY_PARENT_BY_DESIGN == @$data['category']['parent']) echo 'selected="selected"'?>>
+			  		<?php echo Utils::getRootCategoriesDisplay(Utils::FLOWER_CATEGORY_PARENT_BY_DESIGN)?>
+			  	</option>
+			  	<option value="<?php echo Utils::FLOWER_CATEGORY_PARENT_BY_TOPIC;?>" <?php if( Utils::FLOWER_CATEGORY_PARENT_BY_TOPIC == @$data['category']['parent']) echo 'selected="selected"'?>>
+			  		<?php echo Utils::getRootCategoriesDisplay(Utils::FLOWER_CATEGORY_PARENT_BY_TOPIC)?>
+			  	</option>
+			</select>
+		</div>
 		<div class="form-group">
 			<label >Chọn loại danh mục</label>
 			<select id="selector_type" name="type" class="form-control">

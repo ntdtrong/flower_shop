@@ -1,5 +1,6 @@
-<div class="container">
-	<div class="row">
+<div class="container main-container headerOffset">
+	
+  	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			<picture>
 				<!--[if IE 9]><video style="display: none;"><![endif]-->
@@ -31,6 +32,7 @@
 			</script></a></p>
 			<p>Chúng tôi luôn hoan nghênh mọi cơ hội hợp tác!</p>
 		</div>
+		
 	</div>
 </div>
 

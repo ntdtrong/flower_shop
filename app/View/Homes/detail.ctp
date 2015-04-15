@@ -1,49 +1,37 @@
-<div class="container">
-	<div class="row">
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-push-2">
-			<li class="product type-product status-publish has-post-thumbnail first featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
-				<a class='inline' href="#inline_content">
-					<?php echo $this->Html->image('thumb/' . $item['Flower']['thumb'], array('alt' => $item['Flower']['name'], 'title' => $item['Flower']['name']));?>
-				</a>
-			</li>
-		</div>
-		
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-push-2">
-			<li class="product">
-				<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
-				<a style="display: none;" href="#" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
-					<!-- <i class="icon icon-cart"></i>
-					<i class="icon hover icon-cart"></i>
-					<i class="icon loading"></i> -->
-					<span class="amount">
-						<?php echo $this->Number->format($item['Flower']['price'],  array(
-						    'places' => 0,
-						    'before' => '$ ',
-						    'escape' => false,
-						    'decimals' => '',
-						    'thousands' => '.'
-						));?>
-					</span>
-				</a>
-				<div class="description-type"><?php echo $item['Flower']['description']; ?></div>
-			</li>
-		</div>
+<div class="container main-container headerOffset">
 	
-		<div style='display:none'>
-			<div id='inline_content' style='padding:10px; background:#fff;'>
-				<li class="product type-product status-publish has-post-thumbnail first featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
-					<?php echo $this->Html->image('image/' . $item['Flower']['image'], array('alt' => $item['Flower']['name'], 'title' => $item['Flower']['name']));?>
-				</li>
-				<p style='padding:10px; text-align:center;'>
-					<strong><?php echo $item['Flower']['name']; ?></strong>
-				</p>
+  	<div class="row transitionfx">
+  
+		<!-- left column -->
+    	<div class="col-lg-6 col-md-6 col-sm-6">
+    		<!-- product Image and Zoom -->
+      		<div class="main-image sp-wrap col-lg-12 no-padding" style="display: inline-block;"> 
+				<div class="sp-large" style="overflow: hidden; height: auto;">
+					<a href="<?php echo $this->webroot; ?>img/image/<?php echo $item['Flower']['image']; ?>" class="" style="display: block;">
+						<?php echo $this->Html->image('image/' . $item['Flower']['image'], array('class' => 'img-responsive', 'alt' => $item['Flower']['name'], 'title' => $item['Flower']['name']));?>
+					</a>
+				</div>
 			</div>
-		</div>
+   	 	</div><!--/ left column end -->
+    
+    
+	    <!-- right column -->
+	    <div class="col-lg-6 col-md-6 col-sm-5">
+	    
+			<h1 class="product-title"> <?php echo $item['Flower']['name']; ?></h1>
+	      
+	      	<div class="details-description">
+	        	<p><?php echo $item['Flower']['description']; ?></p>
+	      	</div>
+	      
+			<div class="clear"></div>
+		
+		</div><!--/ right column end -->
+	    
 	</div>
+  	<!--/.row-->
+	<div style="clear:both"></div>
+	<style>
+		.sp-large {max-width: 100%;}				
+	</style>
 </div>
-<script>
-			$(document).ready(function(){
-				$(".inline").colorbox({inline:true, width:"50%"});
-				
-			});
-		</script>

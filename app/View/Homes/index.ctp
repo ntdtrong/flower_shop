@@ -1,59 +1,99 @@
+<div class="banner">
+  <div class="full-container">
+    <div class="slider-content">
+      <ul id="pager2" class="container">
+      </ul>
+      <!-- prev/next links --> 
+      
+      <span class="prevControl sliderControl"> <i class="fa fa-angle-left fa-3x "></i></span> <span class="nextControl sliderControl"> <i class="fa fa-angle-right fa-3x "></i></span>
+      <div class="slider slider-v1" 
+      data-cycle-swipe=true
+      data-cycle-prev=".prevControl"
+      data-cycle-next=".nextControl" data-cycle-loader="wait">
+        <div class="slider-item slider-item-img1"> <img src="img/slider/slider0.jpg" class="img-responsive parallaximg sliderImg" alt="img"> </div>
+        <div class="slider-item slider-item-img1">
+          <div class="sliderInfo">
+            <div class="container">
+              <div class="col-lg-12 col-md-12 col-sm-12 sliderTextFull ">
+                <div class="inner text-center">
+                  <div class="topAnima animated">
+                    <h1 class="uppercase xlarge">FREE SHIPPING</h1>
+                    <h3 class="hidden-xs"> Free Standard Shipping on Orders Over $100 </h3>
+                  </div>
+                  <a class="btn btn-danger btn-lg bottomAnima animated opacity0">SHOP NOW ON TSHOP <span class="arrowUnicode">►</span></a> </div>
+              </div>
+            </div>
+          </div>
+          <img src="img/slider/slider1.jpg" class="img-responsive parallaximg sliderImg" alt="img"> </div>
+        <!--/.slider-item-->
+        
+        <div class="slider-item slider-item-img2 ">
+          <div class="sliderInfo">
+            <div class="container">
+              <div class="col-lg-12 col-md-12 col-sm-12 sliderTextFull  ">
+                <div class="inner dark maxwidth500 text-center animated topAnima">
+                  <div class=" ">
+                    <h1 class="uppercase xlarge"> CUSTOM HTML BLOCK</h1>
+                    <h3 class="hidden-xs"> Custom Slides to Your Slider </h3>
+                  </div>
+                  <a class="btn btn-danger btn-lg">SHOP NOW ON TSHOP <span class="arrowUnicode">►</span></a> </div>
+              </div>
+            </div>
+          </div>
+          <img src="img/slider/slider3.jpg" class="img-responsive parallaximg sliderImg" alt="img"> </div>
+        <!--/.slider-item-->
+        
+        <div class="slider-item slider-item-img3 ">
+          <div class="sliderInfo">
+            <div class="container">
+              <div class="col-lg-5 col-md-4 col-sm-6 col-xs-8   pull-left sliderText white hidden-xs">
+                <div class="inner">
+                  <h1>TSHOP JEANS</h1>
+                  <h3 class="price "> Free Shipping on $100</h3>
+                  <p class="hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+                  <a href="category.html" class="btn btn-primary">SHOP NOW <span class="arrowUnicode">►</span></a> </div>
+              </div>
+            </div>
+          </div>
+          <img src="img/slider/slider4.jpg" class="img-responsive parallaximg sliderImg"  alt="img"> </div>
+        <!--/.slider-item-->
+        
+        <div class="slider-item slider-item-img3">
+          <div class="sliderInfo">
+            <div class="container">
+              <div class="col-lg-5 col-md-6 col-sm-5 col-xs-5 pull-left sliderText blankstyle transformRight">
+                <div class="inner text-right"> <img src="img/slider/color.png" class="img-responsive" alt="img"> </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-5 col-xs-7   pull-left sliderText blankstyle color-white">
+                <div class="inner">
+                  <h1 class="uppercase topAnima animated ">10+ Amazing Color Theme</h1>
+                  <p class="bot tomAnima animated opacity0 hidden-xs"> Fully responsive bootstrap Ecommerce Template. Available in 10+ color schemes and easy to set. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img src="img/slider/6.jpg" class="img-responsive parallaximg sliderImg"  alt="img"> </div>
+      </div>
+      <!--/.slider slider-v1--> 
+    </div>
+    <!--/.slider-content--> 
+  </div>
+  <!--/.full-container--> 
+</div>
+<!--/.banner style1-->
+
 <div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<h2 class="underlined">Hoa nổi bật</h2>
-		</div>
-	</div>
-
-	<ul class="products row">
-	<?php if ( !empty($featured) && count($featured) > 0 ): ?>
-	<?php foreach ($featured as $item): ?>
-		<li style="padding: 0 5px;" class="product type-product status-publish has-post-thumbnail first col-lg-4 col-md-4 col-sm-4 col-xs-12 featured purchasable product-type-simple product-cat-tea-blends product-tag-black-tea instock">
-			<a href="<?php echo $this->Html->url(array("controller" => "homes", "action" => "detail", $item['Flower']['id']));?>">
-				<?php echo $this->Html->image('thumb/' . $item['Flower']['thumb'], array('alt' => $item['Flower']['name'], 'title' => $item['Flower']['name']));?>
-			</a>
-			<div class="desc">
-				<div class="desc-content">
-					<div class="tea-type"><?php echo $item['Flower']['name']; ?></div>
-					<a style="display: none;" href="<?php echo $this->Html->url(array("controller" => "homes", "action" => "detail", $item['Flower']['id']));?>" rel="nofollow" data-product_id="0" data-product_sku="" class="buy button add_to_cart_button product_type_simple">
-						<!-- <i class="icon icon-cart"></i>
-						<i class="icon hover icon-cart"></i>
-						<i class="icon loading"></i> -->
-						<span class="amount">
-							<?php echo $this->Number->format($item['Flower']['price'],  array(
-							    'places' => 0,
-							    'before' => '$ ',
-							    'escape' => false,
-							    'decimals' => '',
-							    'thousands' => '.'
-							));?>
-						</span>
-					</a>
-				</div>
-			</div>
-		</li>
-	<?php endforeach; ?>
-	<?php endif; ?>
-	</ul><!-- END PRODUCTS -->
+	
+  <hr class="no-margin-top">
+  <div class="width100 section-block ">
+    <div class="row featureImg">
+      <div class="col-md-4 col-sm-4 col-xs-12"> <a href="category.html"><img src="img/site/new-collection-1.jpg" class="img-responsive" alt="img" style="margin: 0 auto;"></a> </div>
+      <div class="col-md-4 col-sm-4 col-xs-12"> <a href="category.html"><img src="img/site/new-collection-2.jpg" class="img-responsive" alt="img" style="margin: 0 auto;"></a> </div>
+      <div class="col-md-4 col-sm-4 col-xs-12"> <a href="category.html"><img src="img/site/new-collection-3.jpg" class="img-responsive" alt="img" style="margin: 0 auto;"></a> </div>
+    </div>
+    <!--/.row--> 
+  </div>
+  <!--/.section-block-->
+  
 </div>
-<div id="wrap_promo">
-	<section id="promo" class="turquoise">
-		<div id="inner-promo">
-			<a href="#">
-				<picture>
-					<!--[if IE 9]><video style='display: none;'><![endif]-->
-					<source srcset="img/banner/<?php echo $banner2['Banner']['image']?>" media="(min-width:768px)">
-					<source srcset="img/banner_mobile.jpg" media="(max-width:767px)">
-					<!--[if IE 9]></video><![endif]-->
-					<?php echo $this->Html->image('banner/' . $banner2['Banner']['image'], array(
-						'data-anchor-target' => '#wrap_promo',
-						'class' => "skrollable skrollable-before",
-						'alt' => 'Buy flowers today, get back 5%',
-						'title' => 'Buy flowers today, get back 5%'));?>
-				</picture>
-				<h2>Buy flowers today, get back 5%!</h2>
-			</a>
-		</div>
-	</section>
-</div>
-
+<!--main-container-->

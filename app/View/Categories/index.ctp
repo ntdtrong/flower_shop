@@ -9,7 +9,8 @@
 		<table class="table table-striped table-bordered table-condensed table-hover">
 		  	<tr>
 		  		<th width="5%">#</th>
-		  		<th width="50%">Tên danh mục</th>
+		  		<th width="25%">Tên danh mục</th>
+		  		<th width="25%"></th>
 		  		<th width="15%">Loại</th>
 		  		<th width="15%">Hiển thị</th>
 		  		<th width="15%">Tùy chọn</th>
@@ -23,6 +24,7 @@
 				<tr>
 			  		<td><?php echo $i;?></td>
 			  		<td><?php echo $item['Category']['name']?></td>
+			  		<td><?php echo Utils::getRootCategoriesDisplay($item['Category']['parent']);?></td>
 			  		<td><?php echo ( CATEGORY_TYPE_FLOWER == $item['Category']['type'])?'Giỏ hoa':'Blog'?></td>
 			  		<td><?php echo ($item['Category']['is_active'])?'Có':'Không'?></td>
 			  		<td>

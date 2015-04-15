@@ -3,6 +3,22 @@ App::uses('Sanitize', 'Utility');
 App::uses('CakeTime', 'Utility');
 App::uses('CakeSession', 'Model/Datasource');
 class Utils {
+	const FLOWER_CATEGORY_PARENT_BY_DESIGN = 'by_design';
+	const FLOWER_CATEGORY_PARENT_BY_TOPIC = 'by_topic';
+	
+	protected static $rootCategoriesDisplay = array(
+		self::FLOWER_CATEGORY_PARENT_BY_DESIGN => 'Hoa Thiết Kế',
+		self::FLOWER_CATEGORY_PARENT_BY_TOPIC => 'Hoa Theo Chủ Đề'
+	);
+	
+	public static function getRootCategoriesDisplay($parentId) {
+		if (array_key_exists($parentId, self::$rootCategoriesDisplay)) {
+			return self::$rootCategoriesDisplay[$parentId];
+		} else {
+			return '';
+		}
+	}
+	
 	public static function strRemoveLast($source, $patterns) {
 		foreach ($patterns as $p) {
 			$pos = strrpos($source, $p);
