@@ -2,7 +2,7 @@
 App::import('Lib', 'Utils');
 App::uses('AppController', 'Controller');
 class UsersController extends AppController {
-	public $uses = array('User');
+	public $uses = array('User', 'Visitor');
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
@@ -251,5 +251,10 @@ class UsersController extends AppController {
 	
 	public function logout() {
 		return $this->redirect($this->Auth->logout());
+	}
+	
+	public function statistics() {
+		$webViewCount = $this->Visitor->find('count');
+		$this->set('webViewCount', $webViewCount);
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 class HomesController extends AppController {
-	public $uses = array('Category', 'Flower', 'Banner');
+	public $uses = array('Category', 'Flower', 'Banner', 'Visitor');
 	public $helpers = array('Paging');
 	
 	const PAGE_SIZE = 100;
@@ -11,18 +11,23 @@ class HomesController extends AppController {
 		$this->Auth->allow(array('index', 'contact', 'all', 'shop', 'detail', 'about'));
 	}
 	public function index(){
-		$this->set('banner1', $this->Banner->findById(1));
-		$this->set('banner2', $this->Banner->findById(2));
+		/*$this->set('banner1', $this->Banner->findById(1));
+		$this->set('banner2', $this->Banner->findById(2));*/
 		
-		$this->set('featured', $this->Flower->find('all',array(
-			'recursive' => 1, //int
-			'fields' => array(
-				'Flower.id', 'Flower.name', 'Flower.price', 'Flower.thumb'
-			),
-			'order' => array('Flower.id DESC'),
-			'limit' => 3,
-			'offset' => 0
-		)));
+		$clientIp = $this->request->clientIp();
+		
+		$trackedItem = $this->Visitor->find('first', array(
+			'conditions' => array('ip_address' => $clientIp)
+		));
+		
+		if ( empty($trackedItem) || Utils::moreThanHalfHourAgo($trackedItem['Visitor']['visited_timestamp']) ) {
+			$record = array(
+				'ip_address' => $clientIp,
+				'visited_timestamp' => date('Y-m-d H:i:s')
+			);
+			$this->Visitor->create();
+			$this->Visitor->save($record);
+		}
 		
 		$this->layout = 'front';
 	}

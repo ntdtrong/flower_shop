@@ -9,3 +9,13 @@ VALUES (NULL, 'Ngày Nhà Giáo Việt Nam', '', '1', '1'), (NULL, 'Giáng Sinh'
 UPDATE `categories` SET `parent` = 'by_topic' WHERE `id` IN (7, 14, 15, 16, 17, 18);
 
 UPDATE `categories` SET `parent` = 'by_design' WHERE `id` NOT IN (5, 6, 7, 14, 15, 16, 17, 18);
+
+
+DROP TABLE IF EXISTS `visitors`;
+CREATE TABLE IF NOT EXISTS `visitors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `visited_timestamp` timestamp NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ip_address` (`ip_address`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

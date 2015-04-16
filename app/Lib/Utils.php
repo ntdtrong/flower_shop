@@ -352,4 +352,12 @@ class Utils {
 		return CakeTime::timeAgoInWords($dateTime, array('timezone'=>$timeZone,  'format' => CLIENT_COMMON_DATE_FORMAT, 'end' => '+1 day'));
 	}
 	
+	public static function moreThanHalfHourAgo($timeStr) {
+		$time = strtotime($timeStr);
+		
+		$curtime = time();
+		
+		return (($curtime - $time) > 1800); // 30 mins = 1800 seconds
+		
+	}
 }

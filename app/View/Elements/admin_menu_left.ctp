@@ -40,6 +40,12 @@
                             </a>
                         </li>
                         
+                        <li>
+                            <a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'statistics')); ?>">
+                                <i class="fa fa-bar-chart-o"></i> <span>Thống kê</span>
+                            </a>
+                        </li>
+                        
                     </ul>
                 </section>
                 <!-- /.sidebar -->
