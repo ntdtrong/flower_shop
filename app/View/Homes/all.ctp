@@ -1,4 +1,4 @@
-<div class="container main-container headerOffset" style="padding-top: 50px !important;"> 
+<div class="container main-container headerOffset"> 
 	<!-- Main component call to action -->
 	  
 	<div class="row">

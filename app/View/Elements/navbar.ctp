@@ -18,7 +18,7 @@
   <div class="container">
     <div class="navbar-header">
       <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"> <span class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> </button>
-      <a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>" class="navbar-brand "> <img alt="TSHOP" src="images/logo.png"> </a>
+      <a href="<?php echo $this->Html->url(array('controller' => 'homes', 'action' => 'index')); ?>" class="navbar-brand " style="padding: 4px 20px 0 15px;"><?php echo $this->Html->image('logo.png', array('alt' => 'FiL')); ?></a>
     </div>
     
     <div class="navbar-collapse collapse">

@@ -47,7 +47,6 @@ class HomesController extends AppController {
 			$conditions = array();
 			$joins = array();
 		} else {
-			$categoryName = $data['categories'][$category];
 			$conditions = array('FlowerCategory.category_id' => $category);
 			$joins = array(
 				array(

@@ -17,7 +17,7 @@
 		<div class="form-group">
 		    <label for="txtImage">Hình ảnh</label>
 		    <input name="image" type="file" id="txtImage">
-		    <p class="help-block">Chọn hình có độ phân giải 640 x 640.</p>
+		    <p class="help-block"></p>
 		</div>
 		 
   		<div class="form-group">
@@ -28,28 +28,61 @@
 			
 		  	<div class="panel-heading">Chọn danh mục</div>
 		  	<div class="panel-body">
-		  		<?php  
-                		if(!empty($data['categories'])){
-							$selectId = 0;
-							if(!empty($data['flower']['category']))
-								$selectId = intval($data['flower']['category']);
-							
-	                		foreach($data['categories'] as $cate){
-							?>
-							    <div class="col-sm-4 col-lg-4 col-md-4">
-							    	<div class="checkbox">
-									    <label>
-									      <input name="data[categories_selected][<?php echo $cate['Category']['id'];?>]"	type="checkbox"
-									      	<?php if(in_array($cate['Category']['id'], $data['categories_selected'])) echo "checked='checked'";?>
-									      	> 
-									      	<?php echo $cate['Category']['name'];?>
-									    </label>
-									 </div>
-								</div>
-						<?php 
-							}	
-                		}	
-                		?>
+			  	<div class="row col-md-12">
+			  		<h4><?php echo Utils::getRootCategoriesDisplay(Utils::FLOWER_CATEGORY_PARENT_BY_DESIGN); ?></h4>
+			  		<?php  
+	                		if(!empty($data['categories'])){
+								$selectId = 0;
+								if(!empty($data['flower']['category']))
+									$selectId = intval($data['flower']['category']);
+								
+		                		foreach($data['categories'] as $cate){
+		                			if ( $cate['Category']['parent'] == Utils::FLOWER_CATEGORY_PARENT_BY_DESIGN ) {
+								?>
+								    <div class="col-sm-4 col-lg-4 col-md-4">
+								    	<div class="checkbox">
+										    <label>
+										      <input name="data[categories_selected][<?php echo $cate['Category']['id'];?>]"	type="checkbox"
+										      	<?php if(in_array($cate['Category']['id'], $data['categories_selected'])) echo "checked='checked'";?>
+										      	> 
+										      	<?php echo $cate['Category']['name'];?>
+										    </label>
+										 </div>
+									</div>
+							<?php
+		                			}
+								}	
+	                		}	
+	                		?>
+			  	</div>
+			  	<div class="row col-md-12">
+			  		<h4><?php echo Utils::getRootCategoriesDisplay(Utils::FLOWER_CATEGORY_PARENT_BY_TOPIC); ?></h4>
+			  		<?php  
+	                		if(!empty($data['categories'])){
+								$selectId = 0;
+								if(!empty($data['flower']['category']))
+									$selectId = intval($data['flower']['category']);
+								
+		                		foreach($data['categories'] as $cate){
+		                			if ( $cate['Category']['parent'] == Utils::FLOWER_CATEGORY_PARENT_BY_TOPIC ) {
+								?>
+								    <div class="col-sm-4 col-lg-4 col-md-4">
+								    	<div class="checkbox">
+										    <label>
+										      <input name="data[categories_selected][<?php echo $cate['Category']['id'];?>]"	type="checkbox"
+										      	<?php if(in_array($cate['Category']['id'], $data['categories_selected'])) echo "checked='checked'";?>
+										      	> 
+										      	<?php echo $cate['Category']['name'];?>
+										    </label>
+										 </div>
+									</div>
+							<?php
+		                			} 
+								}	
+	                		}	
+	                		?>
+			  	</div>
+		  		
 			</div>
 		</div>
 		<button class="btn btn-primary" type="submit" >Lưu lại</button>

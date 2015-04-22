@@ -25,7 +25,7 @@
 		<div name="image" class="form-group">
 		    <label for="txtImage">Hình banner</label>
 		    <input name="image" type="file" id="txtImage">
-		    <p class="help-block">Chọn hình có độ phân giải 1600 x 482.</p>
+		    <p class="help-block">Chọn hình có độ phân giải 1920px x 720px</p>
 		 </div>
 		 
 		 

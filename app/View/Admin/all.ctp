@@ -35,7 +35,7 @@
 	
 			?>
 			<div class="col-sm-3 col-lg-3 col-md-3">
-				<div class="thumbnail">
+				<div class="thumbnail" style="height: 415px;">
 					<?php echo $this->Html->image('thumb/'. $item['Flower']['thumb'], array('alt' => '')); ?>
 					<div class="caption">
 						<p class="caption-header">

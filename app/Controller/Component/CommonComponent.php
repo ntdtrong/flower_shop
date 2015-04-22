@@ -97,7 +97,7 @@ class CommonComponent extends Component {
 		}
 	
 	
-		$centreX = round($width / 2);
+		/*$centreX = round($width / 2);
 		$centreY = round($height / 2);
 	
 		// our dimensions will be 200x130
@@ -108,7 +108,7 @@ class CommonComponent extends Component {
 		$y2 = $centreY + $regHeight/2;
 	
 		// center cropping to 200x130
-		$manipulator->crop($x1, $y1, $x2, $y2);
+		$manipulator->crop($x1, $y1, $x2, $y2);*/
 	
 		// saving file to uploads folder
 		$uploads_dir = IMAGE_UPLOAD_DIR . $dir . $fileName;

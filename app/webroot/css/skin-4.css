@@ -176,3 +176,13 @@ darkcoilor {
 citecolor {
 	color:#9b59b6 !important;
 }
+.breadcrumb {
+    background: none repeat scroll 0 0 #f1dafb !important;
+    border: none !important;
+}
+.breadcrumb > .active {
+    color: #601f6a !important;
+}
+.breadcrumb > li + li::before {
+    color: #9b59b6 !important;
+}
