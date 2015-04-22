@@ -18,4 +18,15 @@ CREATE TABLE IF NOT EXISTS `visitors` (
   `visited_timestamp` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `ip_address` (`ip_address`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `feedbacks`
+CREATE TABLE IF NOT EXISTS `feedbacks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `viewed` int(1) NOT NULL,
+  `hidden` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

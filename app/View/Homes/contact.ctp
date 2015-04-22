@@ -1,15 +1,29 @@
 <div class="container main-container headerOffset">
 	
   	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-			<picture>
-				<!--[if IE 9]><video style="display: none;"><![endif]-->
-				<source media="(-webkit-min-device-pixel-ratio: 2)" srcset="#"></source>
-				<source media="(min-resolution: 192dpi)" srcset="#"></source>
-				<source srcset="#"></source>
-				<?php echo $this->Html->image('logo-contact.jpg', array('alt' =>'Contact Us', 'style' => 'max-width: 100%; height: auto; width: auto\9; border-radius: 4px;'));?>
-				<!--[if IE 9]></video><![endif]-->
-			</picture>
+		<div class="row ol-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h2 class="underlined">Ý kiến</h2>
+			<div class="form-group col-md-10 col-sm-12">
+				<label for="email" class="control-label">Địa chỉ email</label>
+          		<div >
+            		<input name="email" id="email" class="form-control input" size="20" type="text">
+          		</div>
+        	</div>
+        	<div class="form-group col-md-10 col-sm-12">
+        		<label for="name" class="control-label">Tên</label>
+          		<div >
+            		<input name="name" id="name" class="form-control input"  size="20"  type="text">
+          		</div>
+        	</div>
+        	<div class="form-group col-md-10 col-sm-12">
+            	<label for="content" class="control-label">Nội dung</label>
+                <div>
+                	<textarea name="content" id="content" class="form-control" rows="7"></textarea>
+                </div>
+             </div>
+             <div class="form-group col-md-10 col-sm-12">
+             	<button class="btn btn-info" name="button2id" id="button2id">Gửi</button>
+             </div>
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			<h2 class="underlined">Liên hệ</h2>
