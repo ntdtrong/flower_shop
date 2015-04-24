@@ -24,7 +24,7 @@
                         </li>
                         <li>
                             <a href="<?php echo $this->Html->url(array('controller' => 'categories', 'action' => 'index')); ?>">
-                                <i class="fa fa-bar-chart-o"></i> <span>Danh Mục</span>
+                                <i class="fa fa-list"></i> <span>Danh Mục</span>
                             </a>
                         </li>
                         
@@ -43,6 +43,12 @@
                         <li>
                             <a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'statistics')); ?>">
                                 <i class="fa fa-bar-chart-o"></i> <span>Thống kê</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="<?php echo $this->Html->url(array('controller' => 'admin', 'action' => 'feedbacks')); ?>">
+                                <i class="fa fa-comments-o"></i> <span>Ý kiến</span>
                             </a>
                         </li>
                         

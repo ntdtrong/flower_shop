@@ -1,7 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 class AdminController extends AppController {
-	public $uses = array('Category', 'Flower', 'Banner');
+	public $uses = array('Category', 'Flower', 'Banner', 'Feedback');
 	public $helpers = array('Paging');
 	const PAGE_SIZE = 100;
 	
@@ -81,5 +81,47 @@ class AdminController extends AppController {
 			);
 		$this->set('data', $data);
 		$this->set('pagingObj', $pagingObj);
+	}
+	
+	public function feedbacks($page = 1) {
+		$conditions = array('Feedback.hidden' => 0);
+		
+		$total = $this->Feedback->find('count', array(
+			'conditions' => $conditions
+		));
+		
+		$pagingObj = $this->paginatorObj($total, (int)$page, self::PAGE_SIZE);
+		
+		$data = $this->Feedback->find('all', array(
+			'conditions' => $conditions,
+			'order' => array('Feedback.id DESC'),
+			'limit' => self::PAGE_SIZE,
+			'offset' => ($pagingObj['current_page'] - 1) * self::PAGE_SIZE
+		));
+		
+		$this->set('data', $data);
+		$this->set('pagingObj', $pagingObj);
+	}
+	
+	public function feedback($id) {
+		
+		$item = $this->Feedback->findById($id);
+		
+		if (empty($item) || $item['Feedback']['hidden'] == 1) {
+			$this->Session->setFlash('<div class="alert alert-danger" role="alert">Không tìm thấy ý kiến.</div>');
+			$this->redirect(array('controller' => 'admin', 'action' => 'feedbacks'));
+		}
+		
+		$item['Feedback']['viewed'] = 1;
+		
+		$this->Feedback->id = $id;
+		$this->Feedback->save($item);
+		
+		$this->set('item', $item);
+	}
+	
+	public function delete_feedback($id) {
+		$this->Feedback->delete($id);
+		$this->redirect(array('controller' => 'admin', 'action' => 'feedbacks'));
 	}
 }

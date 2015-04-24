@@ -138,6 +138,7 @@
 		<!-- include custom script for site  --> 
 		<?php echo $this->Html->script('script.js');?>
 
+		<?php echo $this->fetch('script'); ?>
 		<!-- Google Tag Manager -->
 		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5W84WJ"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

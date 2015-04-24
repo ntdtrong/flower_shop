@@ -360,4 +360,13 @@ class Utils {
 		return (($curtime - $time) > 1800); // 30 mins = 1800 seconds
 		
 	}
+	
+	public static function getWordsFromLongText($content, $maxChars) {
+		if (strlen($content) <= $maxChars) {
+			return $content;
+		}
+		
+		$pos = strpos($content, ' ', $maxChars);
+		return substr($content, 0, $pos ) . '...';
+	}
 }

@@ -1,18 +1,14 @@
 <?php
 App::uses('AppController', 'Controller');
 class HomesController extends AppController {
-	public $uses = array('Category', 'Flower', 'Banner', 'Visitor');
+	public $uses = array('Category', 'Flower', 'Banner', 'Visitor', 'Feedback');
 	public $helpers = array('Paging');
 	
 	const PAGE_SIZE = 100;
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow(array('index', 'contact', 'all', 'shop', 'detail', 'about'));
-	}
-	public function index(){
-		/*$this->set('banner1', $this->Banner->findById(1));
-		$this->set('banner2', $this->Banner->findById(2));*/
+		$this->Auth->allow(array('index', 'contact', 'all', 'shop', 'detail', 'about', 'save_feedback'));
 		
 		$clientIp = $this->request->clientIp();
 		
@@ -28,6 +24,10 @@ class HomesController extends AppController {
 			$this->Visitor->create();
 			$this->Visitor->save($record);
 		}
+	}
+	public function index(){
+		/*$this->set('banner1', $this->Banner->findById(1));
+		$this->set('banner2', $this->Banner->findById(2));*/
 		
 		$this->layout = 'front';
 	}
@@ -91,5 +91,29 @@ class HomesController extends AppController {
 	
 	public function about() {
 		$this->layout = 'front';
+	}
+	
+	public function save_feedback() {
+		if( $this->request->is('post') ) {
+			$record = array (
+				'email' 		=> $this->request->data['email'],
+				'name' 			=> $this->request->data['name'],
+				'content' 		=> $this->request->data['content'],
+				'viewed'		=> 0,
+				'hidden' 		=> 0,
+				'created_at'	=> date('Y-m-d H:i:s')
+			);
+			
+			$this->Feedback->create();
+			
+			$result = $this->Feedback->save($record);
+			
+			if ($result) {
+				$this->Session->setFlash('<div class="alert alert-success" role="alert">Cảm ơn đã đóng góp ý kiến cho chúng tôi.</div>');
+				$this->redirect(array('controller' => 'homes', 'action' => 'contact'));
+			}
+		}
+		
+		$this->redirect(array('controller' => 'homes', 'action' => 'contact'));
 	}
 }
